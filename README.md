@@ -33,7 +33,7 @@ git可以说是现在最为流行的版本管理工具了。
 其实最常用的命令无非下面几条
 ##### 下载git库到本地
 ```
-git clone https://github.com/Xilinx-University-Program/pp4fpga-cn.git
+git clone https://github.com/xupsh/pp4fpgas-cn.git
 ```
 ##### 保存本地的修改并上传到云端服务器(GitHub)
 ```
@@ -50,9 +50,12 @@ git push
 #### Pull Request 的流程
 -   第一步，你需要把别人的代码，克隆到你自己的仓库，Github 的术语叫做 fork。
 
--   第二步，在你仓库的修改后的分支上，按下"New pull request"按钮。![new pr](http://www.ruanyifeng.com/blogimg/asset/2017/bg2017071802.png)
+-   第二步，在你仓库的修改后的分支上，按下"New pull request"按钮。
+
+![new pr](http://www.ruanyifeng.com/blogimg/asset/2017/bg2017071802.png)
 
 -   这时，会进入一个新页面，有Base 和 Head 两个选项。Base 是你希望提交变更的目标，Head 是目前包含你的变更的那个分支或仓库。
+
 ![compare changes](http://www.ruanyifeng.com/blogimg/asset/2017/bg2017071806.png)
 
 -   第三步，填写说明，帮助别人理解你的提交，然后按下"create pull request"按钮即可。
@@ -76,14 +79,15 @@ git push
 
 ## Citation
 ```
-@ARTICLE{2018arXiv180503648K,
-author = {{Kastner}, R. and {Matai}, J. and {Neuendorffer}, S.},
-title = "{Parallel Programming for FPGAs}",
-journal = {ArXiv e-prints},
-archivePrefix = "arXiv",
-eprint = {1805.03648},
-keywords = {Computer Science - Hardware Architecture},
-year = 2018,
-month = may
+@ARTICLE{
+    2018arXiv180503648K,
+    author = {{Kastner}, R. and {Matai}, J. and {Neuendorffer}, S.},
+    title = "{Parallel Programming for FPGAs}",
+    journal = {ArXiv e-prints},
+    archivePrefix = "arXiv",
+    eprint = {1805.03648},
+    keywords = {Computer Science - Hardware Architecture},
+    year = 2018,
+    month = may
 }
 ```
