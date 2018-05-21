@@ -1,3 +1,4 @@
 *.tex
 *.pdf
 *.pdf_tex
+output/
