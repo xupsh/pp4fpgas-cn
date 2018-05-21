@@ -22,6 +22,12 @@ Parallel Programming for FPGAs这本书的原作采用的是`latex`进行内容�
 
 [Markdown 语法说明 (简体中文版)](http://wowubuntu.com/markdown/basic.html)
 
+#### 引用图片的小技巧
+```markdown
+![images/2pointFFT.jpg](images/2pointFFT.jpg)
+```
+![images/2pointFFT.jpg](images/2pointFFT.jpg)
+
 ### `git`
 git可以说是现在最为流行的版本管理工具了。
 
