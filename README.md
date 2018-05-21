@@ -28,6 +28,30 @@ Parallel Programming for FPGAs这本书的原作采用的是`latex`进行内容�
 ```
 ![images/2pointFFT.jpg](images/2pointFFT.jpg)
 
+#### 引用代码的方式
+>   只需要在代码片段前后都加上```符号，markdown就会自动将代码片段高亮出来
+
+```c
+#include "huffman.h"
+// Postcondition: out[x].frequency > 0
+void filter(
+            /* input  */ Symbol in[INPUT_SYMBOL_SIZE],
+            /* output */ Symbol out[INPUT_SYMBOL_SIZE],
+            /* output */ int *n) {
+#pragma HLS INLINE off
+    ap_uint<SYMBOL_BITS> j = 0;
+    for(int i = 0; i < INPUT_SYMBOL_SIZE; i++) {
+#pragma HLS pipeline II=1
+        if(in[i].frequency != 0) {
+            out[j].frequency = in[i].frequency;
+            out[j].value = in[i].value;
+            j++;
+        }
+    }
+    *n = j;
+}
+```
+
 ### `git`
 git可以说是现在最为流行的版本管理工具了。
 
