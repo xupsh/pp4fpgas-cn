@@ -1,23 +1,26 @@
 {
-"title" : "FPGA并行计算",
-"description" : "FPGA并行计算的中文版",
-"language" : "zh-hans",
-"root": ".",
-"plugins": [
-  "-lunr",
-  "-search",
-  "search-plus",
-  "katex",
-  "simple-page-toc",
-  "splitter",
-  "mathjax",
-  "disqus",
-  "theme-comscore",
-  
-],
-"pluginsConfig": {
-    "disqus": {
-        "shortName": "pp4fpga"
+  "title": "FPGA并行编程",
+  "description": "pp4fpga",
+  "author": "xupsh",
+  "language": "zh-hans",
+  "gitbook": "3.2.3",
+  "root": ".",
+  "plugins": [
+    "github@^2.0.0",
+    "github-buttons@2.1.0",
+    "toc"
+  ],
+  "pluginsConfig": {
+    "github": {
+      "url": "https://github.com/xupsh/pp4fpgas-cn"
+    },
+    "github-buttons": {
+      "repo": "xupsh/pp4fpgas-cn",
+      "types": [
+        "star",
+        "fork"
+      ],
+      "size": "small"
     }
-}
+  }
 }

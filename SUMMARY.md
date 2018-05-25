@@ -1,4 +1,8 @@
 # Summary
+- [README](README.md)
+
+----
+## 正文
 - [前言](00-Preface.md)
 - [第一章](01-Introduction.md)
 - [第二章](02-Finite-Impulse-Response-Filters.md)
@@ -13,6 +17,10 @@
 - [第十一章](11-Huffman-Encoding.md)
 
 ----
-
+## 附录
 - [词汇表汇总](GLOSSARY.md)
 - [参考文献](BIBLIOGRAPHY.md)
+
+----
+## 其它
+- [翻译规范](RULES.md)

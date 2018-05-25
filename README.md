@@ -1,44 +1,43 @@
 # pp4fpga-cn
-Parallel Programming for FPGAs 中译版
+中文版 `Parallel Programming for FPGAs`
 
-Ryan Kastner, Janarbek Matai, and Stephen Neuendorffer
-
-An open-source high-level synthesis book
-
-http://hls.ucsd.edu/
+> [http://hls.ucsd.edu/](http://hls.ucsd.edu/)
 
 ## 写在前面
 国内鲜有介绍HLS的书，我们希望通过翻译Parallel Programming for FPGAs这本书，让更多的人来了解HLS和FPGA开发。
-
-## 翻译规范
-[翻译规范](翻译规范.md)
 
 ## 翻译之前
 Parallel Programming for FPGAs这本书的原作采用的是`latex`进行内容的编写和排版。为了提高翻译写作的速度和协作的效率，本次翻译任务选择了在`GitHub`这个平台上进行协作，采用了`Markdown`使得译者可以专注文字内容而不是排版样式，安心写作。
 
 这也给参与翻译任务的诸位带来了一点小挑战，需要诸位事先熟悉一下`GitHub`平台的使用、`git`的使用以及`Markdown`语言的规范，下面是相关的参考链接给诸位快速上手。
 
+### 翻译规范
+- [翻译规范](RULES.md)
+
+### 编辑器
+一个界面美观、交互UI设计良好的编辑器可以帮我们节省很多力气，这里我们比较推荐使用以下几款编辑器来进行翻译工作
+- [Atom](https://atom.io/)
+- [VS Code](https://code.visualstudio.com/)
+
 ### `Markdown`语言
-> 事实上这篇README就是用Markdown写成的:)
+> 事实上这篇README就是用Markdown写成的 :)
 
-[认识与入门Markdown](https://sspai.com/post/25137)
-
-[Markdown 语法说明 (简体中文版)](http://wowubuntu.com/markdown/basic.html)
+- [认识与入门Markdown](https://sspai.com/post/25137)
+- [Markdown 语法说明 (简体中文版)](http://wowubuntu.com/markdown/basic.html)
 
 ### `git`
 git可以说是现在最为流行的版本管理工具了。
 
-[廖雪峰的git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
-
-[猴子都能懂的GIT入门](https://backlog.com/git-tutorial/cn/)
+- [廖雪峰的git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+- [猴子都能懂的GIT入门](https://backlog.com/git-tutorial/cn/)
 
 其实最常用的命令无非下面几条
 ##### 下载git库到本地
-```
+```console
 git clone https://github.com/xupsh/pp4fpgas-cn.git
 ```
 ##### 保存本地的修改并上传到云端服务器(GitHub)
-```
+```console
 git add -A
 git commit -m "最近的修改里都做了什么"
 git pull
@@ -65,20 +64,20 @@ git push
 -   PR 创建后，管理者就要决定是否接受该 PR。对于非代码变更（比如文档），单单使用 Web 界面就足够了。但是，对于代码变更，Web 界面可能不够用，需要命令行验证是否可以运行。
 
 ## 任务分工
-|章节|译者|校对|
-| ----- | ----- | ----- |
-| 00 Preface      |       |       |
-|01 Introduction|||
-|02 Finite Impulse Response(FIR) Filters|||
-|03 CORDIC|||
-|04 Discrete Fourier Transform|||
-|05 Fast Fourier Transform|||
-|06 Sparse Matrix Vector Multiplication|||
-|07 Matrix Multiplication|||
-|08 Prefix Sum and Histogram|||
-|09 Video System|||
-|10 Sorting Algorithms|||
-|11 Huffman Encoding|||
+| 章节                                    | 译者 | 校对 |
+| --------------------------------------- | ---- | ---- |
+| 00 Preface                              |      |      |
+| 01 Introduction                         |      |      |
+| 02 Finite Impulse Response(FIR) Filters |      |      |
+| 03 CORDIC                               |      |      |
+| 04 Discrete Fourier Transform           |      |      |
+| 05 Fast Fourier Transform               |      |      |
+| 06 Sparse Matrix Vector Multiplication  |      |      |
+| 07 Matrix Multiplication                |      |      |
+| 08 Prefix Sum and Histogram             |      |      |
+| 09 Video System                         |      |      |
+| 10 Sorting Algorithms                   |      |      |
+| 11 Huffman Encoding                     |      |      |
 
 ## Citation
 ```
