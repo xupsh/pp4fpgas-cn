@@ -10,6 +10,9 @@ http://hls.ucsd.edu/
 ## 写在前面
 国内鲜有介绍HLS的书，我们希望通过翻译Parallel Programming for FPGAs这本书，让更多的人来了解HLS和FPGA开发。
 
+## 翻译规范
+[翻译规范](翻译规范.md)
+
 ## 翻译之前
 Parallel Programming for FPGAs这本书的原作采用的是`latex`进行内容的编写和排版。为了提高翻译写作的速度和协作的效率，本次翻译任务选择了在`GitHub`这个平台上进行协作，采用了`Markdown`使得译者可以专注文字内容而不是排版样式，安心写作。
 
@@ -22,36 +25,6 @@ Parallel Programming for FPGAs这本书的原作采用的是`latex`进行内容�
 
 [Markdown 语法说明 (简体中文版)](http://wowubuntu.com/markdown/basic.html)
 
-#### 引用图片的小技巧
-```markdown
-![images/2pointFFT.jpg](images/2pointFFT.jpg)
-```
-![images/2pointFFT.jpg](images/2pointFFT.jpg)
-
-#### 引用代码的方式
->   只需要在代码片段前后都加上```符号，markdown就会自动将代码片段高亮出来
-
-```c
-#include "huffman.h"
-// Postcondition: out[x].frequency > 0
-void filter(
-            /* input  */ Symbol in[INPUT_SYMBOL_SIZE],
-            /* output */ Symbol out[INPUT_SYMBOL_SIZE],
-            /* output */ int *n) {
-#pragma HLS INLINE off
-    ap_uint<SYMBOL_BITS> j = 0;
-    for(int i = 0; i < INPUT_SYMBOL_SIZE; i++) {
-#pragma HLS pipeline II=1
-        if(in[i].frequency != 0) {
-            out[j].frequency = in[i].frequency;
-            out[j].value = in[i].value;
-            j++;
-        }
-    }
-    *n = j;
-}
-```
-
 ### `git`
 git可以说是现在最为流行的版本管理工具了。
 
@@ -59,7 +32,6 @@ git可以说是现在最为流行的版本管理工具了。
 
 [猴子都能懂的GIT入门](https://backlog.com/git-tutorial/cn/)
 
-#### 常用命令
 其实最常用的命令无非下面几条
 ##### 下载git库到本地
 ```
@@ -68,7 +40,7 @@ git clone https://github.com/xupsh/pp4fpgas-cn.git
 ##### 保存本地的修改并上传到云端服务器(GitHub)
 ```
 git add -A
-git commit -m "this should be your commit message"
+git commit -m "最近的修改里都做了什么"
 git pull
 git push
 ```
@@ -76,7 +48,7 @@ git push
 ### `GitHub`的Pull Request操作
 在`GitHub`上进行协作，通常采用的方式是先各自fork一份到自己的个人帐户，经过一段时间的工作之后，通过pull request的方式，将自己的工作内容提交到公共项目帐户中，而pull request之后往往还需要进行review才能正式进入公共项目。
 
-[github的官方pull request文档](https://help.github.com/articles/about-pull-requests/)
+[github的pull request官方文档](https://help.github.com/articles/about-pull-requests/)
 #### Pull Request 的流程
 -   第一步，你需要把别人的代码，克隆到你自己的仓库，Github 的术语叫做 fork。
 
@@ -94,7 +66,8 @@ git push
 
 ## 任务分工
 |章节|译者|校对|
-|-----|-----|-----|
+| ----- | ----- | ----- |
+| 00 Preface      |       |       |
 |01 Introduction|||
 |02 Finite Impulse Response(FIR) Filters|||
 |03 CORDIC|||

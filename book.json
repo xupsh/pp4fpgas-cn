@@ -1,0 +1,23 @@
+{
+"title" : "FPGA并行计算",
+"description" : "FPGA并行计算的中文版",
+"language" : "zh-hans",
+"root": ".",
+"plugins": [
+  "-lunr",
+  "-search",
+  "search-plus",
+  "katex",
+  "simple-page-toc",
+  "splitter",
+  "mathjax",
+  "disqus",
+  "theme-comscore",
+  
+],
+"pluginsConfig": {
+    "disqus": {
+        "shortName": "pp4fpga"
+    }
+}
+}
