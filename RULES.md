@@ -1,4 +1,4 @@
-# 翻译规范
+# 规范
 
 ## 输入公式
 在`http://chart.googleapis.com/chart?cht=tx&chl=\Large%20`后面直接加上latex公式即可生成对应公式的图片。注意`[]`中写的是公式的编号，请确保下面的链接可以在浏览器中直接访问。
@@ -46,6 +46,11 @@ void filter(
 
 ![Figure 5.1: Part a) is a data flow graph for a 2 point DFT/FFT. Part b) shows the same compu-tation, but viewed as a butterfly structure. This is a common representation for the computation of an FFT in the digital signal processing domain.](images/2pointFFT.jpg)
 
+## 文字加框
+```
+> A high-speed computer vision application processes small video frames of 200 * 180 pixels at 10000 frames per second. This application uses a high speed sensor interfaced directly to the FPGA and requires no sync signals. How many samples per clock cycle would you attempt to process? Is this a good FPGA application? Write the nested loop structure to implement this structure using HLS.
+```
+> A high-speed computer vision application processes small video frames of 200 * 180 pixels at 10000 frames per second. This application uses a high speed sensor interfaced directly to the FPGA and requires no sync signals. How many samples per clock cycle would you attempt to process? Is this a good FPGA application? Write the nested loop structure to implement this structure using HLS.
 ## 引用术语
 在行文中使用下述格式引用GLOSSARY中的术语即可
 ```
