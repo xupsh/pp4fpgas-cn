@@ -1,3 +1,7 @@
 *.tex
 *.pdf
 *.pdf_tex
+output/
+
+_book/
+node_modules/
