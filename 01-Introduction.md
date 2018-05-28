@@ -50,4 +50,4 @@
 
 ![这里是图片的描述文字](/images/lut.jpg)
 
-&emsp; &emsp;  上图中的a部分是一个2位输入查找表，共有![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20{2}^{2})
+&emsp; &emsp;  上图中的a部分是一个2位输入查找表，共有 ![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20{2}^{2}) 个配置比特。使用者通过编写程序来控制这些比特以实现某种功能。b部分是一个2位输入AND门的真值表，
