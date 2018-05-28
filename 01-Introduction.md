@@ -50,4 +50,4 @@
 
 ![这里是图片的描述文字](/images/lut.jpg)
 
-&emsp; &emsp;  上图中的a部分是一个2位输入查找表，共有![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20${2}^{2}$\qquad)
+&emsp; &emsp;  上图中的a部分是一个2位输入查找表，共有![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20{2}^{2}\qquad)
