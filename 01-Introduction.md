@@ -50,4 +50,4 @@
 
 ![这里是图片的描述文字](/images/lut.jpg)
 
-&emsp; &emsp;  上图中的a部分是一个2位输入查找表，共有![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20x=\frac{-b\pm\sqrt{b^2-4ac}}{2a})
+&emsp; &emsp;  上图中的a部分是一个2位输入查找表，共有![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20${2}^{2}$\qquad)
