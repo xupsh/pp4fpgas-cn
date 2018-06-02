@@ -6,7 +6,7 @@
   "gitbook": "3.2.3",
   "root": ".",
   "plugins": [
-    "mathjax",
+    "katex-plus",
     "splitter",
     "github@^2.0.0",
     "github-buttons@2.1.0",

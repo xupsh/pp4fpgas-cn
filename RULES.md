@@ -12,28 +12,16 @@ gitbook自动生成多级小标题，无需自己添加`1.1`/`1.2`这种小标�
 
 > recommend
 
-Notes: 一般在Markdown编辑器中会将 \$\$`a \ne 0`\$\$ 显示为行间公式，但是在gitbook中会被渲染为行内公式。
+使用示例:
 
-使用示例: 使用\$\$将公式包括起来
-```
-When \$\$a \ne 0\$\$, there are two solutions to \$\$(ax^2 + bx + c = 0)\$\$ and they are \$\$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\$\$
+![](images/katex.png)
 
-\$\$
-int_{-\infty}^\infty g(x) dx \tag{1.1}
-\$\$
+Inline math: $\int_{-\infty}^\infty g(x) dx$
 
-\$\$
-1 \over 3 \tag{1.2}
-\$\$
-```
-When $$a \ne 0$$, there are two solutions to $$(ax^2 + bx + c = 0)$$ and they are $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+Block math:
 
 $$
-\int_{-\infty}^\infty g(x) dx \tag{1.1}
-$$
-
-$$
-1 \over 3 \tag{1.2}
+\int_{-\infty}^\infty g(x) dx
 $$
 
 ## 引用代码
