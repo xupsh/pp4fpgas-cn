@@ -8,23 +8,31 @@
 - ~~Latex常用公式命令可以[参考这里](https://github.com/Khan/KaTeX/wiki/Function-Support-in-KaTeX)~~
 - ~~```x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}```~~
 
-### 行内公式
-```
-$$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
-```
-行内公式: 空格`->` $$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$ `<-`空格
+> recommend
 
-### 行间公式
+使用示例:
+
 ```
+When {% math %}a \ne 0{% endmath %}, there are two solutions to {% math %}(ax^2 + bx + c = 0){% endmath %} and they are {% math %}x = {-b \pm \sqrt{b^2-4ac} \over 2a}.{% endmath %}
+
 $$
-x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+\int_{-\infty}^\infty g(x) dx
+$$
+
+$$
+1 \over 3
 $$
 ```
-行间公式:
+
+When {% math %}a \ne 0{% endmath %}, there are two solutions to {% math %}(ax^2 + bx + c = 0){% endmath %} and they are {% math %}x = {-b \pm \sqrt{b^2-4ac} \over 2a}.{% endmath %}
+
 $$
-x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+\int_{-\infty}^\infty g(x) dx
 $$
-公式的下一行
+
+$$
+1 \over 3
+$$
 
 ## 引用代码
 只要将代码用```包住，代码块就会被识别为代码
