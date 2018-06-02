@@ -1,19 +1,31 @@
 # 规范
 
-## 输入公式
-在`http://chart.googleapis.com/chart?cht=tx&chl=\Large%20`后面直接加上latex公式即可生成对应公式的图片。注意`[]`中写的是公式的编号，请确保下面的链接可以在浏览器中直接访问。
-Latex常用公式命令可以[参考这里](https://github.com/Khan/KaTeX/wiki/Function-Support-in-KaTeX)
-```markdown
-![4.22](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20x=\frac{-b\pm\sqrt{b^2-4ac}}{2a})
-```
+## 引用公式
+> deprecated
 
-![4.22](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20x=\frac{-b\pm\sqrt{b^2-4ac}}{2a})
+- ~~在`http://chart.googleapis.com/chart?cht=tx&chl=\Large%20`后面直接加上latex公式即可生成对应公式的图片。~~
+- ~~注意`[]`中写的是公式的编号，请确保下面的链接可以在浏览器中直接访问。~~
+- ~~Latex常用公式命令可以[参考这里](https://github.com/Khan/KaTeX/wiki/Function-Support-in-KaTeX)~~
+- ~~```x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}```~~
+
+### 行内公式
 ```
-http://chart.googleapis.com/chart?cht=tx&chl=\Large%20
+$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$
 ```
+行内公式: 空格`->` $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$ `<-`空格
+
+### 行间公式
 ```
+$$
 x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+$$
 ```
+行间公式:
+$$
+x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+$$
+公式的下一行
+
 ## 引用代码
 只要将代码用```包住，代码块就会被识别为代码
 
@@ -51,6 +63,7 @@ void filter(
 > A high-speed computer vision application processes small video frames of 200 * 180 pixels at 10000 frames per second. This application uses a high speed sensor interfaced directly to the FPGA and requires no sync signals. How many samples per clock cycle would you attempt to process? Is this a good FPGA application? Write the nested loop structure to implement this structure using HLS.
 ```
 > A high-speed computer vision application processes small video frames of 200 * 180 pixels at 10000 frames per second. This application uses a high speed sensor interfaced directly to the FPGA and requires no sync signals. How many samples per clock cycle would you attempt to process? Is this a good FPGA application? Write the nested loop structure to implement this structure using HLS.
+
 ## 引用术语
 在行文中使用下述格式引用GLOSSARY中的术语即可
 ```
