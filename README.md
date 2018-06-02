@@ -2,7 +2,7 @@
 
 中文版 [`Parallel Programming for FPGAs`](http://hls.ucsd.edu/)
 
-电子书阅读地址: [xupsh.github.io/pp4fpgas-cn](xupsh.github.io/pp4fpgas-cn)
+电子书阅读地址: [https://xupsh.github.io/pp4fpgas-cn](https://xupsh.github.io/pp4fpgas-cn)
 
 电子书下载地址: [pdf]()
 
