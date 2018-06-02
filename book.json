@@ -6,6 +6,7 @@
   "gitbook": "3.2.3",
   "root": ".",
   "plugins": [
+    "mathjax",
     "github@^2.0.0",
     "github-buttons@2.1.0",
     "toc"

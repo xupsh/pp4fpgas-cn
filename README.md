@@ -1,7 +1,11 @@
 # pp4fpga-cn
-中文版 `Parallel Programming for FPGAs`
+Travis CI Status: [![Build Status](https://travis-ci.org/sonnyhcl/pp4fpgas-cn.svg?branch=master)](https://travis-ci.org/sonnyhcl/pp4fpgas-cn)
 
-> [http://hls.ucsd.edu/](http://hls.ucsd.edu/)
+中文版 [`Parallel Programming for FPGAs`](http://hls.ucsd.edu/)
+
+电子书阅读地址: [xupsh.github.io/pp4fpgas-cn](xupsh.github.io/pp4fpgas-cn)
+
+电子书下载地址: [pdf]()
 
 ## 写在前面
 国内鲜有介绍HLS的书，我们希望通过翻译Parallel Programming for FPGAs这本书，让更多的人来了解HLS和FPGA开发。
