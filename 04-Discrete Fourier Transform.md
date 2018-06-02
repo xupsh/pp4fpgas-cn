@@ -10,7 +10,7 @@
   
 &emsp; &emsp; 为了解释离散傅里叶变换，我们首先要了解傅里叶级数。傅立叶级数提供了一种可选方法来观察信号从-π到π的一个周期内的连续实值周期信号。Jean Baptiste Joseph Fourier的开创性成果表明，在2π周期内任何连续的周期性信号都可以用周期为2π的余弦和正弦和表示。最终，傅里叶级数的表现形式如下：
 
-![4.1](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20f(t)\sim\frac{a_{0}}{2}+a_{1}cos(t)+a_{2}cos(2t)+a_{3}cos(3t)+\cdots\\.b_{1}sin(t)+b_{2}sin(2t)+b_{3}sin(3t)+\cdots)
+![4.1](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20f(t)\sim\frac{a_{0}}{2}%2Ba_{1}cos(t)%2Ba_{2}cos(2t)%2Ba_{3}cos(3t)%2B\cdots\\.b_{1}sin(t)%2Bb_{2}sin(2t)%2Bb_{3}sin(3t)%2B\cdots)
 
 &emsp; &emsp; 其中参数![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20a_{0},a_{1},\cdots)和![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20b_{0},b_{1},\cdots)的计算公式如下：
 
@@ -32,7 +32,7 @@
 
 这是一个简单地将周期区间从[-π,π]变换到期望的[-L,L]的一个线性方程，将![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20t^{'}=\frac{Lt}{\pi})代入到式4.1得：
 
-![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20f(t^{'})=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}a_{n}cos(\frac{n\pi{t^{'}}}{L})+b_{n}sin(\frac{n\pi{t^{'}}}{L}))
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20f(t^{'})=\frac{a_{0}}{2}%2B{\sum_{n=1}^{\infty}}(a_{n}cos(\frac{n\pi{t^{'}}}{L})%2Bb_{n}sin(\frac{n\pi{t^{'}}}{L})))
 
 用同样的方法解得a和b的各项参数可解得：
 
@@ -45,6 +45,20 @@
 我们也可以利用欧拉公式![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20e^{jnt}=cos(nt)+jsin(nt))来得出一个更简洁的公式。
 
 ![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20f(t)=\sum_{n={-\infty}}^{\infty}c_{n}e^{jnt})
+
+其中，傅里叶参数![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20c_{n})是一个较为复杂的指数表达式：
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20c_{n}=\frac{1}{2\pi}\int^{\pi}_{-\pi}f\left(t\right)e^{-jnt}dt)
+
+假设f(t)是一个具有2π个周期的周期函数，将这个公式与式4.1等效，傅里叶参数![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20a_{n},b_{n},andc_{n})之间的数值关系为:
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20a_{n}=c_{n}+c_{-n}forn=0,1,2,\cdots)
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20b_{n}=j(c_{n}-c_{-n})forn=0,1,2,\cdots)
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20b_{n}=j(c_{n}-c_{-n})forn=0,1,2,\cdots)
+
+
 
 
 
