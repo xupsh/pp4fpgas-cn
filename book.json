@@ -19,7 +19,7 @@
     "sharing-plus",
     "expandable-chapters-small",
     "tbfed-pagefooter",
-    "anchor-navigation-ex",
+    "anchors",
     "alerts",
     "copy-code-button",
     "image-captions"
@@ -27,13 +27,6 @@
   "pluginsConfig": {
     "image-captions": {
       "caption": "_CAPTION_"
-    },
-    "anchor-navigation-ex": {
-      "showLevelIcon": true,
-      "isShowTocTitleIcon": true,
-      "tocLevel1Icon": "fa fa-hand-o-right",
-      "tocLevel2Icon": "fa fa-hand-o-right",
-      "tocLevel3Icon": "fa fa-hand-o-right"
     },
     "github": {
       "url": "https://github.com/xupsh/pp4fpgas-cn"
