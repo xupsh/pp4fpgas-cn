@@ -1,1 +1,64 @@
-# 第四章
+# 第四章 离散傅里叶变换
+
+&emsp; &emsp;  离散傅里叶变换（DFT）在数字信号处理系统中发挥着重要作用。它是一种将离散信号从时域变换到频域的方法。 通过将信号描述为正弦波的总和，我们才可以更容易地在信号上实现函数计算，例如滤波和其他线性时不变函数。 因此，离散傅里叶变换在许多无线通信，图像处理和其他数字信号处理应用中占据重要地位。　
+
+&emsp; &emsp; 本章介绍了DFT，并将重点放在了介绍了DPT在FPGA实现中的算法优化。DFT运算的核心是以一组固定系数执行矩阵向量乘法。在4.6章节中，我们首先将DFT运算初始优化集中在将其简化为矩阵 - 向量乘法，随后介绍了DFT使用Vivado HLS代码的完整实现方式。 另外，我们也描述了如何最佳地优化DFT计算以增加吞吐量。第4.5章中，我们将的优化工作集中在阵列分区优化上。 
+
+&emsp; &emsp; 本章的前两小节有大量的数据计算和推导，这可能看起来有些多余，但是它对于我们充分理解代码重构优化以下一章快速傅里叶变换的对称性计算有着很大作用。但是如果你对HLS 优化内容更感兴趣，可以直接跳至第4.6章开始阅读。
+
+## 4.1 &emsp;  傅里叶级数
+  
+&emsp; &emsp; 为了解释离散傅里叶变换，我们首先要了解傅里叶级数。傅立叶级数提供了一种可选方法来观察信号从-π到π的一个周期内的连续实值周期信号。Jean Baptiste Joseph Fourier的开创性成果表明，在2π周期内任何连续的周期性信号都可以用周期为2π的余弦和正弦和表示。最终，傅里叶级数的表现形式如下：
+
+![4.1](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20f(t)\sim\frac{a_{0}}{2}%2Ba_{1}cos(t)%2Ba_{2}cos(2t)%2Ba_{3}cos(3t)%2B\cdots\\.b_{1}sin(t)%2Bb_{2}sin(2t)%2Bb_{3}sin(3t)%2B\cdots)
+
+&emsp; &emsp; 其中参数![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20a_{0},a_{1},\cdots)和![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20b_{0},b_{1},\cdots)的计算公式如下：
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20a_{0}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)dt)
+
+![4.2](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20a_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)cos(nt)dt)
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20b_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)sin(nt)dt)
+
+&emsp; &emsp;有几个需要注意的点是：首先式4.2中的参数![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20a_{0},a_{1},\cdots),![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20b_{0},b_{1},\cdots)被称作傅里叶参数。其中参数![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20a_{0})被称作直流分量（来自于对早期电流分析的参考），其中n=1频率分量称为基波，而其他频率（n≥2）分量统称为高次谐波。 基波和高次谐波的概念来自声学和音乐。其次，函数f以及cos()和sin()函数都有2π个周期; 我们很快就会展现如何将这个周期改变为其他值。直流分量![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20a_{0})等同于cos(0·t)=1时的系数，因此使用符号a。因为sin(0·t)=0，所以不需要![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20b_{0})的值。最后，在某些情况下，函数f和它的傅里叶级数之间是近似相等的关系，这种不连续的现象我们称之为吉布斯现象。而这是只是一个仅与傅里叶级数有关的小问题，与其他傅立叶变换无关。 因此，今后我们将忽略式[4.1]中的“近似”（〜），直接视为“相等”（=）。
+
+&emsp; &emsp;表示除π以外的周期性函数需要对变量进行简单的更改。 假设一个函数的周期范围在[-L,L]而不是[-π,π],则设：
+
+&emsp; &emsp;![4.3](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20t\equiv\frac{\pi\{t^{'}}}{L})
+
+以及
+
+&emsp; &emsp;![4.3](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20dt\equiv\frac{\pi{d}\{t^{'}}}{L})
+
+这是一个简单地将周期区间从[-π,π]变换到期望的[-L,L]的一个线性方程，将![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20t^{'}=\frac{Lt}{\pi})代入到式4.1得：
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20f(t^{'})=\frac{a_{0}}{2}%2B{\sum_{n=1}^{\infty}}(a_{n}cos(\frac{n\pi{t^{'}}}{L})%2Bb_{n}sin(\frac{n\pi{t^{'}}}{L})))
+
+用同样的方法解得a和b的各项参数可解得：
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20a_{0}=\frac{1}{L}\int_{-L}^{L}f(t^{'})dt^{'})
+
+![4.2](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20a_{n}=\frac{1}{L}\int_{-L}^{L}f(t^{'})cos(\frac{n\pi{t^{'}}}{L})dt^{'})
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20b_{n}=\frac{1}{L}\int_{-L}^{L}f(t^{'})sin(\frac{n\pi{t^{'}}}{L})dt^{'})
+
+我们也可以利用欧拉公式![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20e^{jnt}=cos(nt)+jsin(nt))来得出一个更简洁的公式。
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20f(t)=\sum_{n={-\infty}}^{\infty}c_{n}e^{jnt})
+
+其中，傅里叶参数![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20c_{n})是一个较为复杂的指数表达式：
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20c_{n}=\frac{1}{2\pi}\int^{\pi}_{-\pi}f\left(t\right)e^{-jnt}dt)
+
+假设f(t)是一个具有2π个周期的周期函数，将这个公式与式4.1等效，傅里叶参数![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20a_{n},b_{n},andc_{n})之间的数值关系为:
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20a_{n}=c_{n}+c_{-n}forn=0,1,2,\cdots)
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20b_{n}=j(c_{n}-c_{-n})forn=0,1,2,\cdots)
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\Large%20b_{n}=j(c_{n}-c_{-n})forn=0,1,2,\cdots)
+
+
+
+
+
