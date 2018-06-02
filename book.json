@@ -6,21 +6,81 @@
   "gitbook": "3.2.3",
   "root": ".",
   "plugins": [
+    "katex-plus",
+    "splitter",
     "github@^2.0.0",
     "github-buttons@2.1.0",
-    "toc"
+    "toc",
+    "disqus",
+    "-lunr",
+    "-search",
+    "search-plus",
+    "-sharing",
+    "sharing-plus",
+    "expandable-chapters-small",
+    "tbfed-pagefooter",
+    "anchor-navigation-ex",
+    "alerts",
+    "copy-code-button",
+    "image-captions"
   ],
   "pluginsConfig": {
+    "image-captions": {
+      "caption": "_CAPTION_"
+    },
+    "anchor-navigation-ex": {
+      "showLevelIcon": true,
+      "isShowTocTitleIcon": true,
+      "tocLevel1Icon": "fa fa-hand-o-right",
+      "tocLevel2Icon": "fa fa-hand-o-right",
+      "tocLevel3Icon": "fa fa-hand-o-right"
+    },
     "github": {
       "url": "https://github.com/xupsh/pp4fpgas-cn"
     },
     "github-buttons": {
       "repo": "xupsh/pp4fpgas-cn",
       "types": [
-        "star",
-        "fork"
+        "star"
       ],
       "size": "small"
+    },
+    "disqus": {
+      "shortName": "pp4fpga-cn"
+    },
+    "sharing": {
+      "douban": false,
+      "facebook": false,
+      "google": true,
+      "hatenaBookmark": false,
+      "instapaper": false,
+      "line": false,
+      "linkedin": true,
+      "messenger": false,
+      "pocket": false,
+      "qq": true,
+      "qzone": true,
+      "stumbleupon": false,
+      "twitter": false,
+      "viber": false,
+      "vk": false,
+      "weibo": true,
+      "whatsapp": false,
+      "all": [
+        "facebook",
+        "google",
+        "twitter",
+        "weibo",
+        "instapaper",
+        "linkedin",
+        "pocket",
+        "stumbleupon"
+      ]
+    },
+    "tbfed-pagefooter": {
+      "copyright": "Copyright &copy github.com/xupsh 2017",
+      "modify_label": "该文件修订时间：",
+      "modify_format": "YYYY-MM-DD HH:mm:ss"
     }
   }
 }
