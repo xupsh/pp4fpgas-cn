@@ -1,14 +1,17 @@
 # 规范
 
 ## 引用公式
-> deprecated
+> **[danger] deprecated**
+>
+> ~~在`http://chart.googleapis.com/chart?cht=tx&chl=\Large%20`后面直接加上latex公式即可生成对应公式的图片。~~
+> ~~注意`[]`中写的是公式的编号，请确保下面的链接可以在浏览器中直接访问。~~
+> ~~Latex常用公式命令可以参考这里~~
+> ~~```x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}```~~
 
-- ~~在`http://chart.googleapis.com/chart?cht=tx&chl=\Large%20`后面直接加上latex公式即可生成对应公式的图片。~~
-- ~~注意`[]`中写的是公式的编号，请确保下面的链接可以在浏览器中直接访问。~~
-- ~~Latex常用公式命令可以参考这里~~
-- ~~```x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}```~~
-
-> recommend
+---
+> **[success] recommend**
+>
+>
 
 使用示例:
 

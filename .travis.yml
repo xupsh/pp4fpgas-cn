@@ -10,7 +10,8 @@ cache:
 
 before_install:
   - export TZ='Asia/Shanghai' # 更改时区
-
+  - sudo apt -qq update
+  - sudo apt install -y xvfb calibre
 # 依赖安装
 install:
   - npm install gitbook-cli -g

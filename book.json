@@ -6,10 +6,10 @@
   "gitbook": "3.2.3",
   "root": ".",
   "plugins": [
+    "code",
     "katex-plus",
     "splitter",
-    "github@^2.0.0",
-    "github-buttons@2.1.0",
+    "github-buttons",
     "toc",
     "disqus",
     "-lunr",
@@ -21,15 +21,33 @@
     "tbfed-pagefooter",
     "anchors",
     "alerts",
-    "copy-code-button",
-    "image-captions"
+    "image-captions",
+    "anchor-navigation-ex-toc",
+    "custom-favicon"
   ],
   "pluginsConfig": {
+    "favicon": "favicon.ico",
+    "anchor-navigation-ex-toc": {
+      "showLevel": true,
+      "associatedWithSummary": true,
+      "printLog": false,
+      "multipleH1": false,
+      "mode": "float",
+      "float": {
+        "showLevelIcon": false,
+        "level1Icon": "fa fa-hand-o-right",
+        "level2Icon": "fa fa-hand-o-right",
+        "level3Icon": "fa fa-hand-o-right"
+      },
+      "pageTop": {
+        "showLevelIcon": true,
+        "level1Icon": "fa fa-hand-o-right",
+        "level2Icon": "fa fa-hand-o-right",
+        "level3Icon": "fa fa-hand-o-right"
+      }
+    },
     "image-captions": {
       "caption": "_CAPTION_"
-    },
-    "github": {
-      "url": "https://github.com/xupsh/pp4fpgas-cn"
     },
     "github-buttons": {
       "repo": "xupsh/pp4fpgas-cn",
@@ -71,7 +89,7 @@
       ]
     },
     "tbfed-pagefooter": {
-      "copyright": "Copyright &copy github.com/xupsh 2017",
+      "copyright": "Copyright &copy xupsh.github.io 2018",
       "modify_label": "该文件修订时间：",
       "modify_format": "YYYY-MM-DD HH:mm:ss"
     }
