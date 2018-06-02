@@ -19,7 +19,7 @@ Inline math: $\int_{-\infty}^\infty g(x) dx$
 Block math:
 
 $$
-\int_{-\infty}^\infty g(x) dx
+\int_{-\infty}^\infty g(x) dx \quad (4.1)
 $$
 
 ## 引用代码
