@@ -1,37 +1,39 @@
 # 规范
+## 小标题
+gitbook自动生成多级小标题，无需自己添加`1.1`/`1.2`这种小标题
 
 ## 引用公式
 > deprecated
 
 - ~~在`http://chart.googleapis.com/chart?cht=tx&chl=\Large%20`后面直接加上latex公式即可生成对应公式的图片。~~
 - ~~注意`[]`中写的是公式的编号，请确保下面的链接可以在浏览器中直接访问。~~
-- ~~Latex常用公式命令可以[参考这里](https://github.com/Khan/KaTeX/wiki/Function-Support-in-KaTeX)~~
+- ~~Latex常用公式命令可以参考这里~~
 - ~~```x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}```~~
 
 > recommend
 
-使用示例:
+Notes: 一般在Markdown编辑器中会将 \$\$`a \ne 0`\$\$ 显示为行间公式，但是在gitbook中会被渲染为行内公式。
 
+使用示例: 使用\$\$将公式包括起来
 ```
-When {% math %}a \ne 0{% endmath %}, there are two solutions to {% math %}(ax^2 + bx + c = 0){% endmath %} and they are {% math %}x = {-b \pm \sqrt{b^2-4ac} \over 2a}.{% endmath %}
+When \$\$a \ne 0\$\$, there are two solutions to \$\$(ax^2 + bx + c = 0)\$\$ and they are \$\$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\$\$
 
-$$
-\int_{-\infty}^\infty g(x) dx
-$$
+\$\$
+int_{-\infty}^\infty g(x) dx \tag{1.1}
+\$\$
 
-$$
-1 \over 3
-$$
+\$\$
+1 \over 3 \tag{1.2}
+\$\$
 ```
-
-When {% math %}a \ne 0{% endmath %}, there are two solutions to {% math %}(ax^2 + bx + c = 0){% endmath %} and they are {% math %}x = {-b \pm \sqrt{b^2-4ac} \over 2a}.{% endmath %}
-
-$$
-\int_{-\infty}^\infty g(x) dx
-$$
+When $$a \ne 0$$, there are two solutions to $$(ax^2 + bx + c = 0)$$ and they are $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
 
 $$
-1 \over 3
+\int_{-\infty}^\infty g(x) dx \tag{1.1}
+$$
+
+$$
+1 \over 3 \tag{1.2}
 $$
 
 ## 引用代码
@@ -67,9 +69,24 @@ void filter(
 ![Figure 5.1: Part a) is a data flow graph for a 2 point DFT/FFT. Part b) shows the same compu-tation, but viewed as a butterfly structure. This is a common representation for the computation of an FFT in the digital signal processing domain.](images/2pointFFT.jpg)
 
 ## 文字加框
-```
-> A high-speed computer vision application processes small video frames of 200 * 180 pixels at 10000 frames per second. This application uses a high speed sensor interfaced directly to the FPGA and requires no sync signals. How many samples per clock cycle would you attempt to process? Is this a good FPGA application? Write the nested loop structure to implement this structure using HLS.
-```
+### Info styling
+> **[info] For info**
+>
+> Use this for infomation messages.
+
+### Warning styling
+> **[warning] For warning**
+>
+> Use this for warning messages.
+
+### Danger styling
+> **[danger] For danger**
+>
+> Use this for danger messages.
+
+### Success styling
+> **[success] For info**
+>
 > A high-speed computer vision application processes small video frames of 200 * 180 pixels at 10000 frames per second. This application uses a high speed sensor interfaced directly to the FPGA and requires no sync signals. How many samples per clock cycle would you attempt to process? Is this a good FPGA application? Write the nested loop structure to implement this structure using HLS.
 
 ## 引用术语

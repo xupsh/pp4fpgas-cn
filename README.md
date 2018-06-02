@@ -1,5 +1,4 @@
 # pp4fpga-cn
-Travis CI Status: [![Build Status](https://travis-ci.org/sonnyhcl/pp4fpgas-cn.svg?branch=master)](https://travis-ci.org/sonnyhcl/pp4fpgas-cn)
 
 中文版 [`Parallel Programming for FPGAs`](http://hls.ucsd.edu/)
 
