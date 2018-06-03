@@ -9,8 +9,10 @@ cache:
     - $HOME/.npm
 
 before_install:
+  - export TZ='Asia/Shanghai' # 更改时区
   - sudo apt -qq update
   - sudo apt install -y xvfb calibre
+  
 # 依赖安装
 install:
   - npm install gitbook-cli -g
@@ -21,6 +23,7 @@ install:
 script:
     # 自定义输出目录 gitbook build src dest
   - gitbook build . ./build/$CUSTOM_PATH
+  - gitbook pdf . ./build/pp4fpga_cn.pdf
 
 # 分支白名单
 branches:
