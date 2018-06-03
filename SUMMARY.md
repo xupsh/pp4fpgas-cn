@@ -1,9 +1,9 @@
 # Summary
 - [README](README.md)
+- [前言](00-Preface.md)
 
 ----
 ## 正文
-- [前言](00-Preface.md)
 - [第一章](01-Introduction.md)
 - [第二章](02-Finite-Impulse-Response-Filters.md)
 - [第三章](03-CORDIC.md)
