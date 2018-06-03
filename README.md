@@ -1,6 +1,6 @@
 # pp4fpga-cn
 
-中文版 [`Parallel Programming for FPGAs`](http://hls.ucsd.edu/)
+中文版 `Parallel Programming for FPGAs`
 
 电子书阅读地址: [https://xupsh.github.io/pp4fpgas-cn](https://xupsh.github.io/pp4fpgas-cn)
 
@@ -67,22 +67,9 @@ git push
 -   PR 创建后，管理者就要决定是否接受该 PR。对于非代码变更（比如文档），单单使用 Web 界面就足够了。但是，对于代码变更，Web 界面可能不够用，需要命令行验证是否可以运行。
 
 ## 任务分工
-| 章节                                    | 译者 | 校对 |
-| --------------------------------------- | ---- | ---- |
-| 00 Preface                              |      |      |
-| 01 Introduction                         |      |      |
-| 02 Finite Impulse Response(FIR) Filters |      |      |
-| 03 CORDIC                               |      |      |
-| 04 Discrete Fourier Transform           |      |      |
-| 05 Fast Fourier Transform               |      |      |
-| 06 Sparse Matrix Vector Multiplication  |      |      |
-| 07 Matrix Multiplication                |      |      |
-| 08 Prefix Sum and Histogram             |      |      |
-| 09 Video System                         |      |      |
-| 10 Sorting Algorithms                   |      |      |
-| 11 Huffman Encoding                     |      |      |
-
+[见Wiki页面](https://github.com/xupsh/pp4fpgas-cn/wiki#%E4%BB%BB%E5%8A%A1%E5%88%86%E5%B7%A5)
 ## Citation
+[https://github.com/KastnerRG/pp4fpgas](https://github.com/KastnerRG/pp4fpgas)
 ```
 @ARTICLE{
     2018arXiv180503648K,
