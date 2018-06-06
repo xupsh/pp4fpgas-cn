@@ -1,0 +1,106 @@
+{
+  "title": "FPGA并行编程",
+  "description": "pp4fpga",
+  "author": "xupsh",
+  "language": "zh-hans",
+  "gitbook": "3.2.3",
+  "root": ".",
+  "plugins": [
+    "code",
+    "katex-plus",
+    "splitter",
+    "github-buttons",
+    "disqus",
+    "-lunr",
+    "-search",
+    "search-plus",
+    "-sharing",
+    "sharing-plus",
+    "expandable-chapters-small",
+    "tbfed-pagefooter",
+    "anchors",
+    "image-captions",
+    "anchor-navigation-ex-toc",
+    "hints",
+    "custom-favicon"
+  ],
+  "pluginsConfig": {
+    "hints": {
+      "info": "fa fa-info-circle",
+      "tip": "fa fa-mortar-board",
+      "danger": "fa fa-exclamation-triangle",
+      "working": "fa fa-wrench"
+    },
+    "favicon": "favicon.ico",
+    "anchor-navigation-ex-toc": {
+      "showLevel": false,
+      "associatedWithSummary": false,
+      "printLog": false,
+      "multipleH1": false,
+      "mode": "float",
+      "float": {
+        "showLevelIcon": false,
+        "level1Icon": "fa fa-hand-o-right",
+        "level2Icon": "fa fa-hand-o-right",
+        "level3Icon": "fa fa-hand-o-right"
+      },
+      "pageTop": {
+        "showLevelIcon": false,
+        "level1Icon": "fa fa-hand-o-right",
+        "level2Icon": "fa fa-hand-o-right",
+        "level3Icon": "fa fa-hand-o-right"
+      }
+    },
+    "image-captions": {
+      "caption": "_CAPTION_"
+    },
+    "github-buttons": {
+      "buttons": [
+        {
+          "user": "xupsh",
+          "repo": "pp4fpgas-cn",
+          "type": "star",
+          "size": "small",
+          "count": true
+        }
+      ]
+    },
+    "disqus": {
+      "shortName": "pp4fpga-cn"
+    },
+    "sharing": {
+      "douban": false,
+      "facebook": false,
+      "google": true,
+      "hatenaBookmark": false,
+      "instapaper": false,
+      "line": false,
+      "linkedin": true,
+      "messenger": false,
+      "pocket": false,
+      "qq": true,
+      "qzone": true,
+      "stumbleupon": false,
+      "twitter": false,
+      "viber": false,
+      "vk": false,
+      "weibo": true,
+      "whatsapp": false,
+      "all": [
+        "facebook",
+        "google",
+        "twitter",
+        "weibo",
+        "instapaper",
+        "linkedin",
+        "pocket",
+        "stumbleupon"
+      ]
+    },
+    "tbfed-pagefooter": {
+      "copyright": "Copyright &copy xupsh.github.io 2018",
+      "modify_label": "该文件修订时间：",
+      "modify_format": "YYYY-MM-DD HH:mm:ss"
+    }
+  }
+}

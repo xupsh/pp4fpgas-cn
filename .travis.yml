@@ -1,0 +1,44 @@
+language: node_js
+
+node_js:
+  - "8"
+
+# 缓存依赖
+cache:
+  directories:
+    - $HOME/.npm
+
+before_install:
+  - export TZ='Asia/Shanghai' # 更改时区
+
+# 依赖安装
+install:
+  - npm install gitbook-cli -g
+  # 安装 gitbook 插件
+  - gitbook install
+
+# 构建脚本
+script:
+    # 自定义输出目录 gitbook build src dest
+  - gitbook build . ./build/$CUSTOM_PATH
+
+# 分支白名单
+branches:
+  only:
+    - master # 只对 master 分支进行构建
+
+# GitHub Pages 部署
+deploy:
+  provider: pages
+  skip_cleanup: true
+  keep-history: true
+  # 在项目仪表盘的 Settings -> Environment Variables 中配置
+  github_token: $GITHUB_TOKEN
+  # 将 build 目录下的内容推送到默认的 gh-pages 分支上，并不会连带 build 目录一起
+  local_dir: build
+  fqdn: $CUSTOM_DOMAIN
+  name: $GIT_NAME
+  email: $GIT_EMAIL
+  verbose: true
+  on:
+    branch: master
