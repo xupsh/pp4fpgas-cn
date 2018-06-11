@@ -187,7 +187,7 @@ C/RTL协同仿真能提供循环边界是变量的函数的延迟。它反馈函
 
 {% endhint %}
 
-![spmv_behavior](D:\HLSBook\pp4fpgas-cn\images\spmv_behavior.jpg)
+![spmv函数内部循环流水执行过程和结构r](images/spmv_behavior.jpg)
 
 ​                                                        图6.5  spmv函数内部循环流水执行过程和结构
 
@@ -271,11 +271,11 @@ void spmv(int rowPtr[NUM_ROWS+1], int columnIndex[NNZ],
 
 ​                                       图6.6  局部展开图6.2中**smpv**函数
 
-![spmv_partial_unroll](D:\HLSBook\pp4fpgas-cn\images\spmv_partial_unroll.jpg)
+![图6.7 针对累加的两种不同方式的局部展开。左边的版本有3个加法器进行递归操作，相反右边的版本只有1个加法器进行递归累加](images/spmv_partial_unroll.jpg)
 
 图6.7 针对累加的两种不同方式的局部展开。左边的版本有3个加法器进行递归操作，相反右边的版本只有1个加法器进行递归累加。
 
-![spmv_unrolled_behavior](D:\HLSBook\pp4fpgas-cn\images\spmv_unrolled_behavior.jpg)
+![ 图6.8 图6.6中 spmv函数基于部分展开和内部流水线处理后执行过程](images/spmv_unrolled_behavior.jpg)
 
 ​                                       图6.8    图6.6中 spmv函数基于部分展开和内部流水线处理后执行过程
 
