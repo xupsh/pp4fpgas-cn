@@ -11,9 +11,7 @@
 
 $$
 \begin{aligned}
-f(t)\sim\frac{a_{0}}{2}+a_{1}cos(t)+a_{2}cos(2t)+a_{3}cos(3t)+\cdots
-b_{1}sin(t)+b_{2}sin(2t)+b_{3}sin(3t)+\cdots \end
-\sim\frac{a_{0}}{2}+{\sum_{n=1}^{\infty}}(a_{n}cos(nt)+b_{n}sin(nt)
+f(t)\sim\frac{a_{0}}{2}+a_{1}cos(t)+a_{2}cos(2t)+a_{3}cos(3t)+\cdots \\  b_{1}sin(t)+b_{2}sin(2t)+b_{3}sin(3t)+\cdots \\ \sim\frac{a_{0}}{2}+{\sum_{n=1}^{\infty}}(a_{n}cos(nt)+b_{n}sin(nt)
 \end{aligned}
 \quad(4.1)
 $$
