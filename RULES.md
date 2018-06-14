@@ -1,4 +1,4 @@
-# 规范
+# 排版约定
 
 ## 引用公式
 使用示例:
@@ -68,6 +68,7 @@ void filter(
 ![Figure 5.1: Part a) is a data flow graph for a 2 point DFT/FFT. Part b) shows the same compu-tation, but viewed as a butterfly structure. This is a common representation for the computation of an FFT in the digital signal processing domain.](images/2pointFFT.jpg)
 
 ## 文字加框
+### 原书中蓝色的框
 ```
 {% hint style='info' %}
 Important info: this note needs to be highlighted
@@ -76,6 +77,7 @@ Important info: this note needs to be highlighted
 {% hint style='info' %}
 Important info: this note needs to be highlighted
 {% endhint %}
+### 原书中黑色的框
 ```
 {% hint style='tip' %}
 Important tip: this note needs to be highlighted
@@ -84,6 +86,7 @@ Important tip: this note needs to be highlighted
 {% hint style='tip' %}
 Important tip: this note needs to be highlighted
 {% endhint %}
+### 其它 请酌情使用
 ```
 {% hint style='danger' %}
 Important danger: this note needs to be highlighted
