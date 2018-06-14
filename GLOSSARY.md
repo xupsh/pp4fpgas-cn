@@ -25,7 +25,7 @@ A common digital signal processing task that performs a convolution on the input
 ## FPGA
 A field-programmable gate array (FPGA) is an integrated circuit that can be customized or programmed after it is manufactured ("in the field").
 ## HLS
-High-level synthesis is a hardware design process that translates an algorithmic description (which is decoupled from the cycle to cycle behavior) into a register transfer level (RTL) hardware description language which species the exact behavior of the circuit on a cycle-by- cycle basis
+High-level synthesis is a hardware design process that translates an algorithmic description (which is decoupled from the cycle to cycle behavior) into a register transfer level (RTL) hardware description language which specfies the exact behavior of the circuit on a cycle-by- cycle basis
 ## I/O block
 An I/O block provides the interface between the FPGA fabric and the remainder of the system. I/O blocks can talk to memories (e.g., on-chip caches and off-chip DRAM, microprocessors (using AXI or other protocols), sensors, actuators, etc.
 ## IP core
