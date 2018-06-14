@@ -21,9 +21,9 @@ An optimized version of the Discrete Fourier Transform (DFT) which requires fewe
 ## FF
 A flip-flop (FF) is a circuit that can store information. We typically think of it as storing one bit of data and are a fundamental building block for creating memories in digital circuits.
 ## finite impulse response
-A common digital signal processing task that performs a convolution on the input signal with axed signal that is dened by its coecients. The FIR is often performed in hardware and can be efficiently implemented.
+A common digital signal processing task that performs a convolution on the input signal with axed signal that is dened by its coeffcients. The FIR is often performed in hardware and can be efficiently implemented.
 ## FPGA
-Aeld-programmable gate array (FPGA) is an integrated circuit that can be customized or programmed after it is manufactured ("in theeld").
+A field-programmable gate array (FPGA) is an integrated circuit that can be customized or programmed after it is manufactured ("in the field").
 ## HLS
 High-level synthesis is a hardware design process that translates an algorithmic description (which is decoupled from the cycle to cycle behavior) into a register transfer level (RTL) hardware description language which species the exact behavior of the circuit on a cycle-by- cycle basis
 ## I/O block
@@ -41,7 +41,7 @@ A lookup table (LUT) is a memory where the address signal are the inputs and the
 ## netlist
 An intermediate design artifact consisting of device-level primitive elements and the connections between them. In FPGA designs, the primitive elements include lookup table (LUT)s, flip-flip (FF)s, and block RAM (BRAM)s.
 ## partial loop unrolling
-A transformation where the body of a loop is replicated multiple times. This is often used in processor systems to reduce loop condition overhead or to provide opportunities for vectorization. In HLS, it can have a similar eect, enabling more operations from the same loop nest to be considered in scheduling. This can improve the performance of a design.
+A transformation where the body of a loop is replicated multiple times. This is often used in processor systems to reduce loop condition overhead or to provide opportunities for vectorization. In HLS, it can have a similar effect, enabling more operations from the same loop nest to be considered in scheduling. This can improve the performance of a design.
 ## place and route
 The process of converting a netlist of device-level primitives into the conguration of a particular device.
 ## process
