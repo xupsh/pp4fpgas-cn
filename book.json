@@ -7,7 +7,7 @@
   "root": ".",
   "plugins": [
     "code",
-    "katex-plus",
+    "katex",
     "splitter",
     "github-buttons",
     "disqus",
