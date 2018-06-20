@@ -73,7 +73,7 @@ git push
 ```
 @ARTICLE{
     2018arXiv180503648K,
-    author = {{Kastner}, R. and {Matai}, J. and {Neuendorffer}, S.},
+    author = {Kastner R. and Matai J. and Neuendorffer S.},
     title = "{Parallel Programming for FPGAs}",
     journal = {ArXiv e-prints},
     archivePrefix = "arXiv",

@@ -185,7 +185,7 @@ int main() {
 
 第一种可能的产出电路是按照顺序执行每行代码产出的电路，这时候工具就像一个简单的RISC处理器。下面的图片1.9中的代码是图片1.8中的代码在赛灵思Microblaze处理器下的汇编代码版本。虽然已经经过了优化，但还是有很多指令用来执行计算数组索引（array index）和控制循环。这样的指令我们假设它每个循环都要执行一次，那么我们在49个循环之后才能得到滤波器得出的结果。我们可以很明了的得到一个结果，那就是一个周期内执行的指令数是影响性能的一个重要的壁垒。有时候对于一个架构的提升就是让它处理的指令变得更复杂，让同一个指令能做的事情变得更多。HLS的一个特点就是在决定结构上的一些此消彼长的设计时，不再需要考虑让它适用于指令集的结构限制。在HLS设计中，设计出一个在同周期内执行成百上千个RISC级指令外加几百个周期程度流水的系统是非常常见的。
 
-```asm
+```
 fir:
         .frame  r1,0,r15                # vars= 0, regs= 0, args= 0
         .mask   0x00000000
@@ -197,26 +197,27 @@ fir:
         lwi     r4,r3,0
         swi     r4,r3,4
         swi     r5,r3,0           # Store the new input sample into the delay line
-        addik   r5,r0,4 	  # Initialize the loop counter
+        addik   r5,r0,4 	  	  # Initialize the loop counter
         addk    r8,r0,r0          # Initialize accumulator to zero
         addk    r4,r8,r0          # Initialize index expression to zero
 $L2:
-        muli    r3,r4,4           # Compute a byte offset into the delay_line array
+        muli    r3,r4,4			# Compute a byte offset into the delay_line array
         addik   r9,r3,delay_line.1450
-        lw      r3,r3,r7          # Load filter tap
+        lw      r3,r3,r7		# Load filter tap
         lwi     r9,r9,0           # Load value from delay line
         mul     r3,r3,r9	  # Filter Multiply
         addk    r8,r8,r3	  # Filter Accumulate
         addik   r5,r5,-1          # update the loop counter
         bneid   r5,$L2
         addik   r4,r4,1           # branch delay slot, update index expression
-
+        
         rtsd    r15, 8
         swi     r8,r6,0		  # branch delay slot, store the output
         .end    fir
-
 ```
-![（代码样例）图片1.9:RISC风格下图片1.8中的代码的汇编版。在赛灵思Microblaze处理器下施行。这段代码由microblazeel-xilinx-linux-gnu-gcc -01 -mno -xl -soft -mul S fir.c 指令产生](images/filter_asm_behavior.jpg)
+
+
+![(代码样例)图片1.9:RISC风格下图片1.8中的代码的汇编版。在赛灵思Microblaze处理器下施行。这段代码由microblazeel-xilinx-linux-gnu-gcc -01 -mno -xl -soft -mul S fir.c 指令产生](images/filter_asm_behavior.jpg)
 
 
 这是Vivado HLS默认下产出的是非常顺序化的结构。所谓顺序化的结构，是指循环和分支都被写作控制逻辑以控制寄存器、功能单元等部件。这其实和RISC处理器的概念相同，除了我们提到过产出的结果是RTL结构下的状态机。这种结构更倾向于限制那些使用资源去并行的功能单元。顺序化结构可以从大多数程序中生成，无需对原代码做太多的修改和优化，所以对HLS初学者非常的简单。但它同样存在一些缺陷。顺序化的结构很难解析码流，主要出于控制逻辑的复杂度。另外，控制逻辑负责规定任务延迟和任务间隔。顺序化结构的性能有时取决于处理的数据。
