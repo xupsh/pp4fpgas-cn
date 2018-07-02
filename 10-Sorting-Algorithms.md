@@ -45,9 +45,9 @@ $$A = {~~1, 4, 17, 23, 31~~, 45, ~~74, 76~~}$$
 
 ### 10.2.1 插入排序的基本实现
 
-```
-#include ”insertion sort.h”
-void insertion sort(DTYPE A[SIZE]) {
+```c
+#include "insertion_sort.h"
+void insertion_sort(DTYPE A[SIZE]) {
 	L1:
 	for(int i = 1; i < SIZE; i++) {
 		DTYPE item = A[i];
@@ -89,8 +89,8 @@ void insertion sort(DTYPE A[SIZE]) {
 
 图10.2所示的插入排序代码与前面几章的其他嵌套循环程序比较类似，但是有一些方面确实很难优化。优化选项1尝试的流水线启动间隔也无法达到1，虽然数据通路上并没有重要的相关性，但是在控制通路上循环是否能够执行的判断影响了其流水线性能。在这种情况下，必须读取$A[i-1]$来确定循环是否能够执行，而该循环检查并不能在读取数据A的第一级流水线完成。这是典型的递归例子，其包含了HLS生成的循环控制逻辑。如果碰到类似的递归逻辑，Vivado HLS报告中会指出循环退出条件不能在第一个启动间隔的时钟周期中去调度；当然也有可能会发生退出或者保持当前控制逻辑的状态。一种解决方案是增加一条读取$A[i-1]$的操作，才能保证循环退出检查在1个启动间隔周期内调度，其代码如图10.3所示。
 
-``` c
-#include ”insertion sort.h”
+```c
+#include "insertion_sort.h"
 void insertion_sort(DTYPE A[SIZE]) {
 	L1:
 	for(i = 1; i < SIZE; i++) {
@@ -125,10 +125,10 @@ void insertion_sort(DTYPE A[SIZE]) {
 为了提高插入排序的性能，优化目标是每个时钟周期插入一个新元素。当最后一个元素插入到排序列表中是，可能会需要改变数组中的所有元素。对于图10.2中的代码，意味着内部循环L2实际上顺序扫描比较了数组中的所有元素。要想在每个时钟周期中插入一个新元素，首先需要足够的硬件操作资源，才可以对数组中的每个元素进行比较。为了保证外部循环的流水线，优化内部循环的变量边界为常量边界，才可以使得内部循环体展开并集成到外部循环体中，参考代码如图10.4所示。
 
 ```c
-#include ”insertion_sort_parallel.h"
-#include ”assert.h”
-void insertion sort parallel(DTYPE A[SIZE], DTYPE B[SIZE]) {
-	#pragma HLS array partition variable=B complete
+#include "insertion_sort_parallel.h"
+#include "assert.h"
+void insertion_sort_parallel(DTYPE A[SIZE], DTYPE B[SIZE]) {
+	#pragma HLS array_partition variable=B complete
 	L1:
 	for(int i = 0; i < SIZE; i++) {
 		#pragma HLS pipeline II=1
@@ -150,6 +150,7 @@ void insertion sort parallel(DTYPE A[SIZE], DTYPE B[SIZE]) {
 	}
 }
 ```
+
 图10.4：重构表10.1中优化选型3的插入排序代码
 
 重构图10.2中的内部循环体的实现代码，把退出条件优化为if条件，放在新的内部循环体L2中；增加其他分支判断条件，扩大内部循环的次数；增加的分支判断条件在原始循环时不执行任何操作，也不会被执行；数组的赋值在循环体L2内部执行，而不是在L2循环体外部执行。内部循环展开时，$j$ 都成为常量，数组B的每次读写都将在常量索引下执行。另一方面，$item$变量是分配给内部循环的一份元素拷贝；在编译期间Vivado HLS会创建一个独立的寄存器用来实现电路上的多路复用。
