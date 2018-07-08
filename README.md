@@ -4,7 +4,7 @@
 
 电子书阅读地址: [https://xupsh.github.io/pp4fpgas-cn](https://xupsh.github.io/pp4fpgas-cn)
 
-电子书下载地址: [pdf]()
+电子书下载地址: [暂无]()
 
 ## 写在前面
 国内鲜有介绍HLS的书，我们希望通过翻译Parallel Programming for FPGAs这本书，让更多的人来了解HLS和FPGA开发。
@@ -15,7 +15,7 @@ Parallel Programming for FPGAs这本书的原作采用的是`latex`进行内容�
 这也给参与翻译任务的诸位带来了一点小挑战，需要诸位事先熟悉一下`GitHub`平台的使用、`git`的使用以及`Markdown`语言的规范，下面是相关的参考链接给诸位快速上手。
 
 ### 排版约定
-- [排版约定](RULES.md)
+- [排版约定](https://xupsh.github.io/pp4fpgas-cn/RULES.html)
 
 ### 编辑器
 一个界面美观、交互UI设计良好的编辑器可以帮我们节省很多力气，这里我们比较推荐使用以下几款编辑器来进行翻译工作
