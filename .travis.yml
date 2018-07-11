@@ -15,12 +15,12 @@ before_install:
 install:
   - npm install gitbook-cli -g
   # 安装 gitbook 插件
-  - gitbook install
+  - travis_wait 10 gitbook install
 
 # 构建脚本
 script:
     # 自定义输出目录 gitbook build src dest
-  - gitbook build . ./build/$CUSTOM_PATH
+  - travis_wait 20 gitbook build . ./build/$CUSTOM_PATH
 
 # 分支白名单
 branches:
