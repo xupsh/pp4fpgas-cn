@@ -25,6 +25,9 @@
     "custom-favicon"
   ],
   "pluginsConfig": {
+    "katex-plus": {
+      "forceSVG": false
+    },
     "hints": {
       "info": "fa fa-info-circle",
       "tip": "fa fa-mortar-board",
