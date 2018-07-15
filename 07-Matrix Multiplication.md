@@ -212,7 +212,7 @@ void blockmatmul(hls::stream<blockvec> &Arows, hls::stream<blockvec> &Bcols,
 
 图7.5中的代码展示了通过流水的方式分块矩阵乘法。代码由3部分构成，分别标记为**loadA**、**partialsum**和**writeoutput**。
 
-代码的第一部分，标签为**loadA**，只要当**it %(SIZE/BLOCK_SIZE) == 0 **程序才会执行。这样可以帮我节约时间，通过复用之前函数运行用到矩阵**A**的数据。
+代码的第一部分，标签为**loadA**，只要当**it %(SIZE/BLOCK_SIZE) == 0** 程序才会执行。这样可以帮我节约时间，通过复用之前函数运行用到矩阵 **A**的数据。
 
 记住，每次函数**blockmatmul**执行的时候，我们从矩阵**A**取**BLOCK_SIZE**行，从矩阵**B**取**BLOCK_SIZE**列。矩阵**A**每个**BLOCK_SIZE**行对应多个**BLOCK_SIZE**列。变量**it**记录函数**blockmatmul**被调用的次数。所以，在每次执行函数时，我们可以判是不是需要从矩阵**A**取新行。当不需要输入新行，这样就节省了我们的时间。当需要取新的数据，通过从**Arows**取数据存到一个静态的二维矩阵**A[BLOCK_SIZE]** **[SIZE]**中。
 
@@ -248,14 +248,14 @@ void blockmatmul(hls::stream<blockvec> &Arows, hls::stream<blockvec> &Bcols,
   }
 }
 ```
-图7.5： 函数**blockmatmul**从矩阵**A**输入一系列大小为**BLOCK_SIZE**的行，从矩阵** B**输入一系列大小为**BLOCK_SIZE**的列，创建一个**BLOCK_SIZW**x**BLOCK_SIZE**分布结果，作为矩阵**AB**的一部分。代码的第一部分（标记为**loadA**）保存**A**的行到局部存储，第二部分是嵌套的**partialsum for**循环执行部分结果的计算，最后的一部分（标记为**writeoutput**）将之前计算返回的分布结果放到合适格式中。
+图7.5： 函数**blockmatmul**从矩阵**A**输入一系列大小为**BLOCK_SIZE**的行，从矩阵** B**输入一系列大小为**BLOCK_SIZE** 的列，创建一个**BLOCK_SIZW**x**BLOCK_SIZE** 分布结果，作为矩阵**AB** 的一部分。代码的第一部分（标记为**loadA** ）保存 **A** 的行到局部存储，第二部分是嵌套的**partialsum for**循环执行部分结果的计算，最后的一部分（标记为 **writeoutput** ）将之前计算返回的分布结果放到合适格式中。
 
-需要对**stream**类进行一些解释说明才能完全掌握这段代码，并且使用它。**stream**类型变量**Arows**由许多**blockvec**类型的元素构成。**blockvec**是一个**BLOCK_SIZE**x**BLOCK_SIZE**的矩阵。每个**Arows**中的元素都是一个数组，用于保存矩阵**A**中**BLOCK_SIZE**行的数据。所以在每次调用**blockmatmul**函数时，**Arow**流会有**SIZE**个元素，每个用于保存**BLOCK_SIZE**行。语句**tempA = Arows.read()**从**Arows**流中取一个元素。然后，将这些对应的元素赋值给局部矩阵**A**中对应的位置。
+需要对**stream**类进行一些解释说明才能完全掌握这段代码，并且使用它。**stream**类型变量**Arows**由许多**blockvec**类型的元素构成。**blockvec**是一个**BLOCK_SIZE**x**BLOCK_SIZE**的矩阵。每个**Arows**中的元素都是一个数组，用于保存矩阵**A**中**BLOCK_SIZE**行的数据。所以在每次调用**blockmatmul**函数时，**Arow**流会有**SIZE**个元素，每个用于保存**BLOCK_SIZE**行。语句**tempA = Arows.read()**从**Arows** 流中取一个元素。然后，将这些对应的元素赋值给局部矩阵**A** 中对应的位置。
 {% hint style='info' %}
-**stream**类对操作符 << 进行了重载，它等价于函数**read()**。所以，语句** tempA = Arows.read()** 和 ** tempA << Arows**执行时等价的。
+**stream**类对操作符 << 进行了重载，它等价于函数**read()** 。所以，语句** tempA = Arows.read()** 和 ** tempA << Arows** 执行时等价的。
 {% endhint %}
-剩余部分的计算式是部分求和。大部分都是在函数**blockmatmul**中进行。
-流类型变流类型量**Bclos**用法和变量**Arows**相似。但是，它不是存储矩阵**A**的行，而是存储**B**矩阵参与当前运算的列数据。每次调用**blockmatmul**函数都会从矩阵**B**取到新的列数据。所以我们不需要像矩阵**A**那样，每次取数据时进行条件判断。函数本身执行步骤和图7.1中的**matmul**很相似，但是我们只计算**BLOCK_SIZE ** x **BLOCK_SIZE**的结果与矩阵**AB**对应。因此我们每次通过迭代矩阵**A**中**BLOCK_SIZE**行和矩阵**B**中**BLOCK_SIZE**列。但是每行和每列都有**SIZE**个元素，因此循环的边界在外层**for**循环。
+剩余部分的计算式是部分求和。大部分都是在函数**blockmatmul** 中进行。
+流类型变流类型量**Bclos**用法和变量 **Arows** 相似。但是，它不是存储矩阵**A**的行，而是存储**B**矩阵参与当前运算的列数据。每次调用**blockmatmul**函数都会从矩阵**B**取到新的列数据。所以我们不需要像矩阵 **A** 那样，每次取数据时进行条件判断。函数本身执行步骤和图7.1中的**matmul**很相似，但是我们只计算**BLOCK_SIZE ** x **BLOCK_SIZE**的结果与矩阵**AB**对应。因此我们每次通过迭代矩阵**A**中**BLOCK_SIZE**行和矩阵**B**中**BLOCK_SIZE**列。但是每行和每列都有**SIZE**个元素，因此循环的边界在外层**for**循环。
 函数最后的部分实现数据到本地矩阵**AB**的赋值，之前矩阵维度是**BLOCK_SIZE**x**BLOCK_SIZE**，对应的是输出矩阵**AB**的部分结果。
 程序的三个部分中，中间部分用于计算部分求和，是对运算要求最高的部分。通过观察代码，可以发着这部分嵌套了３层**for**循环，迭代的次数为**SIZE**x**BLOCK_SIZE**x**BLOCK_SIZE**。第一部分迭代的次数为**SIZE**x**BLOCK_SIZE**，最后一部分迭代的次数为**BLOCK_SIZE**x**BLOCK_SIZE**。所以，我们集中对程序中间部分进行优化，例如**分部求和**（partialsum）嵌套的**for**循环。
 嵌套循环优化最开始的出发点都是对最内层的**for**循环进行流水化。如果这样操作需要耗费大量的资源，那么设计人员可以把**pipeline**directive放到稍外层的**for**循环。是否导致设计耗费资源是由**BLOCK_SIZE**决定的，如果资源占用率很小，那么把**pipeline**directive放在现在的位置是可行的。甚至把**pipeline**directive放在最外层的**for**循环也是可行的。这样，内层的2层**for**循环都会展开，可能会导致资源使用量大幅上升。但是，这样性能也是有提升的。
@@ -263,19 +263,19 @@ void blockmatmul(hls::stream<blockvec> &Arows, hls::stream<blockvec> &Bcols,
 改变**BLOCK_SIZE**是如何影响性能和资源占用率的？改变常量**SIZE**影响是什么？移动**pipeline**directive 在**partiaslum**函数的嵌套的三层**for**循环之间，性能和资源占用率会发生什么变化？
 {% endhint %}
 
-函数开始部分的**dataflow**directive 实现函数部分之间的流水线，例如**loadA for**循环，**partialsum**嵌套的**for**循环、**writeoutput for**循环。使用这个directive可以减少函数**blockmatmul**运行的间隔。但是，代码三个部分中最大运行间隔是最终的限制条件。也就是说，函数**blockmatmul**运行间隔的最大值，我们称之为interval**(blockmatmul)**是要大约等于interval**(loadA)**,interval**(partialsum)**，interval**(writeoutput)**中的最大值的。
+函数开始部分的**dataflow**directive 实现函数部分之间的流水线，例如**loadA for**循环，**partialsum**嵌套的**for**循环、**writeoutput for**循环。使用这个directive可以减少函数**blockmatmul**运行的间隔。但是，代码三个部分中最大运行间隔是最终的限制条件。也就是说，函数**blockmatmul**运行间隔的最大值，我们称之为interval**(blockmatmul)** 是要大约等于interval**(loadA)**,interval**(partialsum)**，interval**(writeoutput)** 中的最大值的。
 $$
 interval\textbf{(blockmatmul)} \geq max(interval\textbf{(loadA)},interval\textbf{(partialsum)},  interval\textbf{(writeoutput)})
  (7.5)
 $$
 
-当我们对函数**blockmatmul**进行优化的时候，我们需要牢牢记住等式7.5。例如，假设interval**(partialsum)**比函数部分中其他两个都大。针对interval**(loadA)**和interval**(writeoutput)**的优化都是无用的，因为interval**(blockmatmul)**不会变小。所以，设计者需要将所有的注意力放在对interval**(partialsum)**的优化上，目标性能的优化就在嵌套的三层**for**循环上。
+当我们对函数**blockmatmul**进行优化的时候，我们需要牢牢记住等式7.5。例如，假设interval**(partialsum)** 比函数部分中其他两个都大。针对interval **(loadA)** 和interval **(writeoutput)** 的优化都是无用的，因为interval **(blockmatmul)** 不会变小。所以，设计者需要将所有的注意力放在对interval**(partialsum)** 的优化上，目标性能的优化就在嵌套的三层**for**循环上。
 在进行性能优化时意识到这一点是非常重要的。开发人员可以对函数中其它两个部分进行资源优化。通常情况下这种减少资源占用率的优化都会提高执行间隔和延迟。在这个例子中，这种增加间隔不会对函数**blockmatmul**整个性能有影响。实际上最理想的方式，对函数的三个部分同时进行优化，它们有相同的运行间隔，这样我们就可以轻松的在运行间隔和资源占用上实现平衡（实际可能不总是这样）。
 函数**blockmatmul**的测试平台如图7.6和7.7。我们将它分成为两个图片，这样可读性更强， 因为这段代码实在太长了。到目前为止，我们都是没有看到测试平台的。我们展示这个测试平台有一下几点原因。首先，它让我们知道函数**blockmatmul**的工作流程。特别是，它将输入的矩阵进行分块，然后一个块接一个块的输入给函数**blockmatmul**。其次，它演示了如何在复杂的设中使用**stream**模块进行仿真。最后，他给读者一个如何建立合适测试平台的概念。
 函数**matmatmul_sw**通过简单的三层**for**循环实现了矩阵乘法。它将2个二维的矩阵作为输入，输出是一个二维矩阵。这和我们之前在图7.1中看到的函数**matrixmul**很像。我们用这个函数的结果和硬件版本分块矩阵乘法进行做比较。
-让我们先从图7.6开始，观察测试平台的前半部分。开始的代码部分完成对函数其余部分变量的初始化。变量**fail**用于记录矩阵乘法是否计算正确。在函数的后面会检查这个变量。变量**strm_matrix1**和**strm_matrix2**是**hls:stream<>**类型，分别用于保存矩阵**A**的行和矩阵**B** 的列。这些流类型的变量中每个元素是一个< blockvec >。参考图7.4所示的头文件**block_MM.h**。我们反复调用定义的**blockvec**作为数组数据，我们用**blockvec**保存一行和一列数据。
+让我们先从图7.6开始，观察测试平台的前半部分。开始的代码部分完成对函数其余部分变量的初始化。变量**fail**用于记录矩阵乘法是否计算正确。在函数的后面会检查这个变量。变量**strm_matrix1**和**strm_matrix2**是**hls:stream<>** 类型，分别用于保存矩阵**A**的行和矩阵**B** 的列。这些流类型的变量中每个元素是一个< blockvec >。参考图7.4所示的头文件**block_MM.h**。我们反复调用定义的**blockvec**作为数组数据，我们用**blockvec**保存一行和一列数据。
 {% hint style='info' %}
-变量**stream**在**HLS**的命名空间中。所以，我们使用对应的命名空间，并且加载**hls::stream**，或者直接简化用**stream**。但是，实际使用更倾向zai**stream**前保留**hls::**，可以提箱读者这里的stream是和**Vivado**&reg;**HLS**相关的而不是来自于其他**C**库函数。同样，这样可以避免潜在与其他新命名空间产生冲突。
+变量**stream**在**HLS**的命名空间中。所以，我们使用对应的命名空间，并且加载**hls::stream**，或者直接简化用**stream**。但是，实际使用更倾向zai**stream**前保留**hls::** ，可以提箱读者这里的stream是和**Vivado**&reg;**HLS**相关的而不是来自于其他**C**库函数。同样，这样可以避免潜在与其他新命名空间产生冲突。
 {% endhint %}
 
 接下来在代码开始部分定义的变量是**strm_matix1_element**和**strm_matrix2_element**。这两个变量用来作为每个**blockvec**变量分别写入流变量**strm_matrix1**和**strm_matrix2**的中间过度变量。变量**blockmatmul**用于保存函数**blockmatmul**的输出结果。注意这个变量使用**blockmat**类型，它是一个大小为**BLOCK_SIZE**x**BLOCK_SIZE**的二维矩阵，在头文件**block_mm.h**定义（见图7.4）。最后定义的是矩阵**A**、**B**、**matrix_swout**和**matrix_hwout**。它们都是大小为**SIZE**x**SIZE**的二维矩阵，其中数据类型都是**DTYPE**。
@@ -288,7 +288,7 @@ $$
 
 外部的两层**for**循环通过每步执行，实现矩阵以块的形式输入。你可以发现每次迭代都是以**BLOCK_SIZE**作为步进。接下来的两个**for**循环把矩阵**A**的行写到**strm_matrix1_element**，把矩阵**B**的列写到**strm_martix2_element**中。在执行上述步骤时都是一个元素一个元素进行的，通过使用变量**k**访问单个的值从行（列）然后将它们写入到一维数组中。注意，**strm_matrix1_element**和**strm_martix2_element**都是**blockvec**数据类型，即长度为**BLOCK_SIZE**的一维数组。它们用于保存行或列的**BLOCK_SIZE**个元素。内层循环迭代**BLOCK_SIZE**次。流类型变量**strm_matrix1**和**strm_matrix2**被写入**SIZE**次。换句话说，就是对整行（列）进行缓存，缓存中每个元素保存**BLOCK_SIZE**个值。
 {% hint style='info' %}
-类**stream**通过重载**>>**操作符，它等价于函数**write（data)**。这和对**read()**函数重载，使其等价于操作符**<<**。因此，表达式**strm_matrix1.write(strm_matrix1_element)**和**strm_matrix1_element >> strm_matrix1**执行是相同的。
+类**stream**通过重载**>>** 操作符，它等价于函数 **write（data)** 。这和对 **read()** 函数重载，使其等价于操作符**<<** 。因此，表达式 **strm_matrix1.write(strm_matrix1_element)** 和 **strm_matrix1_element >> strm_matrix1** 执行是相同的。
 {% endhint %}
 ```c
 #include "block_mm.h"
