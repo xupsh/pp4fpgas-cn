@@ -114,7 +114,7 @@ void matrixmul(int A[N][M], int B[M][P], int AB[N][P]) {
 
 每个时钟周期执行大量的运算，就需要为它们提供运算的对象，保存每个运算出处的结果。之前，我们使用了**array_partition**directive来提高在内存上可访问的次数。当数组的分块越来越小，每次存储的访问顺序在编译时就可以确定。所以数组分块是最简单和高效的方法用于提升在单位时间内，对内存的访问。这个directive不仅仅是将存储存储空间的地址分为不同的区间，也可以将多个存储空间合并以一个。这种变化存储空间数据位宽变大用于保存数组，但是不能改变总存储的比特数目。这其中的区别如图7.2所示。
 
-**array_reshape**和**array_partion**都提高了一个时钟周期内可以读取的数组元素个数。它们支持相同的操作，可以循环和阻塞分块或者根据多维度的数据进行不同维度的分块。在使用**array_reshape**的时候，所有的元素在变换后的数组中共用同一个地址，但是**array_partition**变换后数组中地址是不相关的。看起来人们更喜欢使用**array_partition**因为它更灵活，每个独立的小空间更小，可能会导致存储资源使用不充分。**array_reshape**directive 会形成大的存储块，这样可能更容易高效地映射到**FPGA**的资源上。特别是Xilinx Virtex Ultrascale+器件最小的block RAM（**BRAM**）是18 Kbits，可以支持不同深度和宽度的组合。当数组分块小于18kbits后，那么**BRAM**就没有被充分使用。如果我们使用最原始的矩阵，4-bit数组，维度是 [1024][4] ,这个数组就可放到一个单独的**BRAM**中，它配置为4Kbit x 4。对这个数组的第二个维度进行分块，那么将使用4个 1Kbit x 4的存储单元，每个都要比**BRAM**小很多。通过使用**array_reshape**将数组变为1Kbit x 16，可以被一个**BRAM**存储。
+**array_reshape**和**array_partion** 都提高了一个时钟周期内可以读取的数组元素个数。它们支持相同的操作，可以循环和阻塞分块或者根据多维度的数据进行不同维度的分块。在使用**array_reshape** 的时候，所有的元素在变换后的数组中共用同一个地址，但是**array_partition** 变换后数组中地址是不相关的。看起来人们更喜欢使用**array_partition**因为它更灵活，每个独立的小空间更小，可能会导致存储资源使用不充分。**array_reshape** directive 会形成大的存储块，这样可能更容易高效地映射到**FPGA** 的资源上。特别是Xilinx Virtex Ultrascale+器件最小的block RAM（**BRAM**）是18 Kbits，可以支持不同深度和宽度的组合。当数组分块小于18kbits后，那么**BRAM** 就没有被充分使用。如果我们使用最原始的矩阵，4-bit数组，维度是 [1024][4] ,这个数组就可放到一个单独的**BRAM** 中，它配置为4Kbit x 4。对这个数组的第二个维度进行分块，那么将使用4个 1Kbit x 4的存储单元，每个都要比**BRAM**小很多。通过使用**array_reshape** 将数组变为1Kbit x 16，可以被一个**BRAM** 存储。
 
 ![图 7.2:三种实现二维矩阵的方式。左边采用原始的方式，保存N*M个元素。中间数组使用了array_partition directive进行了变形，结果是使用了M个存储单元，每个保存N个元素。右边的，使用array_shape directive进行了变形，结果保存在一个存储单元，带有N个入口，每个入口保存原始矩阵的M个元素](images/matmul_array_reshape.jpg)
 
@@ -131,7 +131,7 @@ void matrixmul(int A[N][M], int B[M][P], int AB[N][P]) {
 矩阵的形状可能对你进行的优化有潜在的影响。有些应用可能使用很小的矩阵，例如2x2 或 4x4。在这种情况下，可能期望设计实现最高的性能，通过在函数的入口直接使用**pipeline** directive。当矩阵的维度变大，例如32 x 32时，这种方法很显然不可实现因为单个器件上的资源是有限的。也可能没有足够的**DSP**资源在每个时钟周期内完成大量的乘法运算，或者没有足够的外部存储带宽用芯片和外部数据的交互。在系统中许多**FPGA** 设计需要和外部数据速率相匹配，例如模数转换（A/D）或 通信系统中的波特率。在这些设计中， 通常使用**pipeline** directive对嘴内层循环，目的是为了实现计算间隔和系统数据速率匹配。 在这些例子中，我们需要探索不同资源和速率之间的平衡，通过将**pipeline**放到内层循环或对循环部分展开。当处理非常大的矩阵包含成千上万的元素时，我们需要考虑更复杂结构。下一章节我们将讨论在大型设计中对矩阵进行缩放，称之为**blocking** 和**tiling**
 
 {% hint style='info' %}
-去掉**array_reshape** directive。这对性能有什么影响？这对资源使用率有什么影响？通过改变**array_reshape**的参数，对这些数组有没有影响？这种情况下，和只使用**array_reshape**有什么区别？
+去掉**array_reshape** directive。这对性能有什么影响？这对资源使用率有什么影响？通过改变**array_reshape** 的参数，对这些数组有没有影响？这种情况下，和只使用**array_reshape** 有什么区别？
 {% endhint %}
 
 ##  7.3 块矩阵乘法 ##
@@ -203,7 +203,7 @@ void blockmatmul(hls::stream<blockvec> &Arows, hls::stream<blockvec> &Bcols,
 变量**BLOCK_SIZE**定义了每次运算从矩阵**A**取的行数和矩阵**B**取的列数。这也定义了一次流水，函数能处理的数量。我们每次从函数得到的输出数据是矩阵**AB**的一个**BLOCK_SIZE** x **BLOCK_SIZE** 的。
 
 数据类型**blockvec**是用于传递矩阵**A**的**BLOCK_SIZE**行和矩阵**B**的**BLOCK_SIZE**供函数每次执行。数据类型**blockmat**用于保存部分矩阵**AB**的结果。
-最后，数据类型**blockmat**是一个**BLOCK_SIZE**x**BLOCK_SIZE**的数组。它用于保存执行函数**matrmatmul**计算的结果。
+最后，数据类型**blockmat**是一个**BLOCK_SIZE**x**BLOCK_SIZE** 的数组。它用于保存执行函数**matrmatmul**计算的结果。
 函数原型本身的两个输入类型是**hls::stream<blockvec>&** 。它是一串**blockvec**类型的数据。记住，一个**blockvec**是由**BLOCK_SIZE**个元素构成的数组。
 在Vivado&reg; **HLS**中，通过调用类**hls::stream<>**创建**FIFO**类型的数据结构，可以很好的进行仿真和综合。数据通过**write()**函数顺序的写入，通过**read()**函数读出。这个库之所以被创建，是因为流水在硬件设计中，是一种常见的数据传递形式，并且这种操作可以用**C**语言进行多种方式的描述，例如，通过数组。实际上， **Vivado**&reg **HLS**在处理负责的访问或多维数组时，很难推测出流水行为的。内建的流库方便程序员准确的指定流访问的顺序，避免在接口有任何限制。
 {% hint style='info' %}
@@ -248,7 +248,7 @@ void blockmatmul(hls::stream<blockvec> &Arows, hls::stream<blockvec> &Bcols,
   }
 }
 ```
-图7.5： 函数**blockmatmul**从矩阵**A**输入一系列大小为**BLOCK_SIZE**的行，从矩阵** B**输入一系列大小为**BLOCK_SIZE** 的列，创建一个**BLOCK_SIZW**x**BLOCK_SIZE** 分布结果，作为矩阵**AB** 的一部分。代码的第一部分（标记为**loadA** ）保存 **A** 的行到局部存储，第二部分是嵌套的**partialsum for**循环执行部分结果的计算，最后的一部分（标记为 **writeoutput** ）将之前计算返回的分布结果放到合适格式中。
+图7.5： 函数**blockmatmul**从矩阵**A**输入一系列大小为**BLOCK_SIZE**的行，从矩阵** B** 输入一系列大小为**BLOCK_SIZE** 的列，创建一个**BLOCK_SIZW**x**BLOCK_SIZE** 分布结果，作为矩阵**AB** 的一部分。代码的第一部分（标记为**loadA** ）保存 **A** 的行到局部存储，第二部分是嵌套的**partialsum for**循环执行部分结果的计算，最后的一部分（标记为 **writeoutput** ）将之前计算返回的分布结果放到合适格式中。
 
 需要对**stream**类进行一些解释说明才能完全掌握这段代码，并且使用它。**stream**类型变量**Arows**由许多**blockvec**类型的元素构成。**blockvec**是一个**BLOCK_SIZE**x**BLOCK_SIZE**的矩阵。每个**Arows**中的元素都是一个数组，用于保存矩阵**A**中**BLOCK_SIZE**行的数据。所以在每次调用**blockmatmul**函数时，**Arow**流会有**SIZE**个元素，每个用于保存**BLOCK_SIZE**行。语句**tempA = Arows.read()**从**Arows** 流中取一个元素。然后，将这些对应的元素赋值给局部矩阵**A** 中对应的位置。
 {% hint style='info' %}
