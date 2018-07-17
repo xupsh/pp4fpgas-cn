@@ -1,1 +1,4 @@
 p { text-indent: 2em; }
+.book .book-summary, .book .book-body  {
+    font-family: "Microsoft YaHei UI", "Microsoft Yahei", "PingFang SC", "Lantinghei SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "WenQuanYi Zen Hei", "Noto Sans CJK SC", "Microsoft JhengHei UI", "Microsoft JhengHei", "PingFang TC", "Lantinghei TC", "Noto Sans CJK TC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
