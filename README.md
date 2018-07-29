@@ -1,7 +1,5 @@
 # pp4fpga-cn
 
-[![Build Status](https://travis-ci.org/xupsh/pp4fpgas-cn.svg?branch=master)](https://travis-ci.org/xupsh/pp4fpgas-cn)
-
 国内鲜有介绍HLS的书，我们希望通过翻译`Parallel Programming for FPGAs`这本书，让更多的人来了解HLS和FPGA开发。
 
 ## 电子书阅读地址

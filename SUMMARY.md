@@ -23,5 +23,5 @@
 
 ## 附录
 
-- [词汇表汇总](GLOSSARY.md)
+- [词汇表汇总](SKIPGLOSSARY.md)
 - [参考文献](BIBLIOGRAPHY.md)

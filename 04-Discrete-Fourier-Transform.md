@@ -11,18 +11,23 @@
 
 $$
 \begin{aligned}
-f(t)\sim\frac{a_{0}}{2}+a_{1}cos(t)+a_{2}cos(2t)+a_{3}cos(3t)+\cdots \\  b_{1}sin(t)+b_{2}sin(2t)+b_{3}sin(3t)+\cdots \\ \sim\frac{a_{0}}{2}+{\sum_{n=1}^{\infty}}(a_{n}cos(nt)+b_{n}sin(nt)
+f(t)&\sim\frac{a_{0}}{2}+a_{1}cos(t)+a_{2}cos(2t)+a_{3}cos(3t)+\cdots \\  
+&b_{1}sin(t)+b_{2}sin(2t)+b_{3}sin(3t)+\cdots \\
+&\sim\frac{a_{0}}{2}+{\sum_{n=1}^{\infty}}(a_{n}cos(nt)+b_{n}sin(nt)
 \end{aligned}
 \quad(4.1)
 $$
 
-其中参数$a_{0},a_{1},\cdots$和$b_{0},b_{1},\cdots$的计算公式如下：
+其中参数$$a_{0},a_{1},\cdots$$和$$b_{0},b_{1},\cdots$$的计算公式如下：
 
-$$a_{0}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)dt$$
-
-$$a_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)cos(nt)dt\quad\quad(4.2)$$
-
-$$b_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)sin(nt)dt$$
+$$
+\begin{aligned}
+a_{0}&=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)dt \\
+a_{n}&=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)cos(nt)dt \\
+b_{n}&=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)sin(nt)dt
+\end{aligned}
+\quad(4.2)
+$$
 
 有几个需要注意的点是：首先式4.2中的参数$a_{0},a_{1},\cdots$,$b_{0},b_{1},\cdots$被称作傅里叶参数。其中参数 $a_{0}$ 被称作直流分量（来自于对早期电流分析的参考），其中n=1频率分量称为基波，而其他频率（n≥2）分量统称为高次谐波。基波和高次谐波的概念来自声学和音乐。其次，函数f以及cos()和sin()函数都有2π个周期; 我们很快就会展现如何将这个周期改变为其他值。
 直流分量$a_{0}$等同于cos(0·t)=1时的系数，因此使用符号a。因为sin(0·t)=0，所以不需要 $b_{0}$ 的值。最后，在某些情况下，函数f和它的傅里叶级数之间是近似相等的关系，这种不连续的现象我们称之为吉布斯现象。而这是只是一个仅与傅里叶级数有关的小问题，与其他傅立叶变换无关。 因此，今后我们将忽略式[4.1]中的“近似”（〜），直接视为“相等”（=）。
