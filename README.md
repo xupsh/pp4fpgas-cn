@@ -42,8 +42,8 @@ README                                 | [胡成龙@sonnyhcl](https://github.com
 
 ## Reference
 
-```
 <https://github.com/KastnerRG/pp4fpgas>
+```
 @ARTICLE{
     2018arXiv180503648K,
     author = {{Kastner}, R. and {Matai}, J. and {Neuendorffer}, S.},
