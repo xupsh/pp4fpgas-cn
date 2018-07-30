@@ -12,6 +12,11 @@
 - [pdf](https://github.com/xupsh/pp4fpgas-cn/releases/download/v0.9/pp4fpgas-cn.pdf)
 - [epub](https://github.com/xupsh/pp4fpgas-cn/releases/download/v0.9/pp4fpgas-cn.epub)
 
+## HLS工程
+
+- [https://github.com/xupsh/pp4fpgas-cn-hls](https://github.com/xupsh/pp4fpgas-cn-hls)
+
+
 ## Contributor
 
 > 统筹 [胡成龙@sonnyhcl](https://github.com/sonnyhcl)
