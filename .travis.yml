@@ -31,7 +31,7 @@ branches:
 deploy:
   provider: pages
   skip_cleanup: true
-  keep-history: true
+  keep-history: false
   # 在项目仪表盘的 Settings -> Environment Variables 中配置
   github_token: $GITHUB_TOKEN
   # 将 build 目录下的内容推送到默认的 gh-pages 分支上，并不会连带 build 目录一起

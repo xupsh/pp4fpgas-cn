@@ -12,6 +12,11 @@
 - [pdf](https://github.com/xupsh/pp4fpgas-cn/releases/download/v0.9/pp4fpgas-cn.pdf)
 - [epub](https://github.com/xupsh/pp4fpgas-cn/releases/download/v0.9/pp4fpgas-cn.epub)
 
+## HLS工程
+
+- [https://github.com/xupsh/pp4fpgas-cn-hls](https://github.com/xupsh/pp4fpgas-cn-hls)
+
+
 ## Contributor
 
 > 统筹 [胡成龙@sonnyhcl](https://github.com/sonnyhcl)
@@ -37,8 +42,8 @@ README                                 | [胡成龙@sonnyhcl](https://github.com
 
 ## Reference
 
-```
 <https://github.com/KastnerRG/pp4fpgas>
+```
 @ARTICLE{
     2018arXiv180503648K,
     author = {{Kastner}, R. and {Matai}, J. and {Neuendorffer}, S.},
