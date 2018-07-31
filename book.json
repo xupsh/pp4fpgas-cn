@@ -2,10 +2,11 @@
   "title": "FPGA并行编程",
   "description": "pp4fpga",
   "author": "xupsh",
-  "language": "zh-hans",
+  "language": "zh",
   "gitbook": "3.2.3",
   "root": ".",
   "plugins": [
+    "yahei",
     "code",
     "mathjax@https://github.com/OrgVue/gitbook-plugin-mathjax.git#speech-fix",
     "splitter",
@@ -25,6 +26,11 @@
     "custom-favicon"
   ],
   "pluginsConfig": {
+    "fontSettings": {
+      "theme": "white",
+      "family": "msyh",
+      "size": 2
+    },
     "mathjax": {
       "forceSVG": false
     },
@@ -108,7 +114,7 @@
   },
   "pdf": {
         "pageNumbers": true,
-        "fontSize": 12,
+        "fontSize": 14,
         "paperSize": "a4",
         "margin": {
             "right": 62,

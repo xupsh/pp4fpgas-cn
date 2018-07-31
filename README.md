@@ -4,13 +4,13 @@
 
 ## 电子书阅读地址
 
-- [Github Page](https://xupsh.github.io/pp4fpgas-cn)
-- [Gitbook page](https://xupsh.gitbook.io/pp4fpga)
+- [Github Page: https://xupsh.github.io/pp4fpgas-cn](https://xupsh.github.io/pp4fpgas-cn)
+- [Gitbook page: https://xupsh.gitbook.io/pp4fpga-cn](https://xupsh.gitbook.io/pp4fpga-cn)
 
 ## 电子书下载地址
 
-- [pdf](https://github.com/xupsh/pp4fpgas-cn/releases/download/v0.9/pp4fpgas-cn.pdf)
-- [epub](https://github.com/xupsh/pp4fpgas-cn/releases/download/v0.9/pp4fpgas-cn.epub)
+- [pdf: https://github.com/xupsh/pp4fpgas-cn/releases](https://github.com/xupsh/pp4fpgas-cn/releases/download/v0.9/pp4fpgas-cn.pdf)
+- [epub: https://github.com/xupsh/pp4fpgas-cn/releases](https://github.com/xupsh/pp4fpgas-cn/releases/download/v0.9/pp4fpgas-cn.epub)
 
 ## HLS工程
 
