@@ -102,8 +102,21 @@
     },
     "tbfed-pagefooter": {
       "copyright": "Copyright &copy xupsh.github.io 2018",
-      "modify_label": " 该文件修订时间：",
+      "modify_label": " 该页修订时间：",
       "modify_format": "YYYY-MM-DD HH:mm:ss"
     }
-  }
+  },
+  "pdf": {
+        "pageNumbers": true,
+        "fontSize": 12,
+        "paperSize": "a4",
+        "margin": {
+            "right": 62,
+            "left": 62,
+            "top": 36,
+            "bottom": 36
+        },
+        "headerTemplate": null,
+        "footerTemplate": null
+    }
 }
