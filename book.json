@@ -2,7 +2,7 @@
   "title": "FPGA并行编程",
   "description": "pp4fpga",
   "author": "xupsh",
-  "language": "zh",
+  "language": "zh-hans",
   "gitbook": "3.2.3",
   "root": ".",
   "plugins": [
