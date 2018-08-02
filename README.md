@@ -10,7 +10,7 @@
 
 ## 电子书下载
 
-- [[pdf](https://github.com/xupsh/pp4fpgas-cn/releases), [epub](https://github.com/xupsh/pp4fpgas-cn/releases), [mobi](https://github.com/xupsh/pp4fpgas-cn/releases): https://github.com/xupsh/pp4fpgas-cn/releases](https://github.com/xupsh/pp4fpgas-cn/releases)
+- [pdf, epub, mobi: https://github.com/xupsh/pp4fpgas-cn/releases](https://github.com/xupsh/pp4fpgas-cn/releases)
 
 ## HLS工程
 
