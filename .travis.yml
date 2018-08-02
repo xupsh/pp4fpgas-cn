@@ -15,12 +15,12 @@ before_install:
 install:
   - npm install gitbook-cli -g
   # 安装 gitbook 插件
-  - travis_wait 10 gitbook install
+  - gitbook install
 
 # 构建脚本
 script:
     # 自定义输出目录 gitbook build src dest
-  - travis_wait 20 gitbook build . ./build/$CUSTOM_PATH
+  - gitbook build . ./build/$CUSTOM_PATH
 
 # 分支白名单
 branches:
@@ -31,7 +31,7 @@ branches:
 deploy:
   provider: pages
   skip_cleanup: true
-  keep-history: true
+  keep-history: false
   # 在项目仪表盘的 Settings -> Environment Variables 中配置
   github_token: $GITHUB_TOKEN
   # 将 build 目录下的内容推送到默认的 gh-pages 分支上，并不会连带 build 目录一起

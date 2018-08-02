@@ -6,8 +6,9 @@
   "gitbook": "3.2.3",
   "root": ".",
   "plugins": [
+    "yahei",
     "code",
-    "katex-plus",
+    "mathjax@https://github.com/OrgVue/gitbook-plugin-mathjax.git#speech-fix",
     "splitter",
     "github-buttons",
     "disqus",
@@ -25,7 +26,12 @@
     "custom-favicon"
   ],
   "pluginsConfig": {
-    "katex-plus": {
+    "fontSettings": {
+      "theme": "white",
+      "family": "msyh",
+      "size": 2
+    },
+    "mathjax": {
       "forceSVG": false
     },
     "hints": {
@@ -102,8 +108,21 @@
     },
     "tbfed-pagefooter": {
       "copyright": "Copyright &copy xupsh.github.io 2018",
-      "modify_label": " 该文件修订时间：",
+      "modify_label": " 该页修订时间：",
       "modify_format": "YYYY-MM-DD HH:mm:ss"
     }
-  }
+  },
+  "pdf": {
+        "pageNumbers": true,
+        "fontSize": 14,
+        "paperSize": "a4",
+        "margin": {
+            "right": 62,
+            "left": 62,
+            "top": 36,
+            "bottom": 36
+        },
+        "headerTemplate": null,
+        "footerTemplate": null
+    }
 }
