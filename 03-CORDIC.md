@@ -1,4 +1,4 @@
-\theta# 第三章 CORDIC
+# 第三章 CORDIC
 
 ## 3.1 概述
 

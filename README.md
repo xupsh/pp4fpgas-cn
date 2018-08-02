@@ -1,5 +1,6 @@
 # FPGA并行编程
-> 以HLS实现信号处理为例
+
+## FPGA并行编程 -- 以HLS实现信号处理为例
 
 国内鲜有介绍HLS的书，我们希望通过翻译`Parallel Programming for FPGAs`这本书，让更多的人来了解HLS和FPGA开发。
 
@@ -22,7 +23,7 @@
   - 提出ISSUE: [https://github.com/xupsh/pp4fpgas-cn/issues/new](https://github.com/xupsh/pp4fpgas-cn/issues/new)
 - 此书翻译稿目前为初稿，欢迎各位提宝贵意见、反馈意见，授课支持，实验平台试用请联系[joshual@xilinx.com](joshual@xilinx.com)或[xup_china@xilinx.com](xup_china@xilinx.com)
 
-## Contributors
+## CONTRIBUTERS
 
 > 统筹 [胡成龙@sonnyhcl](https://github.com/sonnyhcl)
 
