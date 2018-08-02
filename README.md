@@ -1,6 +1,5 @@
 # FPGA并行编程
-
-## FPGA并行编程 -- 以HLS实现信号处理为例
+>  —— 以HLS实现信号处理为例
 
 国内鲜有介绍HLS的书，我们希望通过翻译`Parallel Programming for FPGAs`这本书，让更多的人来了解HLS和FPGA开发。
 

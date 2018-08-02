@@ -18,8 +18,6 @@
     "-sharing",
     "sharing-plus",
     "expandable-chapters-small",
-    "tbfed-pagefooter",
-    "anchors",
     "image-captions",
     "anchor-navigation-ex-toc",
     "hints",
@@ -102,11 +100,6 @@
         "pocket",
         "stumbleupon"
       ]
-    },
-    "tbfed-pagefooter": {
-      "copyright": "Copyright &copy xupsh.github.io 2018",
-      "modify_label": " 修订时间：",
-      "modify_format": "YYYY-MM-DD HH:mm:ss"
     }
   },
   "pdf": {
