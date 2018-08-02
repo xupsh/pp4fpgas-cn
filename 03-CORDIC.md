@@ -231,13 +231,13 @@ $$ y = r \sin \theta \quad(3.28)$$
 
 $$ r =\sqrt{x^2 + y^2} \quad(3.29)$$
 
-$$ \theta = \operatorname{atan2}(y, x) \quad(3.30)$$
+$$ \theta = atan2(y, x) \quad(3.30)$$
 
 atan2在arctan函数中定义为
 
 $$
 
-\operatorname{atan2}(y, x) =
+atan2(y, x) =
 \begin{cases}
 \arctan(\frac{y}{x})     \quad\quad\quad      {if } x > 0 \\
 \arctan(\frac{y}{x}) + \pi   \quad  {if } x < 0 { and } y \ge 0 \\

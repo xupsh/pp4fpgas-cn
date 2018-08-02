@@ -1,4 +1,5 @@
-# pp4fpga-cn
+# FPGA并行编程
+> 以HLS实现信号处理为例
 
 国内鲜有介绍HLS的书，我们希望通过翻译`Parallel Programming for FPGAs`这本书，让更多的人来了解HLS和FPGA开发。
 
@@ -16,6 +17,8 @@
 
 - [https://github.com/xupsh/pp4fpgas-cn-hls](https://github.com/xupsh/pp4fpgas-cn-hls)
 
+## 问题反馈
+- 如有问题请[在这里(https://github.com/xupsh/pp4fpgas-cn/issues/new)](https://github.com/xupsh/pp4fpgas-cn/issues/new)指正
 
 ## Contributor
 
@@ -38,7 +41,6 @@ README                                 | [胡成龙@sonnyhcl](https://github.com
 11 Huffman Encoding                    | [杨勇@rowen800](https://github.com/rowen800)           |
 词汇表                                    | [李彦晔@Zaoldyeckk](https://github.com/Zaoldyeckk)      |
 参考文献                                   | [李彦晔@Zaoldyeckk](https://github.com/Zaoldyeckk)      |
-排版约定                                   | [胡成龙@sonnyhcl](https://github.com/sonnyhcl)          |
 
 ## Reference
 

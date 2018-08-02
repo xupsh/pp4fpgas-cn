@@ -8,7 +8,7 @@
   "plugins": [
     "yahei",
     "code",
-    "mathjax@https://github.com/OrgVue/gitbook-plugin-mathjax.git#speech-fix",
+    "katex",
     "splitter",
     "github-buttons",
     "disqus",
@@ -30,9 +30,6 @@
       "theme": "white",
       "family": "msyh",
       "size": 2
-    },
-    "mathjax": {
-      "forceSVG": false
     },
     "hints": {
       "info": "fa fa-info-circle",
