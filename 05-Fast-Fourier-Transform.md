@@ -175,7 +175,7 @@ $$
 现在让我们来正式推导出这种关系，它提供了一种描述FFT递归结构的通用方法。假设我们正在计算N点FFT。给定输入值g[]的频域值G[]的计算公式为：
 
 $$
-G[k] = \displaystyle\sum\limits_{n=0}^{N-1} g[n] \cdot e^{\frac{-j 2 \pi k n}{N}} \text{ for } k = 0,\dots, N-1
+G[k] = \displaystyle\sum\limits_{n=0}^{N-1} g[n] \cdot e^{\frac{-j 2 \pi k n}{N}} \text{ for } k = 0, \ldots, N-1
 \quad(5.13)
 $$
 我们可以把这个公式分为两部分，一部分是偶数部分，一部分是奇数部分。
@@ -207,7 +207,7 @@ $$
 
 为了计算更高频率G[N/2]到G[N-1]，让我们推导出相同的方程，但这次使用k=N/2，N/2+1,...,N/2-1。因此，我们希望计算：
 $$
-G[k + N/2] = \displaystyle\sum\limits_{n=0}^{N-1} g[n] \cdot e^{\frac{-j 2 \pi (k + N/2) n}{N}} \text{ for } k = 0, \dots, N/2 - 1\quad(5.18)
+G[k + N/2] = \displaystyle\sum\limits_{n=0}^{N-1} g[n] \cdot e^{\frac{-j 2 \pi (k + N/2) n}{N}} \text{ for } k = 0, \ldots, N/2 - 1\quad(5.18)
 $$
 这类似于具有不同指数的公式5.13，即我们用公式5.13代替k，其中k+N/2。用我们之前执行的相同变换集，我们可以将它直接移动到等式5.16，但用k+N/2替换k，可得：
 $$
@@ -217,13 +217,13 @@ $$
 $$
 e^{\frac{-j 2 \pi (k + N/2) n}{N/2}} = e^{\frac{-j 2 \pi k n}{N/2}} \cdot e^{\frac{-j 2 \pi (N/2) n}{N/2}} = e^{\frac{-j 2 \pi k n}{N/2}} \cdot e^{-j 2 \pi n} = e^{\frac{-j 2 \pi k n}{N/2}} \cdot 1\quad(5.20)
 $$
-第一次简化使用了幂规则来分割指数。第二次简化取消了在第二指数中的N/2项。最后的简化使用n是非负整数的事实，因此$${e^{-j2πn}}$$将始终是2π的倍数的旋转。这意味着该项始终等于1。
+第一次简化使用了幂规则来分割指数。第二次简化取消了在第二指数中的N/2项。最后的简化使用n是非负整数的事实，因此$$e^{-j2\pi n}$$将始终是2π的倍数的旋转。这意味着该项始终等于1。
 
 现在让我们来处理第二个复指数：
 $$
 e^{\frac{-j 2 \pi (k + N/2)}{N}} = e^{\frac{-j 2 \pi k }{N}} \cdot e^{\frac{-j 2 \pi N/2 }{N}} = e^{\frac{-j 2 \pi k }{N}} \cdot e^{-j  \pi} = - e^{\frac{-j 2 \pi k }{N}}\quad(5.21)
 $$
-第一次简化使用幂规则分割指数。第二次对第二个指数进行了一些简化。我们通过等式$${e^{-jπn}=-1}$$得到了最终形式。
+第一次简化使用幂规则分割指数。第二次对第二个指数进行了一些简化。我们通过等式$${e^{-j\pi n}=-1}$$得到了最终形式。
 
 ![图5.3：从两个N/2点FFT构建N点FFT。在偶数输入上执行上N/2点FFT; 较低的N/2点FFT使用奇数输入。](images/NptFFT.jpg)
 

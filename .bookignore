@@ -1,0 +1,5 @@
+ebook-convert-wrapper
+.travis.yml
+.gitignore
+.bookignore
+GUIDE.md

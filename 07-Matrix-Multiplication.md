@@ -278,8 +278,10 @@ void blockmatmul(hls::stream<blockvec> &Arows, hls::stream<blockvec> &Bcols,
 函数开始部分的**dataflow**directive 实现函数部分之间的流水线，例如**loadA for**循环，**partialsum** 嵌套的**for**循环、**writeoutput for** 循环。使用这个directive可以减少函数**blockmatmul**运行的间隔。但是，代码三个部分中最大运行间隔是最终的限制条件。也就是说，函数**blockmatmul**运行间隔的最大值，我们称之为interval**(blockmatmul)** 是要大约等于interval**(loadA)** ,interval**(partialsum)** ，interval**(writeoutput)** 中的最大值的。
 
 $$
+\begin{aligned}
 interval\textbf{(blockmatmul)} \geq \\
-max(interval\textbf{(loadA)},interval\textbf{(partialsum)},  interval\textbf{(writeoutput)})
+ max(interval\textbf{(loadA)},interval\textbf{(partialsum)},  interval\textbf{(writeoutput)})
+\end{aligned}
 \quad(7.5)
 $$
 

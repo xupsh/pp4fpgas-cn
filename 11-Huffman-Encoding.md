@@ -382,7 +382,7 @@ $$
 \begin{aligned}
 \text{depth(root)} = 0 \\
 \forall n! = \text{root}, \text{depth}(n) = \text{depth(parent}(n) + 1)      \\
-\forall n, \text{child_depth}(n) = \text{depth}(n) + 1
+\forall n, \text{child\_depth}(n) = \text{depth}(n) + 1
 \end{aligned}
 \qquad(11.1)
 $$
@@ -391,8 +391,8 @@ $$
 
 $$
 \begin{aligned}
-\text{child_depth(root)}  = 1 \\
-\forall n! = \text{root}, \text{child_depth}(n) = \text{child_depth(parent}(n) + 1)  
+\text{child\_depth(root)}  = 1 \\
+\forall n! = \text{root}, \text{child\_depth}(n) = \text{chil\_depth(parent}(n) + 1)  
 \end{aligned}
 \qquad(11.2)
 $$
@@ -601,9 +601,9 @@ process_symbols循环无法进行流水线操作，因为内部do / while循环�
 编码过程中的最后一步是为每个符号创建码字。 该流程根据Canonical霍夫曼代码的特性，按顺序简单地分配每个符号。第一个特性是具有相同长度前缀的较长的代码比短码有更高的数值。第二个特性是相同长度的代码随着符号值的增加而增加。为了在保持代码简单的同时实现这些属性，确定每个长度的第一个码字是有用的。如果我们知道由码字长度直方图给出的每个长度的码字的数量，则可以使用以下循环来得出结果：
 $$
 \begin{aligned}
-\text{first_codeword}(1) = 0 \\
-\forall i>1,\text{firstst_codeword}(i) = \\
-(\text{first_codeword}(i-1) + \text{codeword_length_histogram}(i-1))\ll1
+&\text{first\_codeword}(1) = 0 \\
+&\forall i>1,\text{first\_codeword}(i) = \\
+&(\text{first\_codeword}(i-1) + \text{codeword\_length\_histogram}(i-1))\ll1
 \end{aligned}
 \qquad(11.3)
 $$
@@ -671,10 +671,10 @@ void create_codeword(
 
 $$
 \begin{aligned}
-\text{bit_length}(1) &= 0 \\
-\text{bit_length}(2) &= 3 \\
-\text{bit_length}(3) &= 1 \\
-\text{bit_length}(4) &= 2
+\text{bit\_length}(1) &= 0 \\
+\text{bit\_length}(2) &= 3 \\
+\text{bit\_length}(3) &= 1 \\
+\text{bit\_length}(4) &= 2
 \end{aligned}
 \qquad(11.4)   
 $$
@@ -682,10 +682,10 @@ $$
 使用公式11.3来计算第一个码字的值，我们定义：
 $$
 \begin{aligned}
-\text{first_codeword}(1) &= 0 &= 0b0   \\  
-\text{first_codeword}(2) &= (0 + 0) \ll 1 &= 0b00 \\  
-\text{first_codeword}(3) &= (0 + 3) \ll 1 &= 0b110 \\  
-\text{first_codeword}(4) &= (6 + 1) \ll 1 &= 0b1110
+\text{first\_codeword}(1) &= 0 &= 0b0   \\  
+\text{first\_codeword}(2) &= (0 + 0) \ll 1 &= 0b00 \\  
+\text{first\_codeword}(3) &= (0 + 3) \ll 1 &= 0b110 \\  
+\text{first\_codeword}(4) &= (6 + 1) \ll 1 &= 0b1110
 \end{aligned}
 \qquad(11.5)
 $$
