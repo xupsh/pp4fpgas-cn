@@ -1,17 +1,15 @@
 # Summary
 
-- [README](README.md)
-
-
 ## 序
-
 - [译序](PREFACE.md)
-- [自序](00-Preface.md)
+
+## README
+- [FPGA并行编程](README.md)
 
 --------------------------------------------------------------------------------
 
 ## 正文
-
+- [第零章 前言](00-Preface.md)
 - [第一章 简介](01-Introduction.md)
 - [第二章 FIR滤波器](02-Finite-Impulse-Response-Filters.md)
 - [第三章 CORDIC](03-CORDIC.md)
