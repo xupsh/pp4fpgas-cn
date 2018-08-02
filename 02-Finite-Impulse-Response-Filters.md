@@ -424,7 +424,7 @@ width是1到1024^1^  之间的整数。例如，ap_int<8>是一个8位有符号�
 
 $$ (I_{in}+ j Q_{in})(I_{fir} + j Q_{fir}) = (I_{in} I_{fir}  Q_{in} Q_{fir}) +  j (Q_{in}  I_{fir} + I_{in}Q_{fir}) \quad(2.4)$$                            
 
-​方程2.4显示了复数FIR滤波器的一个系数与输入复数数据的乘法。方程右侧显示复数FIR滤波器输出实数部分是$ I_{in}I_{fir} - Q_{in}Q_{fir} $，和虚数部分为$ Q_{in}I_{fir} + I_{in}Q_{fir} $。这意味着我们可以将复数FIR过滤器运算拆分为四个实数滤波器，如图2.9所示。
+​方程2.4显示了复数FIR滤波器的一个系数与输入复数数据的乘法。方程右侧显示复数FIR滤波器输出实数部分是$$ I_{in}I_{fir} - Q_{in}Q_{fir} $$，和虚数部分为$$ Q_{in}I_{fir} + I_{in}Q_{fir} $$。这意味着我们可以将复数FIR过滤器运算拆分为四个实数滤波器，如图2.9所示。
 
 ![complex_fir](/images/complex_fir.jpg)
 
