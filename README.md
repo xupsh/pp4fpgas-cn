@@ -6,7 +6,7 @@
 ## 本书中文翻译和更新可在以下网址浏览
 
 - Github Page: [https://xupsh.github.io/pp4fpgas-cn](https://xupsh.github.io/pp4fpgas-cn)
-- Gitbook Page: [https://xupsh.gitbook.io/pp4fpga-cn](https://xupsh.gitbook.io/pp4fpga-cn)
+- Gitbook Page: [https://xupsh.gitbook.io/pp4fpgas-cn](https://xupsh.gitbook.io/pp4fpga-cn)
 
 ## 本文电子版可以在以下网址下载
 
