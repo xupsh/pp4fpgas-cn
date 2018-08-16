@@ -113,7 +113,7 @@ void histogram(int in[INPUT SIZE], int hist[VALUE SIZE]) {
 
 ​事实证明，只要x0和x1是独立的，我们就必须在读写之间进行切换。如果它们实际上不是独立的呢？例如，我们可能知道数据源实际不会连续产生两个完全相同的数据。那我们现在该怎么做呢？如果我们可以将x0和x1是不同的地址额外信息提供给HLS工具，那么它就能够同时在位置x1处读取，而在位置x0处写入数据了。在Vivado@HLS中，可以通过设置**dependence**指令来完成。
 
-​修改后的代码如图8.8所示。上面我们明确表示该函数使用需要一些前提条件。在代码中，我们使用assert断言来完成对第二个前提条件的检查。在Vivado@HLS中，这个断言在仿真过程中被启用，以确保仿真测试过程中向量满足所需的前提条件。软件提供的**dependence**指令可以避免前提条件对综合电路的影响。也就是说，它向Vivado@HLS软件工具指示使用特定的方式读取和写入hist数组。在这种情况下，迭代循环之间读操作和写操作间距离是2。在这种情况下，距离为n将表明在地带次数i+n中的读操作仅依赖于地带次数i中的写操作。因此，断言in[i+1] != in[i]，但可能出现in[i +2] == in[i]，所以正确距离是2。
+​修改后的代码如图8.8所示。上面我们明确表示该函数使用需要一些前提条件。在代码中，我们使用assert断言来完成对第二个前提条件的检查。在Vivado@HLS中，这个断言在仿真过程中被启用，以确保仿真测试过程中向量满足所需的前提条件。软件提供的**dependence**指令可以避免前提条件对综合电路的影响。也就是说，它向Vivado@HLS软件工具指示使用特定的方式读取和写入hist数组。在这种情况下，迭代循环之间读操作和写操作间距离是2。在这种情况下，距离为n将表明在迭代次数i+n中的读操作仅依赖于迭代次数i中的写操作。因此，断言in[i+1] != in[i]，但可能出现in[i +2] == in[i]，所以正确距离是2。
 
 ```c
 #include <assert.h>
@@ -192,7 +192,7 @@ void histogram(int in[INPUT SIZE], int hist[VALUE SIZE]) {
 
 {% hint style='info' %}修改图8.13中的代码包含支持可参数化改变**PE**个数的变量**NUM_PE**？提示：你需要根据数组分块数量**NUM_PE**以及循环将数组合并成一个数组。当你改变PE的数量时，吞吐量和任务间隔会发生什么变化？{% endhint %}
 
-​我们在**histogram**函数中使用**dataflow**指令来达到任务级流水线设计。在这种情况下有三个处理过程：两个**partial_histogram**函数处理实例和两个**histogram_reduce**函数处理实例。在一个任务中，因为两个**partial_histogram**处理的数据相互独立，所以可以同时执行。**Histogram_reduce** 函数处理过程必须在 **partial_histogram** 处理完成后才开始。因此，**dataflow** 指令本质上是创建了一个两阶段的任务管道。第一阶段执行**partial_histogram**函数，而第二阶段执行**histogram_reduce**函数。与任何数据流设计一样，整个histogram函数的间隔取决于两个阶段的最大启动间隔。第一个阶段的两个**partial_histogram**函数时相同的，并且具有相同的间隔（$$I{I_{histogram\_map}}$$）。**Histogram_reduce** 函数酱油另一个间隔（$$I{I_{histogram\_reduce}}$$）。顶层 **histogram** 函数的启动间隔$$I{I_{histogram}}$$是max($$I{I_{histogram\_map}}$$ ,$$I{I_{histogram\_reduce}}$$ ).
+​我们在**histogram**函数中使用**dataflow**指令来达到任务级流水线设计。在这种情况下有三个处理过程：两个**partial_histogram**函数处理实例和两个**histogram_reduce**函数处理实例。在一个任务中，因为两个**partial_histogram**处理的数据相互独立，所以可以同时执行。**Histogram_reduce** 函数处理过程必须在 **partial_histogram** 处理完成后才开始。因此，**dataflow** 指令本质上是创建了一个两阶段的任务管道。第一阶段执行**partial_histogram**函数，而第二阶段执行**histogram_reduce**函数。与任何数据流设计一样，整个histogram函数的间隔取决于两个阶段的最大启动间隔。第一个阶段的两个**partial_histogram**函数时相同的，并且具有相同的间隔（$$I{I_{histogram\_map}}$$）。**Histogram_reduce** 函数将由另一个间隔（$$I{I_{histogram\_reduce}}$$）。顶层 **histogram** 函数的启动间隔$$I{I_{histogram}}$$是max($$I{I_{histogram\_map}}$$ ,$$I{I_{histogram\_reduce}}$$ ).
 
 ```c
 #include ”histogram parallel.h”

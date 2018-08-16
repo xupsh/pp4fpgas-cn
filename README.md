@@ -1,13 +1,16 @@
 # FPGA并行编程
 
-> ---- 以HLS实现信号处理为例
+> -- 以HLS实现信号处理为例
 
 国内鲜有介绍HLS的书，我们希望通过翻译`Parallel Programming for FPGAs`这本书，让更多的人来了解HLS和FPGA开发。
 
 ## 本书中文翻译和更新可在以下网址浏览
 
-- Github Page: <https://xupsh.github.io/pp4fpgas-cn>
-- Gitbook Page: <https://xupsh.gitbook.io/pp4fpgas-cn>
+- [推荐] Gitbook Page: <https://xupsh.gitbook.io/pp4fpgas-cn>
+
+![barcode](images/barcode.jpg)
+
+- [备用] Github  Page: <https://xupsh.github.io/pp4fpgas-cn>
 
 ## 本文电子版可以在以下网址下载
 
@@ -20,14 +23,16 @@
 ## 问题反馈
 
 - 如有问题请在这里👇指正
-
   - 提出ISSUE: <https://github.com/xupsh/pp4fpgas-cn/issues/new>
-
+  - 在Gitbook Page:<https://xupsh.gitbook.io/pp4fpgas-cn>电子书阅读页面下方留言
 - 此书翻译稿目前为初稿，欢迎各位提宝贵意见、反馈意见，授课支持，实验平台试用请联系[joshual@xilinx.com](mailto:joshual@xilinx.com)或[xup_china@xilinx.com](mailto:xup_china@xilinx.com)
 
-- 更多交流反馈，请扫码进入下列微信群
 
-![wechat group](images/invite.png)
+## LICENSE
+
+This work is licensed under the Creative Commons Attribution 4.0 International License. To view a copy of this license, visit <http://creativecommons.org/licenses/by/4.0/>.
+
+The newest version of this book can be found at <http://hlsbook.ucsd.edu>. The authors welcome your feedback and suggestions.
 
 ## CONTRIBUTERS
 
@@ -50,9 +55,3 @@ README                                 | [胡成龙@sonnyhcl](https://github.com
 11 Huffman Encoding                    | [杨勇@rowen800](https://github.com/rowen800)
 词汇表                                    | [李彦晔@Zaoldyeckk](https://github.com/Zaoldyeckk)
 参考文献                                   | [李彦晔@Zaoldyeckk](https://github.com/Zaoldyeckk)
-
-## LICENSE
-
-This work is licensed under the Creative Commons Attribution 4.0 International License. To view a copy of this license, visit <http://creativecommons.org/licenses/by/4.0/>.
-
-The newest version of this book can be found at <http://hlsbook.ucsd.edu>. The authors welcome your feedback and suggestions.
