@@ -84,9 +84,9 @@ rgb_pixel pixel_out[MAX_HEIGHT][MAX_WIDTH]) {
 
 ​到目前为止，我们专注于构建视频处理应用部分的程序而不关心如何将其整合到一个大的系统程序中去。在很多情况下，如图9.1.2中示例代码，大部分像素处理发生在循环内，并且当循环运行时每个时钟周期仅处理一个像素。在本节中，我们将讨论讲视频处理部分程序集成到大的系统程序中的情况。
 
-​默认情况下，Vivado@HLS软件会将代码中的函数数组接口综合成硬件的存储器接口。其中，存储器写数据接口由地址总线、数据总线和写使能信号线组成。存储器每次读取和写入数据均有相应地址变化，并且数据读取和写入时间固定。如图9.4所示，将这种接口与片上存储资源Block RAM资源集成在一起使用很简单方便。但是即使在大容量的芯片，片上Block RAM资源也是很稀缺的，因此如果存储大容量的视频资源会很快消耗完片上Block RAM资源。
+​默认情况下，Vivado@HLS软件会将代码中的函数数组接口综合成简单的存储器接口。其中，存储器写数据接口由地址总线、数据总线和写使能信号线组成。存储器每次读取和写入数据均有相应地址变化，并且数据读取和写入时间固定。如图9.4所示，将这种接口与片上存储资源Block RAM资源集成在一起使用很简单方便。但是即使在大容量的芯片，片上Block RAM资源也是很稀缺的，因此如果存储大容量的视频资源会很快消耗完片上Block RAM资源。
 
-{% hint style='info' %}针对24位像素位深的1920x1080视频帧，芯片需要消耗多少BlockRAM资源才能完成存储存一帧视频帧？片上Block RAM资源最多又能存储多少帧呢？{% endhint %}
+{% hint style='info' %}针对每像素24位的1920x1080视频帧，芯片需要消耗多少BlockRAM资源才能完成存储存一帧视频帧？片上Block RAM资源最多又能存储多少帧呢？{% endhint %}
 
 ![图9.5 将视频处理设计与外部存储接口集成](images/video_DDR_interface.jpg)
 
@@ -185,11 +185,11 @@ row_loop: for (int row = 0; row < MAX_HEIGHT; row++) {
       		window[i][j] = pixel_in[wi][wj];
       }
     }
-if (row == 0 || col == 0 || row == (MAX_HEIGHT − 1) || col == (MAX_WIDTH − 1)) {
+    if (row == 0 || col == 0 || row == (MAX_HEIGHT − 1) || col == (MAX_WIDTH − 1)) {
           pixel_out[row][col].R = 0;
           pixel_out[row][col].G = 0;
           pixel_out[row][col].B = 0;
-} else
+    } else
 		pixel_out[row][col] = filter(window);
 		}
 	}
@@ -249,13 +249,11 @@ row_loop: for (int row = 0; row < MAX_HEIGHT; row++) {
 ![图9.11:图中所示为图9.10中的代码实现的存储器。 存储器在特定的循环周期时将从线性缓冲区中读取出数据存储在窗口缓冲区的最右端区域。黑色的像素存储在行缓冲区中，红色的像素存储在窗口缓冲区中。](images/video_buffers.jpg)
 
 
-通过卷积的定义证明前面原理：
-
+{% hint style='info' %}通过卷积的定义证明前面原理：
 $$
 y = x \otimes h:y[n] = \sum\limits_{k =  - \infty }^\infty  {x[k] * h[n - k]}
 $$
-
-
+{% endhint %}
 
 ​就本书而言，大多数变量不是时间采样信号和单输入单输出系统。对于设计时间采样信号的系统，在使用HLS开发过程中可以进行时序约束处理。只要系统能达到所需的任务延迟，那么就认为系统设计是正确的。
 
