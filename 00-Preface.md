@@ -23,7 +23,7 @@
 
 ## 本文电子版可以在以下网址下载
 
-- pdf, epub, mobi: <https://github.com/xupsh/pp4fpgas-cn/releases>
+- pdf: <https://github.com/xupsh/pp4fpgas-cn/releases>
 
 ## 本文案例可以在以下网址下载
 
@@ -33,7 +33,7 @@
 
 - 如有问题请在这里👇指正
   - 提出ISSUE: <https://github.com/xupsh/pp4fpgas-cn/issues/new>
-  - 在Gitbook Page:<https://xupsh.gitbook.io/pp4fpgas-cn>电子书阅读页面下方留言
+  - 在Gitbook Page:<https://xupsh.gitbook.io/pp4fpgas-cn/>电子书阅读页面下方留言
 - 此书翻译稿目前为初稿，欢迎各位提宝贵意见、反馈意见，授课支持，实验平台试用请联系[joshual@xilinx.com](mailto:joshual@xilinx.com)或[xup_china@xilinx.com](mailto:xup_china@xilinx.com)
 
 ## 欢迎关注 Xilinx学术合作 以及 PYNQ中文社区
