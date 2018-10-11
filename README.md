@@ -6,15 +6,13 @@
 
 ## 本书中文翻译和更新可在以下网址浏览
 
-- [推荐] Gitbook Page: <https://xupsh.gitbook.io/pp4fpgas-cn>
+- [推荐] Gitbook Page: <https://xupsh.gitbook.io/pp4fpgas-cn/>
 
-![barcode](images/barcode.jpg)
-
-- [备用] Github  Page: <https://xupsh.github.io/pp4fpgas-cn>
+- [备用] Github  Page: <https://xupsh.github.io/pp4fpgas-cn/>
 
 ## 本文电子版可以在以下网址下载
 
-- pdf, epub, mobi: <https://github.com/xupsh/pp4fpgas-cn/releases>
+- pdf: <https://github.com/xupsh/pp4fpgas-cn/releases>
 
 ## 本文案例可以在以下网址下载
 
