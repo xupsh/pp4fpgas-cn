@@ -15,3 +15,27 @@
 本书将主要使用赛灵思的Vivado HLS来完成类C代码到RTL的转换，C语言下的示例是针对Vivado HLS语法而完成的。本书不仅将介绍Vivado HLS的具体使用，而且会介绍那些最基本的HLS概念，这些概念应当适用于所有开发工具。我们同时鼓励读者尝试其他工具以真正理解这些概念，而不仅仅是在我们使用的工具里“学会”如何一步步操作。
 
 希望你能享受这本书，并祝一切好运。
+
+## 本书英文原版以下网址浏览
+
+- hlsbook by UCSD: <http://kastner.ucsd.edu/hlsbook/>
+
+
+## 本文电子版可以在以下网址下载
+
+- pdf, epub, mobi: <https://github.com/xupsh/pp4fpgas-cn/releases>
+
+## 本文案例可以在以下网址下载
+
+- HLS工程源代码: <https://github.com/xupsh/pp4fpgas-cn-hls>
+
+## 问题反馈
+
+- 如有问题请在这里👇指正
+  - 提出ISSUE: <https://github.com/xupsh/pp4fpgas-cn/issues/new>
+  - 在Gitbook Page:<https://xupsh.gitbook.io/pp4fpgas-cn>电子书阅读页面下方留言
+- 此书翻译稿目前为初稿，欢迎各位提宝贵意见、反馈意见，授课支持，实验平台试用请联系[joshual@xilinx.com](mailto:joshual@xilinx.com)或[xup_china@xilinx.com](mailto:xup_china@xilinx.com)
+
+## 欢迎关注 Xilinx学术合作 以及 PYNQ中文社区
+![Xilinx学术合作](images/qrcode.jpg)
+![PYNQ中文社区](images/qrcode2.jpg)

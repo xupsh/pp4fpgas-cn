@@ -84,9 +84,9 @@ rgb_pixel pixel_out[MAX_HEIGHT][MAX_WIDTH]) {
 
 ​到目前为止，我们专注于构建视频处理应用部分的程序而不关心如何将其整合到一个大的系统程序中去。在很多情况下，如图9.1.2中示例代码，大部分像素处理发生在循环内，并且当循环运行时每个时钟周期仅处理一个像素。在本节中，我们将讨论讲视频处理部分程序集成到大的系统程序中的情况。
 
-​默认情况下，Vivado@HLS软件会将代码中的函数数组接口综合成硬件的存储器接口。其中，存储器写数据接口由地址总线、数据总线和写使能信号线组成。存储器每次读取和写入数据均有相应地址变化，并且数据读取和写入时间固定。如图9.4所示，将这种接口与片上存储资源Block RAM资源集成在一起使用很简单方便。但是即使在大容量的芯片，片上Block RAM资源也是很稀缺的，因此如果存储大容量的视频资源会很快消耗完片上Block RAM资源。
+​默认情况下，Vivado@HLS软件会将代码中的函数数组接口综合成简单的存储器接口。其中，存储器写数据接口由地址总线、数据总线和写使能信号线组成。存储器每次读取和写入数据均有相应地址变化，并且数据读取和写入时间固定。如图9.4所示，将这种接口与片上存储资源Block RAM资源集成在一起使用很简单方便。但是即使在大容量的芯片，片上Block RAM资源也是很稀缺的，因此如果存储大容量的视频资源会很快消耗完片上Block RAM资源。
 
-{% hint style='info' %}针对24位像素位深的1920x1080视频帧，芯片需要消耗多少BlockRAM资源才能完成存储存一帧视频帧？片上Block RAM资源最多又能存储多少帧呢？{% endhint %}
+{% hint style='info' %}针对每像素24位的1920x1080视频帧，芯片需要消耗多少BlockRAM资源才能完成存储存一帧视频帧？片上Block RAM资源最多又能存储多少帧呢？{% endhint %}
 
 ![图9.5 将视频处理设计与外部存储接口集成](images/video_DDR_interface.jpg)
 
@@ -150,52 +150,7 @@ void video_filter(pixel_t pixel_in[MAX_HEIGHT][MAX_WIDTH],
 
 ​仔细观察相邻的窗口缓冲区中缓冲的数据，你会发现缓冲的数据高度重叠，这意味着相邻窗口缓冲区之间数据更高的依存性。这也意味来自输入图像的像素可以被本地缓存或者高速缓存存储，以备数据被多次访问使用。通过重构代码来每次只读取输入像素一次并存储在本地缓冲区中，这样可以使系统性能得到更好的表现。在视频系统中，由于本地缓冲区存储窗口周围多行视频像素，所以本地缓冲区也称为**线性缓冲区**。线性缓冲区通常使用Block RAM(BRAM)资源实现，而窗口缓冲区则使用触发器（FF）资源实现。图9.10所示是使用线性缓冲区重构的代码。注意，对于N×N图像滤波器，只需要N-1行存储在线性缓冲区中即可。
 
-```c
-rgb_pixel filter(rgb_pixel window[3][3]) {
-  const char h[3][3] = {{1, 2, 1}, {2, 4, 2}, {1, 2, 1}};
-	int r = 0, b = 0, g = 0;
-i_loop: for (int i = 0; i < 3; i++) {
- j_loop: for (int j = 0; j < 3; j++) {
-      r += window[i][j].R ∗ h[i][j];
-      g += window[i][j].G ∗ h[i][j];
-      b += window[i][j].B ∗ h[i][j];
-	}
-}
-  rgb_pixel output;
-  output.R = r / 16;
-  output.G = g / 16;
-  output.B = b / 16;
-  return output;
-}
-void video_2dfilter(rgb_pixel pixel_in[MAX_HEIGHT][MAX_WIDTH],
-		rgb_pixel pixel_out[MAX_HEIGHT][MAX_WIDTH]) {
-    rgb_pixel window[3][3];
-row_loop: for (int row = 0; row < MAX_HEIGHT; row++) {
- col_loop: for (int col = 0; col < MAX_WIDTH; col++) {
-    #pragma HLS pipeline
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
-          int wi = row + i − 1;
-          int wj = col + j − 1;
-          if (wi < 0 || wi >= MAX_HEIGHT || wj < 0 || wj >= MAX_WIDTH) {
-          window[i][j].R = 0;
-          window[i][j].G = 0;
-          window[i][j].B = 0;
-      } else
-      		window[i][j] = pixel_in[wi][wj];
-      }
-    }
-if (row == 0 || col == 0 || row == (MAX_HEIGHT − 1) || col == (MAX_WIDTH − 1)) {
-          pixel_out[row][col].R = 0;
-          pixel_out[row][col].G = 0;
-          pixel_out[row][col].B = 0;
-} else
-		pixel_out[row][col] = filter(window);
-		}
-	}
-}
-```
-![图9.9: 没有使用线性缓冲区的2D滤波代码](images/placeholder.png)
+![图9.9: 没有使用线性缓冲区的2D滤波代码](images/9_9.png)
 
 
 ​如图9.10所示代码，是使用线性缓冲区和窗口缓冲区方式实现的，其中代码实现过程如图9.11所示。代码每次执行一次循环时，窗口会移动一次，使用来自于1个输入像素和两个来自于行缓冲区缓存的像素来填充窗口缓冲区。另外，输入的新像素被移入线性缓冲区，准备被下一行的窗口运算过程所使用。请注意，由于为了每个时钟周期处理一个像素并输出结果，所以系统必须在每个时钟周期内完成对窗口缓冲区数据的读取和写入。另外，当展开”i”循环后，对于窗口缓冲区数组而言，每个数组索引都是一个常量。在这种情况下，Vivado@HLS将转换数组中的每个元素成一个标量变量（一个成为**标量化**的过程）。窗口数组中的元素随后使用触发器(FF)编译实现。同样，线性缓冲区的每一行数据都会被访问两次（被读取一次和写入一次）。示例代码中明确约束行缓冲区中每一行数组元素被分割成到一块单独存储区中。根据MAX WIDTH的可能取值情况，最后决定使用一个或者多个Block RAM实现。注意，每个Block RAM可在每个时钟周期支持两次独立访问。
@@ -249,13 +204,11 @@ row_loop: for (int row = 0; row < MAX_HEIGHT; row++) {
 ![图9.11:图中所示为图9.10中的代码实现的存储器。 存储器在特定的循环周期时将从线性缓冲区中读取出数据存储在窗口缓冲区的最右端区域。黑色的像素存储在行缓冲区中，红色的像素存储在窗口缓冲区中。](images/video_buffers.jpg)
 
 
-通过卷积的定义证明前面原理：
-
+{% hint style='info' %}通过卷积的定义证明前面原理：
 $$
 y = x \otimes h:y[n] = \sum\limits_{k =  - \infty }^\infty  {x[k] * h[n - k]}
 $$
-
-
+{% endhint %}
 
 ​就本书而言，大多数变量不是时间采样信号和单输入单输出系统。对于设计时间采样信号的系统，在使用HLS开发过程中可以进行时序约束处理。只要系统能达到所需的任务延迟，那么就认为系统设计是正确的。
 
