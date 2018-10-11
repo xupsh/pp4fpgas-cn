@@ -150,52 +150,7 @@ void video_filter(pixel_t pixel_in[MAX_HEIGHT][MAX_WIDTH],
 
 ​仔细观察相邻的窗口缓冲区中缓冲的数据，你会发现缓冲的数据高度重叠，这意味着相邻窗口缓冲区之间数据更高的依存性。这也意味来自输入图像的像素可以被本地缓存或者高速缓存存储，以备数据被多次访问使用。通过重构代码来每次只读取输入像素一次并存储在本地缓冲区中，这样可以使系统性能得到更好的表现。在视频系统中，由于本地缓冲区存储窗口周围多行视频像素，所以本地缓冲区也称为**线性缓冲区**。线性缓冲区通常使用Block RAM(BRAM)资源实现，而窗口缓冲区则使用触发器（FF）资源实现。图9.10所示是使用线性缓冲区重构的代码。注意，对于N×N图像滤波器，只需要N-1行存储在线性缓冲区中即可。
 
-```c
-rgb_pixel filter(rgb_pixel window[3][3]) {
-  const char h[3][3] = {{1, 2, 1}, {2, 4, 2}, {1, 2, 1}};
-	int r = 0, b = 0, g = 0;
-i_loop: for (int i = 0; i < 3; i++) {
- j_loop: for (int j = 0; j < 3; j++) {
-      r += window[i][j].R ∗ h[i][j];
-      g += window[i][j].G ∗ h[i][j];
-      b += window[i][j].B ∗ h[i][j];
-	}
-}
-  rgb_pixel output;
-  output.R = r / 16;
-  output.G = g / 16;
-  output.B = b / 16;
-  return output;
-}
-void video_2dfilter(rgb_pixel pixel_in[MAX_HEIGHT][MAX_WIDTH],
-		rgb_pixel pixel_out[MAX_HEIGHT][MAX_WIDTH]) {
-    rgb_pixel window[3][3];
-row_loop: for (int row = 0; row < MAX_HEIGHT; row++) {
- col_loop: for (int col = 0; col < MAX_WIDTH; col++) {
-    #pragma HLS pipeline
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
-          int wi = row + i − 1;
-          int wj = col + j − 1;
-          if (wi < 0 || wi >= MAX_HEIGHT || wj < 0 || wj >= MAX_WIDTH) {
-          window[i][j].R = 0;
-          window[i][j].G = 0;
-          window[i][j].B = 0;
-      } else
-      		window[i][j] = pixel_in[wi][wj];
-      }
-    }
-    if (row == 0 || col == 0 || row == (MAX_HEIGHT − 1) || col == (MAX_WIDTH − 1)) {
-          pixel_out[row][col].R = 0;
-          pixel_out[row][col].G = 0;
-          pixel_out[row][col].B = 0;
-    } else
-		pixel_out[row][col] = filter(window);
-		}
-	}
-}
-```
-![图9.9: 没有使用线性缓冲区的2D滤波代码](images/placeholder.png)
+![图9.9: 没有使用线性缓冲区的2D滤波代码](images/9_9.png)
 
 
 ​如图9.10所示代码，是使用线性缓冲区和窗口缓冲区方式实现的，其中代码实现过程如图9.11所示。代码每次执行一次循环时，窗口会移动一次，使用来自于1个输入像素和两个来自于行缓冲区缓存的像素来填充窗口缓冲区。另外，输入的新像素被移入线性缓冲区，准备被下一行的窗口运算过程所使用。请注意，由于为了每个时钟周期处理一个像素并输出结果，所以系统必须在每个时钟周期内完成对窗口缓冲区数据的读取和写入。另外，当展开”i”循环后，对于窗口缓冲区数组而言，每个数组索引都是一个常量。在这种情况下，Vivado@HLS将转换数组中的每个元素成一个标量变量（一个成为**标量化**的过程）。窗口数组中的元素随后使用触发器(FF)编译实现。同样，线性缓冲区的每一行数据都会被访问两次（被读取一次和写入一次）。示例代码中明确约束行缓冲区中每一行数组元素被分割成到一块单独存储区中。根据MAX WIDTH的可能取值情况，最后决定使用一个或者多个Block RAM实现。注意，每个Block RAM可在每个时钟周期支持两次独立访问。
