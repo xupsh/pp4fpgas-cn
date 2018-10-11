@@ -20,7 +20,129 @@ CORDIC算法是1950年由Jack Volder发明，它最开始是作为数字解决�
 
 ​	CORDIC核心思想是在一个二维平面上高效地执行一组矢量旋转。在这些旋转运算的基础上增加一些简单控制，我们就可以实现各种基础操作，例如，三角函数，双曲函数，对数函数，实乘和复乘，以及矩阵分解和因式分解。CORDIC已经广泛应用于信号处理、机器人技术、通信和许多科学计算领域。由于CORDIC占用资源少，所以常用在FPGA设计中。
 
+在下文中，我们将介绍CORDIC如何执行给定输入角θ的正弦和余弦的过程。这是使用一系列矢量旋转来完成的，这些简单的操作在硬件中使用非常有效。在高层次，算法使用一系列旋转来工作，目标是达到目标输入角θ。实现这种效率的关键创新是旋转可以以需要最少计算的方式完成。尤其我们使用乘以2的常数幂来执行旋转。这意味着
+简单地在硬件中移动位是非常有效的，因为它不需要任何逻辑。
+图3.1提供了用于计算cosφ和sinφ的CORDIC程序的高级概述。在这种情况下，我们在x轴上开始初始旋转矢量，即0°角。然后，我们执行一系列迭代旋转;在这个例子中，我们只执行四次旋转，但通常这是40次旋转。每个后续旋转使用越来越小的角度，这意味着每次迭代都会为输出值增加更多精度。在每次迭代中，我们决定以较小的角度进行正向或负向旋转。我们旋转的角度值是先验固定的;因此，我们可以轻松地将它们的值存储在一个小内存中，并保持我们到目前为止已经旋转的累积角度的运行总和。如果该累积角度大于我们的目标角度φ，则我们执行负旋转。如果它更小，那么旋转就是正的。一旦我们完成了足够数量的旋转，我们就可以通过直接读取最终旋转矢量的x和y值来确定cosφ和sinφ。如果我们的最终向量的幅度为1，则x =cosφ且y =sinφ。
+
+我们从一些术语开始，目的是重新定义你的一些基本的三角函数和矢量概念。 如果熟悉的话就不必看了。 但请记住，创建高效硬件设计最重要的一个方面是真正理解应用程序; 只有这样，设计师才能有效地利用优化指令并执行代码重构，这是获得最有效设计所必需的。
+
+CORDIC算法的基本目标是以有效的方式执行一系列旋转。 让我们首先考虑如何进行旋转。 在二维中，旋转矩阵是：
+
+$$
+\begin{equation}
+R(\theta) = \begin{bmatrix}
+\cos \theta & -\sin \theta \\
+\sin \theta & \cos \theta \\
+\end{bmatrix}
+\label{eq:rotation_matrix}
+\end{equation}
+\quad(3.1)
+$$
+
+CORDIC使用迭代算法将矢量v旋转到某个角度目标，这取决于CORDIC正在执行的功能。 一次旋转是$$v_{i} = R_{i}·v_{i-1}$$形式的矩阵向量乘法。 因此，在CORDIC的每次迭代中，我们执行以下操作来执行一次旋转，即矩阵向量乘法：
+$$
+\begin{equation}
+\begin{bmatrix}
+\cos \theta & -\sin \theta \\
+\sin \theta & \cos \theta \\
+\end{bmatrix}\begin{bmatrix}
+x_{i-1} \\
+y_{i-1} \\
+\end{bmatrix}
+= \begin{bmatrix}
+x_i \\
+y_i \\
+\end{bmatrix}
+\end{equation}
+\quad(3.2)
+$$
+
+写出线性方程，新旋转矢量的坐标是：
+$$
+\begin{equation}
+x_i = x_{i-1}  \cos \theta - y_{i-1}  \sin \theta\
+\end{equation}
+\quad(3.3)
+$$
+和
+$$
+\begin{equation}
+y_i = x_{i-1} \sin \theta + y_{i-1} \cos \theta\
+\end{equation}
+\quad(3.4)
+$$
+
+这正是我们需要简化的操作。 我们想要执行这些旋转而不执行任何乘法。
+首先考虑90°旋转。 在这种情况下，旋转矩阵是：
+$$
+\begin{equation}
+R(90^\circ) = \begin{bmatrix}
+\cos 90^\circ & -\sin 90^\circ \\
+\sin 90^\circ & \cos 90^\circ \\
+\end{bmatrix} = \begin{bmatrix}
+0 & -1 \\
+1 & 0 \\
+\end{bmatrix}
+\end{equation}
+\quad(3.5)
+$$
+因此我们只需要执行操作：
+$$
+\begin{align}
+x_i &= x_{i-1}  \cos 90^\circ - y_{i-1} \sin 90^\circ \nonumber \\
+& = x_{i-1} \cdot 0 - y_{i-1} \cdot 1 \nonumber \\
+& = -y_{i-1}\
+\end{align}
+\quad(3.6)
+$$
+和
+$$
+\begin{align}
+y_i &= x_{i-1} \sin  90^\circ + y_{i-1} \cos 90^\circ \nonumber \\
+& = x_{i-1} \cdot 1 + y_{i-1} \cdot 0 \nonumber \\
+&=  x_{i-1}\
+\end{align}
+\quad(3.7)
+$$
+把这放在一起，我们可以得到
+$$
+\begin{equation}
+\begin{bmatrix}
+0 & -1 \\
+1 & 0 \\
+\end{bmatrix}\begin{bmatrix}
+x \\
+y \\
+\end{bmatrix}
+= \begin{bmatrix}
+-y \\
+x \\
+\end{bmatrix}
+\end{equation}
+\quad(3.8)
+$$
+
+可以看到这需要的计算非常少;旋转矢量简单地使y值无效，然后交换x和y值。二进制补码无效需要等效于加法器的硬件。因此，我们实现了有效执行90°旋转的目标。
+
+如果你想在-90°之间旋转怎么办？什么是旋转矩阵R（-90°）？ 此u旋转需要什么类型的计算？如何设计能够通过-90°执行正负旋转的最有效电路，例如 旋转方向是电路的输入？
+
+虽然我们可以旋转±90°，但如果我们希望在旋转到目标角度时都有好的分辨率，我们需要旋转更小的角度。也许我们可能希望旋转的下一个自然角度是±45°。使用公式3.1中的旋转矩阵得到
+
+$$
+\begin{equation}
+R(45^\circ) = \begin{bmatrix}
+\cos 45^\circ & -\sin 45^\circ \\
+\sin 45^\circ & \cos 45^\circ \\
+\end{bmatrix} = \begin{bmatrix}
+\sqrt 2/2 & -\sqrt 2/2 \\
+\sqrt 2/2 & \sqrt 2/2 \\
+\end{bmatrix}
+\end{equation}
+\quad(3.9)
+$$
+
 计算旋转操作数值，我们可以得到
+
 
 $$
 x_i = x_{i-1}  \cos 45^\circ - y_{i-1} \sin 45^\circ = x_{i-1} \cdot \sqrt 2/2  - y_{i-1} \cdot \sqrt 2/2  \quad(3.10)
