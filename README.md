@@ -4,15 +4,17 @@
 
 国内鲜有介绍HLS的书，我们希望通过翻译`Parallel Programming for FPGAs`这本书，让更多的人来了解HLS和FPGA开发。
 
+## 本书电子版pdf
+
+> 欢迎关注公众号获取最新版电子pdf Xilinx学术合作 以及 PYNQ中文社区
+
+![Xilinx学术合作](images/qrcode.jpg) ![PYNQ中文社区](images/qrcode2.jpg)
+
 ## 本书中文翻译和更新可在以下网址浏览
 
 - [推荐] Gitbook Page: <https://xupsh.gitbook.io/pp4fpgas-cn/>
 
-- [备用] Github  Page: <https://xupsh.github.io/pp4fpgas-cn/>
-
-## 本文电子版可以在以下网址下载
-
-- pdf: <https://github.com/xupsh/pp4fpgas-cn/releases>
+- [备用] Github Page: <https://xupsh.github.io/pp4fpgas-cn/>
 
 ## 本文案例可以在以下网址下载
 
@@ -21,10 +23,11 @@
 ## 问题反馈
 
 - 如有问题请在这里👇指正
+
   - 提出ISSUE: <https://github.com/xupsh/pp4fpgas-cn/issues/new>
   - 在Gitbook Page:<https://xupsh.gitbook.io/pp4fpgas-cn>电子书阅读页面下方留言
-- 此书翻译稿目前为初稿，欢迎各位提宝贵意见、反馈意见，授课支持，实验平台试用请联系[joshual@xilinx.com](mailto:joshual@xilinx.com)或[xup_china@xilinx.com](mailto:xup_china@xilinx.com)
 
+- 此书翻译稿目前为初稿，欢迎各位提宝贵意见、反馈意见，授课支持，实验平台试用请联系[joshual@xilinx.com](mailto:joshual@xilinx.com)或[xup_china@xilinx.com](mailto:xup_china@xilinx.com)
 
 ## LICENSE
 
