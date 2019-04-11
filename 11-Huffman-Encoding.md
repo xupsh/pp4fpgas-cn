@@ -104,7 +104,7 @@ Canonical霍夫曼编码过程本质上是被分成子函数。因此，我们�
 INPUT_SYMBOL_SIZE参数定义了作为编码输入的符号的最大数量。在这种情况下，我们将其设置为256，从而启用8位ASCII数据的编码。 TREE_DEPTH参数指定初始霍夫曼树生成期间单个代码字长度的上限。当霍夫曼树在truncate_tree函数中重新平衡时，CODEWORD_LENGTH参数指定了目标树的高度。 CODEWORD_LENGTH_BITS常量决定编码码字长度所需的位数，等于log2[CODEWORD_LENGTH]，在这种情况下也即等于5。
 
 ```c
-include "ap_int.h"
+#include "ap_int.h"
 
 // input number of symbols
 const static int INPUT_SYMBOL_SIZE = 256;
@@ -149,7 +149,7 @@ void huffman_encoding (
 ![图11.4：Canonical霍夫曼编码的硬件实现框图。灰色块表示由不同子函数生成和消耗的重要输入和输出数据。白色块对应于函数（计算核心）。注意，数组初始位长度出现两次，以使图形更加清晰。](images/che_dataflow.jpg)
 
 我们创建一个自定义数据类型Symbol来保存对应于输入值和它们的频率的数据。 该数据类型在需要访问这些信息的编码过程中被用于filter, sort，以及其它一些函数。数据类型有两个字段：数值和频率。 在这里我们假定被编码的数据块包含不超过2^32个符号。
-最后，huffman.h 文件具有huffman_encoding函数接口。 这是Vivado HLS工具指定的顶层函数。它有三个参数, 第一个参数是大小为INPUT SYMBOL SIZE的符号数组。该数组表示被编码块中数据频率的直方图。 接下来的两个参数是输出。 encoding参数
+最后，huffman.h 文件具有huffman_encoding函数接口。 这是Vivado HLS工具指定的顶层函数。它有三个参数, 第一个参数是大小为INPUT_SYMBOL_SIZE的符号数组。该数组表示被编码块中数据频率的直方图。 接下来的两个参数是输出。 encoding参数
 输出每个可能符号的码字。Num_nonzero_symbols参数是来自输入数据的非零符号的数量 ，这与filter操作后剩余的符号数量相同。
 系统的输入是一个Symbol数组，这保存了数组IN中的符号值和频率。每个符号保存10-bit value和32-bit frequency。该数组的大小设置为常数INPUT_SYMBOL_SIZE，在本例中为256。filter模块从in数组读取，并将其输出写入到filtered数组。这是一个Symbols数组，它保存了sort模块输入的非零元素个数。 sort模块将按频率排序的符号写入两个不同的数组中 - 一个用于create tree模块，另一个用于canonize tree模块。create tree模块从排序后的数组中创建一个霍夫曼树并将其存储到三个数组中（(parent, left, and right）;这些数组拥有霍夫曼树每个节点的所有信息。使用霍夫曼树信息，compute bit len模块计算每个符号的位长并将该信息存储到initial bit len数组。我们将最大条目数设置为64，覆盖最高64位的频率数，这对于大多数应用来说是足够的，因为我们的霍夫曼树能够重新平衡它的高度。truncate tree模块重新平衡树高，并将每个码字的位长度信息复制到两个单独的truncated bit length数组中。它们每个都有完全相同的信息，但它们必须被复制以确保Vivado HLS工具可以执行流水线功能;稍后我们将会更详细地讨论它。 canonize tree模块遍历sort模块中的每个符号，并使用truncated bit length数组分配适当的位长度。canonize模块的输出是一个数组，其中包含每个符号码字的位长度。最后，create codeword模块为每个符号生成canonical码字。
 
@@ -184,7 +184,7 @@ Vivado HLS可以自动内联函数以便生成更高效的架构。 大多数情
 
 ### 11.2.2 分类
 如图11.6所示，sort函数根据对输入符号的frequency值进行排序。该函数由两个for循环组成，标记为copy_in_to_sorting和radix_sort。copy_in_to_sorting循环把输入的数据从in数组搬移到sorting数组中，这确保了in数组是只读的，以满足在顶层使用的dataflow指令的要求。 sorting函数在整个执行过程中读取和写入sorting数组。即使对于这样的简单循环，使用pipeline指令生成最有效的结果和最准确的性能估计是很重要的。
-radix_ sort 循环实现核心基数排序算法。 通常，基数排序算法通过一次处理一个数字或一组比特来对数据进行排序。 每个数字的大小决定了排序的基数。 我们的算法在32比特的Symbol.frequency变量时处理4比特。因此我们使用基数r = 2^4 = 16排序。 对于32位数字中的每个4比特数字，我们进行计数排序。radix_sort循环执行这8个计数排序操作，以4为单位迭代到32.基数排序算法也可以从左到右（首先是最低有效位）或从右到左（首先是最高有效位）操作。算法从最低有效位运行到最高有效位。 在代码中，基数可以通过设置RADIX和BITS_PER_LOOP参数来配置。
+radix_sort 循环实现核心基数排序算法。 通常，基数排序算法通过一次处理一个数字或一组比特来对数据进行排序。 每个数字的大小决定了排序的基数。 我们的算法在32比特的Symbol.frequency变量时处理4比特。因此我们使用基数r = 2^4 = 16排序。 对于32位数字中的每个4比特数字，我们进行计数排序。radix_sort循环执行这8个计数排序操作，以4为单位迭代到32.基数排序算法也可以从左到右（首先是最低有效位）或从右到左（首先是最高有效位）操作。算法从最低有效位运行到最高有效位。 在代码中，基数可以通过设置RADIX和BITS_PER_LOOP参数来配置。
 
 {% hint style='tip' %}
 如果我们增加或减少基数会发生什么？这将如何影响执行的计数排序操作的次数？这将如何改变资源使用，例如数组的大小呢？
@@ -230,7 +230,7 @@ void sort(
         for(int j = 0; j < num_symbols; j++) {
 #pragma HLS PIPELINE II=1
             Digit digit = (sorting[j].frequency >> shift) & (RADIX - 1); // Extrract a digit
-            current_digit[j] = digit;  // Store the current digit for each symbol
+            current_digit[j] = digit;  // Store the current_digit for each symbol
             digit_histogram[digit]++;
             previous_sorting[j] = sorting[j]; // Save the current sorted order of symbols
         }
@@ -258,8 +258,8 @@ void sort(
 之前我们已经看到loop_tripcount指令向Vivado HLS提供 循环次数信息。使用assert（）语句有许多相同的用途，有一些优点和缺点。使用assert（）语句的一个优点是它们检查仿真过程，并且这些信息可以用来进一步优化电路。然而，loop_tripcount指令只影响性能分析，不是用于优化。另一方面，assert（）语句只能用于对变量值进行限制，但不能用于设置期望值或平均值，只能通过loop_tripcount指令完成。在大多数情况下，建议首先通过assert（）语句提供最差情况边界，然后在必要时添加loop_tripcount指令。
 {% endhint %}
 
-radix_sort循环的主体被分成四个子循环，分别标记为init_histogram，compute_histogram,，find_digit_location,和re_sort.。init_histogram和compute_histogram结合基于当前考虑的数字来计算输入的直方图。这会产生每次每个数字在digit histogram[]中出现的数量。compute_histogram循环还存储当前正在为current_ digit[]中每个符号排序的数字。
-接下来，find_digit_location循环计算所得直方图值的前缀之和，把结果存在digit location[]。在计数排序的情况下，digit_location[]包含新排序数组中每个数字的第一个符号的位置。最后，re_sort循环根据这些结果对符号重新排序，将每个元素放置在新排序数组中的正确位置。它使用current_ digit[]中存储的密钥从digit_location[]中选择正确的位置。每次通过re_sort循环时，该位置都会递增，以将下一个具有相同数字的元素放入排序数组中的下一个位置。总体而言，每次都是通过radix_sort循环迭代来实现对一个数字的计数排序。计数排序是一个稳定的排序，具有相同数字的元素保持相同的顺序。在基于每个数字的稳定排序之后，数组以正确的最终顺序返回。
+radix_sort循环的主体被分成四个子循环，分别标记为init_histogram，compute_histogram,，find_digit_location,和re_sort.。init_histogram和compute_histogram结合基于当前考虑的数字来计算输入的直方图。这会产生每次每个数字在digit histogram[]中出现的数量。compute_histogram循环还存储当前正在为current_digit[]中每个符号排序的数字。
+接下来，find_digit_location循环计算所得直方图值的前缀之和，把结果存在digit location[]。在计数排序的情况下，digit_location[]包含新排序数组中每个数字的第一个符号的位置。最后，re_sort循环根据这些结果对符号重新排序，将每个元素放置在新排序数组中的正确位置。它使用current_digit[]中存储的密钥从digit_location[]中选择正确的位置。每次通过re_sort循环时，该位置都会递增，以将下一个具有相同数字的元素放入排序数组中的下一个位置。总体而言，每次都是通过radix_sort循环迭代来实现对一个数字的计数排序。计数排序是一个稳定的排序，具有相同数字的元素保持相同的顺序。在基于每个数字的稳定排序之后，数组以正确的最终顺序返回。
 前面我们在8.2和8.1章中讨论过直方图和前缀求和算法。在这种情况下，我们使用简单的代码和digit_histogram[]和digit_location[]完整的分解，就可以实现1的循环II来计算直方图和前缀和，因为箱子的数量非常小。re_sort循环的优化与此类似。 由于唯一的循环是通过相对较小的digit_ location[]数组，实现1的循环II也很简单。 注意这种方法的工作原理主要是因为我们配置的RADIX相对较小。较大的RADIX值时，将digit_histogram[]和digit_location[]作为存储是更好的，这可能需要额外的优化来实现1的循环II。
 在此代码的上下文中可能有意义的另一种替代方法是将digixPrase[]和digialPosith[]完全的分解与init_histogram和find_digit_location循环完全的展开结合起来。这些循环访问这些小数组中的每个位置并使用最少量的逻辑进行操作。在这种情况下，尽管展开循环可能会导致为每个循环体复制电路，但实现此电路所需的资源较少，因为阵列访问将处于固定索引。 但是，改变更大的值的BITS_PER_LOOP参数是禁止的，因为每个额外的位都会使RADIX参数翻倍，展开循环的成本也翻了一番。 这对于参数化代码是一种常见的情况，不同的优化对于不同的参数值是有意义的。
 

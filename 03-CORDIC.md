@@ -343,7 +343,7 @@ THETA_TYPE cordic_phase[NUM_ITERATIONS] = {
 };
 
 void
-cordic(THETA_TYPE theta, COS_SIN_TYPE &s, COS_SIM_TYPE &c)
+cordic(THETA_TYPE theta, COS_SIN_TYPE &s, COS_SIN_TYPE &c)
 {
     //Set the initial vector that we will rotate
     //current_cos = I;current = Q
@@ -566,7 +566,7 @@ float p2 = 0xB4p-4;//Initialize p2 to "11.25"
 | ---- | ----- | ----- | ----- | ----- | -------- |
 |      |       | 0     | 1     | 1     | =3       |
 | +    |       | 0     | 1     | 1     | =3       |
-| =    | 0     | 1     | 1     | 0     | =15      |
+| =    | 0     | 1     | 1     | 0     | =6       |
 
 ​   注意由于减法结果可能是负数，那个“额外的位数”就成了有符号二进制补码数据的符号位。
 

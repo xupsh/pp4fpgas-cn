@@ -218,7 +218,7 @@ void video_2dfilter_linebuffer(rgb_pixel pixel_in[MAX_HEIGHT][MAX_WIDTH],
 #pragma HLS interface ap_hs port=pixel_out
 #pragma HLS interface ap_hs port=pixel_in
 rgb_pixel window[3][3];
-rgb_pixel line_buffer[2][MAX WIDTH];
+rgb_pixel line_buffer[2][MAX_WIDTH];
 #pragma HLS array_partition variable=line_buffer complete dim=1
 row_loop: for (int row = 0; row < MAX_HEIGHT; row++) {
 	col_loop: for (int col = 0; col < MAX_WIDTH; col++) {
@@ -328,46 +328,46 @@ void video_2dfilter_linebuffer_extended(
 ​视频处理是一种常见的非常适合使用HLS实现的FPGA应用。大多数视频处理算法有一个共同特点是数据局部性，即可以在使用少量的外部存储器访问的情况下，能够实现流式传输和本地缓存的应用。
 
 ```c
-void video 2dfilter linebuffer extended constant(
-  rgb pixel pixel in[MAX HEIGHT][MAX WIDTH], rgb pixel pixel out[MAX HEIGHT][MAX WIDTH]) {
-  #pragma HLS interface ap hs port=pixel out
-  #pragma HLS interface ap hs port=pixel in
-  rgb pixel window[3][3];
-  rgb pixel line buffer[2][MAX WIDTH];
-  #pragma HLS array partition variable=line buffer complete dim=1
-  row loop: for(int row = 0; row < MAX HEIGHT+1; row++) {
-	col loop: for(int col = 0; col < MAX WIDTH+1; col++) {
+void video_2dfilter_linebuffer_extended_constant(
+  rgb_pixel pixel_in[MAX_HEIGHT][MAX_WIDTH], rgb_pixel pixel_out[MAX_HEIGHT][MAX_WIDTH]) {
+  #pragma HLS interface ap_hs port=pixel_out
+  #pragma HLS interface ap_hs port=pixel_in
+  rgb_pixel window[3][3];
+  rgb_pixel line_buffer[2][MAX_WIDTH];
+  #pragma HLS array_partition variable=line_buffer complete dim=1
+  row_loop: for(int row = 0; row < MAX_HEIGHT+1; row++) {
+	col_loop: for(int col = 0; col < MAX_WIDTH+1; col++) {
 	#pragma HLS pipeline II=1
-	rgb pixel pixel;
-	if(row < MAX HEIGHT && col < MAX WIDTH) {
-		pixel = pixel in[row][col];
+	rgb_pixel pixel;
+	if(row < MAX_HEIGHT && col < MAX_WIDTH) {
+		pixel = pixel_in[row][col];
 	}
 	for(int i = 0; i < 3; i++) {
 		window[i][0] = window[i][1];
 		window[i][1] = window[i][2];
 	}
-	if(col < MAX WIDTH) {
-		window[0][2] = (line buffer[0][col]);
-		window[1][2] = (line buffer[0][col] = line buffer[1][col]);
-		window[2][2] = (line buffer[1][col] = pixel);
+	if(col < MAX_WIDTH) {
+		window[0][2] = (line_buffer[0][col]);
+		window[1][2] = (line_buffer[0][col] = line_buffer[1][col]);
+		window[2][2] = (line_buffer[1][col] = pixel);
 	}
 	if(row >= 1 && col >= 1) {
 		int outrow = row−1;
 		int outcol = col−1;
-		rgb pixel window2[3][3];
+		rgb_pixel window2[3][3];
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				int wi, wj;
 				if (i < 1 − outrow) wi = 1 − outrow;
-				else if (i >= MAX HEIGHT − outrow + 1) wi = MAX HEIGHT − outrow;
+				else if (i >= MAX_HEIGHT − outrow + 1) wi = MAX_HEIGHT − outrow;
 				else wi = i;
 				if (j < 1 − outcol) wj = 1 − outcol;
-				else if (j >= MAX WIDTH − outcol + 1) wj = MAX WIDTH − outcol;
+				else if (j >= MAX_WIDTH − outcol + 1) wj = MAX_WIDTH − outcol;
 				else wj = j;
 				window2[i][j] = window[wi][wj];
 	}
 }
-		pixel out[outrow][outcol] = filter(window2);
+		pixel_out[outrow][outcol] = filter(window2);
 			}
 		}
   	}

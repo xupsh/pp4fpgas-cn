@@ -48,9 +48,9 @@ $$
 ![图8.5 一个直方图实例](images/histogram_introd.jpg)
 
 ```c
-void histogram(int in[INPUT SIZE], int hist[VALUE SIZE]) {
+void histogram(int in[INPUT_SIZE], int hist[VALUE_SIZE]) {
 	int val;
-	for(int i = 0; i < INPUT SIZE; i++) {
+	for(int i = 0; i < INPUT_SIZE; i++) {
 		#pragma HLS PIPELINE
 		val = in[i];
 		hist[val] = hist[val] + 1;
@@ -115,12 +115,12 @@ void histogram(int in[INPUT SIZE], int hist[VALUE SIZE]) {
 
 ```c
 #include ”histogram.h”
-    void histogram(int in[INPUT SIZE], int hist[VALUE SIZE]) {
+    void histogram(int in[INPUT_SIZE], int hist[VALUE_SIZE]) {
     int acc = 0;
     int i, val;
     int old = in[0];
     #pragma HLS DEPENDENCE variable=hist intra RAW false
-    for(i = 0; i < INPUT SIZE; i++) {
+    for(i = 0; i < INPUT_SIZE; i++) {
       #pragma HLS PIPELINE II=1
       val = in[i];
       if(old == val) {
@@ -159,15 +159,15 @@ void histogram(int in[INPUT SIZE], int hist[VALUE SIZE]) {
 
 ```c
 #include ”histogram parallel.h”
-void histogram map(int in[INPUT SIZE/2], int hist[VALUE SIZE]) {
+void histogram_map(int in[INPUT_SIZE/2], int hist[VALUE_SIZE]) {
 	#pragma HLS DEPENDENCE variable=hist intra RAW false
-	for(int i = 0; i < VALUE SIZE; i++) {
+	for(int i = 0; i < VALUE_SIZE; i++) {
 		#pragma HLS PIPELINE II=1
 		hist[i] = 0;
     }
     int old = in[0];
     int acc = 0;
-    for(int i = 0; i < INPUT SIZE/2; i++) {
+    for(int i = 0; i < INPUT_SIZE/2; i++) {
         #pragma HLS PIPELINE II=1
         int val = in[i];
         if(old == val) {
@@ -180,21 +180,21 @@ void histogram map(int in[INPUT SIZE/2], int hist[VALUE SIZE]) {
 	}
 	hist[old] = acc;
 }
-void histogram reduce(int hist1[VALUE SIZE], int hist2[VALUE SIZE], int output[VALUE SIZE]) {
-	for(int i = 0; i < VALUE SIZE; i++) {
+void histogram_reduce(int hist1[VALUE_SIZE], int hist2[VALUE_SIZE], int output[VALUE_SIZE]) {
+	for(int i = 0; i < VALUE_SIZE; i++) {
 		#pragma HLS PIPELINE II=1
 		output[i] = hist1[i] + hist2[i];
 	}
 }
 //Top level function
-void histogram(int inputA[INPUT SIZE/2], int inputB[INPUT SIZE/2], int hist[VALUE SIZE]){
+void histogram(int inputA[INPUT_SIZE/2], int inputB[INPUT_SIZE/2], int hist[VALUE_SIZE]){
     #pragma HLS DATAFLOW
-    int hist1[VALUE SIZE];
-    int hist2[VALUE SIZE];
+    int hist1[VALUE_SIZE];
+    int hist2[VALUE_SIZE];
 
-    histogram map(inputA, hist1);
-    histogram map(inputB, hist2);
-    histogram reduce(hist1, hist2, hist);
+    histogram_map(inputA, hist1);
+    histogram_map(inputB, hist2);
+    histogram_reduce(hist1, hist2, hist);
 }
 ```
 

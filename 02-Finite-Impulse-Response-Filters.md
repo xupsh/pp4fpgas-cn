@@ -36,7 +36,7 @@ $$
 y[12]=\frac{1}{3}\cdot (x[12]+x[11]+x[10])\quad(2.3)
 $$
 
-​这个过滤器是因果系统，这意味着输出数据与当前输入值及以前的数据有关。系统的因果特性是可以改变的，例如以当前样本为数据中心时刻的处理，即y[12] = 13·(x[11] + x[12] + x[13])。虽然从根本上来说因果特性是系统分析的一个重要属性，但是对于硬件实现来说它没有那么重要，一个有限非因果滤波器可以通过数据缓冲或者重排列来实现转因果系统的转换。
+​这个过滤器是因果系统，这意味着输出数据与当前输入值及以前的数据有关。系统的因果特性是可以改变的，例如以当前样本为数据中心时刻的处理，即y[12] = 1/3·(x[11] + x[12] + x[13])。虽然从根本上来说因果特性是系统分析的一个重要属性，但是对于硬件实现来说它没有那么重要，一个有限非因果滤波器可以通过数据缓冲或者重排列来实现转因果系统的转换。
 
 ​滑动均值滤波器可以用来平滑信号，例如去除随机(大部分是高频)噪声。随着N的阶数越高，我们会平均更多的样本，相应的我们必须进行更多的计算。对于滑动均值滤波器，N值的增大等效于减小输出信号带宽。根本上讲，它就像一个低通滤波器(虽然不是非常理想)。直觉上，这样解释是有意义的。当我们对越来越多的样本进行平均时，我们消除了输入信号中更高的频率分量。也就是说，“平滑”等同于降低高频分量。滑动滤波器是最优的减少白噪声同时保持最陡峭阶跃响应的滤波器，即高给定边缘锐度的情况下把噪声压到最低。
 
@@ -63,7 +63,7 @@ typedef int data_t;
 typedef int acc_t;
 
 void fir(data_t *y,data_t x){
-    coef_t[N] = {
+    coef_t C[N] = {
         53,0,-91,0,313,500,313,0,-91,0,53
     };
     static
@@ -423,7 +423,7 @@ width是1到1024^1^  之间的整数。例如，ap_int<8>是一个8位有符号�
 ​考虑方程2.4来理解如何利用实数FIR滤波器建立复数FIR滤波器。假设(Iin, Qin)是我们希望输入滤波器的一个数据。其中复数FIR滤波器系数表示为$$(I_{fir}, Q_{fir})$$。处理系统中将会有不止一个输入样本和复数滤波器系数，但我们现在不用担心这点。
 
 $$
-(I_{in}+ j Q_{in})(I_{fir} + j Q_{fir}) = (I_{in} I_{fir}  Q_{in} Q_{fir}) +  j (Q_{in}  I_{fir} + I_{in}Q_{fir}) \quad(2.4)
+(I_{in}+ j Q_{in})(I_{fir} + j Q_{fir}) = (I_{in}I_{fir} - Q_{in} Q_{fir}) +  j (Q_{in}  I_{fir} + I_{in}Q_{fir}) \quad(2.4)
 $$                            
 
 ​方程2.4显示了复数FIR滤波器的一个系数与输入复数数据的乘法。方程右侧显示复数FIR滤波器输出实数部分是$$ I_{in}I_{fir} - Q_{in}Q_{fir} $$，和虚数部分为$$ Q_{in}I_{fir} + I_{in}Q_{fir} $$。这意味着我们可以将复数FIR过滤器运算拆分为四个实数滤波器，如图2.9所示。
@@ -434,13 +434,13 @@ $$
  ```c++
 typedef int data_t;
 void firI1(data_t *y,data_t x);
-void fitQ1(data_t *y,data_t x);
+void firQ1(data_t *y,data_t x);
 void firI2(data_t *y,data_t x);
-void fitQ2(data_t *y,data_t x);
+void firQ2(data_t *y,data_t x);
 
 void complexFIR(data_t Iin, data_t Qin,data_t *Iout,data_t *Qout){
 
-    data_t IinIfir,QinQfir,QinIfir,IinQfit;
+    data_t IinIfir,QinQfir,QinIfir,IinQfir;
 
     firI1(&IinIfir,Iin);
     firQ1(&QinQfir,Qin);
@@ -464,7 +464,7 @@ void complexFIR(data_t Iin, data_t Qin,data_t *Iout,data_t *Qout){
 float mul(int x,int y){
     return x * y;
 }
-float top_function(float a,float b,float c,){
+float top_function(float a,float b,float c,float d){
     return mul(a,b) + mul(c,d) + mul(b,c) + mul(a,d);
 }
 float inlined_top_function(float a,float b,float c,float d){

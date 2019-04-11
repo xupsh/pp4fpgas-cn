@@ -185,19 +185,19 @@ void insertion_sort_parallel(DTYPE A[SIZE], DTYPE B[SIZE]) {
 void cell0(hls::stream<DTYPE> & in, hls::stream<DTYPE> & out)
 {
 	static DTYPE local = 0;
-	DTYPE in copy = in.read();
-	if(in copy > local) {
+	DTYPE in_copy = in.read();
+	if(in_copy > local) {
 		out.write(local);
-		local = in.copy;
+		local = in_copy;
 	}
 	else
 	{
-		out.write(in copy);
+		out.write(in_copy);
 	}
 }
 ```
 
-![图10.6：一个插入单元cell0对应的Vivado HLS C代码，其他单元格除了需要具体不同的函数名（比如cell1、cell2等）之外，其他的功能代码都时相同的。代码与图10.5中架构图所展示的功能相同，输入和输出变量采用了HLS的数据流接口，此接口提供了一种抽象层次更高跟方便的方法去生成和仿真FIFO。](images/placeholder.png)
+![图10.6：一个插入单元cell0对应的Vivado HLS C代码，其他单元格除了需要具体不同的函数名（比如cell1、cell2等）之外，其他的功能代码都时相同的。代码与图10.5中架构图所展示的功能相同，输入和输出变量采用了HLS的数据流接口，此接口提供了一种抽象层次更高更方便的方法去生成和仿真FIFO。](images/placeholder.png)
 
 图10.7展示了8个元素进行排序的代码，实现的主要功能即是将8个插入单元连接在一起。若需要扩展更多的元素，只需要复制更多的单元函数即可。HLS定义并实例化了单元之间的数据流变量类型，并以合适的方式连接每个单元的输入和输出接口。
 
