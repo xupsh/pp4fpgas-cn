@@ -6,10 +6,10 @@
 
 ## 本书电子版pdf
 
-> 欢迎关注公众号`Xilinx学术合作`以及`PYNQ中文社区`获取最新版电子pdf
-> 关注任一公众号，回复 `pp4fpgas` 即可获得
+> 欢迎关注公众号`PYNQ中文社区`获取最新版电子pdf
+> 回复 `pp4fpgas` 即可获得
 
-![Xilinx学术合作](images/qrcode.jpg) ![PYNQ中文社区](images/qrcode2.jpg)
+![PYNQ开源社区](images/qrcode2.jpg)
 
 ## 本书中文翻译和更新可在以下网址浏览
 
