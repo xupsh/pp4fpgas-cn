@@ -99,7 +99,7 @@ void histogram(int in[INPUT SIZE], int hist[VALUE SIZE]) {
 }
 ```
 
-![图8.8：计算直方图的替代函数。 通过向Vivado @HLS添加指令约束输入，就可以在不显着更改代码的情况下实现II = 1的设计。](images/placeholder.png)
+![图8.8：计算直方图的替代函数。 通过向Vivado @HLS添加指令约束输入，就可以在不显著更改代码的情况下实现II = 1的设计。](images/placeholder.png)
 
 {% hint style='info' %}在图8.8中，我们向代码添加了一个前提条件，使用一个断言对其进行了检查，并且使用**dependence**指令指示工具对于前提条件的约束。如果你的测试文件不满足这个先决条件会发生什么？如果删除assert()会发生什么？Vivado@HLS是否仍检查前提条件？如果前提条件与**dependence**指令不一致，会发生什么？ {% endhint %}
 
@@ -143,7 +143,7 @@ void histogram(int in[INPUT SIZE], int hist[VALUE SIZE]) {
 
 ## 8.4 提高直方图性能
 
-​通过一些努力，我们已经实现了II =1 的设计。以前我们已经看到通过部分展开内部循环方式可以进一步减少设计的执行时间。但是对于直方图函数是有点困难的，有几个原因如下。第一个原因是顺序循环执行，即下次循环执行必须在这次循环计算完成的前提下才能开始，除非我们能够以某种方式分解输入数据。第二个原因是在回路II = 1的情况下，电路需要在在个时钟周期内同时执行读取和写入hist数组，这样就需要占用FPGA中BRAM资源的两个端口。之前我们已经考虑过数组分区方法来增加存储数组内存端口的数量，但是由于访问顺序输入数据，所以没有特别好的方式来分割hist数组。
+​通过一些努力，我们已经实现了II =1 的设计。以前我们已经看到通过部分展开内部循环方式可以进一步减少设计的执行时间。但是对于直方图函数是有点困难的，有几个原因如下。第一个原因是顺序循环执行，即下次循环执行必须在这次循环计算完成的前提下才能开始，除非我们能够以某种方式分解输入数据。第二个原因是在回路II = 1的情况下，电路需要在每个时钟周期内同时执行读取和写入hist数组，这样就需要占用FPGA中BRAM资源的两个端口。之前我们已经考虑过数组分区方法来增加存储数组内存端口的数量，但是由于访问顺序输入数据，所以没有特别好的方式来分割hist数组。
 
 ![图8.11：图中所示是与图8.10中的代码对应的数据路径的描述。 这里包含对应于if和else子句两个独立的部分。 该图显示了计算的重要部分，并省略了一些细节。](images/architectures_histogram_restructured.jpg)
 
@@ -155,9 +155,9 @@ void histogram(int in[INPUT SIZE], int hist[VALUE SIZE]) {
 
 ​新的直方图函数将输入数据分成两个分区，分别存储在**inputA**和**inputB**数组中。它使用**histogram_map**函数计算每个分区的直方图，然后将其存储在**hist1**和**hist2**数组中。这两个数组被输入到**histogram_reduce**函数中。该函数将它们合并后并将结果存储在hist数组中，其中合并的hist数组是顶层直方图函数的最终输出。
 
-{% hint style='info' %}修改图8.13中的代码包含支持可参数化改变**PE**个数的变量**NUM_PE**？提示：你需要根据数组分块数量**NUM_PE**以及循环将数组合并成一个数组。当你改变PE的数量时，吞吐量和任务间隔会发生什么变化？{% endhint %}
+{% hint style='info' %}修改图8.13中的代码，使得其支持可参数化改变的**PE**数目（变量名记为**NUM_PE**）？提示：你需要根据数组分块数量**NUM_PE**以及循环将数组合并成一个数组。当你改变PE的数量时，吞吐量和任务间隔会发生什么变化？{% endhint %}
 
-​我们在**histogram**函数中使用**dataflow**指令来达到任务级流水线设计。在这种情况下有三个处理过程：两个**partial_histogram**函数处理实例和两个**histogram_reduce**函数处理实例。在一个任务中，因为两个**partial_histogram**处理的数据相互独立，所以可以同时执行。**Histogram_reduce** 函数处理过程必须在 **partial_histogram** 处理完成后才开始。因此，**dataflow** 指令本质上是创建了一个两阶段的任务管道。第一阶段执行**partial_histogram**函数，而第二阶段执行**histogram_reduce**函数。与任何数据流设计一样，整个histogram函数的间隔取决于两个阶段的最大启动间隔。第一个阶段的两个**partial_histogram**函数时相同的，并且具有相同的间隔（$$I{I_{histogram\_map}}$$）。**Histogram_reduce** 函数将由另一个间隔（$$I{I_{histogram\_reduce}}$$）。顶层 **histogram** 函数的启动间隔$$I{I_{histogram}}$$是max($$I{I_{histogram\_map}}$$ ,$$I{I_{histogram\_reduce}}$$ ).
+​我们在**histogram**函数中使用**dataflow**指令来达到任务级流水线设计。在这种情况下有三个模块：两个**partial_histogram**函数实例和一个**histogram_reduce**函数实例。在一个任务中，因为两个**partial_histogram**处理的数据相互独立，所以可以同时执行。**Histogram_reduce** 函数处理过程必须在 **partial_histogram** 处理完成后才开始。因此，**dataflow** 指令本质上是创建了一个两阶段的任务管道。第一阶段执行**partial_histogram**函数，而第二阶段执行**histogram_reduce**函数。与任何数据流设计一样，整个histogram函数的间隔取决于两个阶段的最大启动间隔。第一个阶段的两个**partial_histogram**函数时相同的，并且具有相同的间隔（$$I{I_{histogram\_map}}$$）。**Histogram_reduce** 函数则是另一个间隔（$$I{I_{histogram\_reduce}}$$）。顶层 **histogram** 函数的启动间隔$$I{I_{histogram}}$$是max($$I{I_{histogram\_map}}$$ ,$$I{I_{histogram\_reduce}}$$ ).
 
 ```c
 #include ”histogram parallel.h”
@@ -202,7 +202,7 @@ void histogram(int inputA[INPUT_SIZE/2], int inputB[INPUT_SIZE/2], int hist[VALU
 
 ![图8.13：图示是使用任务级并行和流水线操作的直方图的另一种实现。直方图操作分为两个子任务，这两个子任务在两个histogram_map函数中执行。使用histogram_reduce函数将这些结果合并到最终的直方图结果中。顶层的histogram函数是将这三个函数连接在一起。](images/placeholder.png)
 
-{% hint style='info' %}当你添加或更改 **pipeline** 指令时，会发生什么？比如，在histogram_reduce函数中为 **for** 循环添加 **pipeline** 指令是否有益？将**pipeline**指令移动到直方图映射函数中，也即将它拉到当前所在 **for** 循环的外部，那么结果是什么？{% endhint %}
+{% hint style='info' %}当你添加或更改 **pipeline** 指令时，会发生什么？比如，在histogram_reduce函数中为 **for** 循环添加 **pipeline** 指令是否有益？将**pipeline**指令移动到直方图映射函数中，也就是将它拉到当前所在 **for** 循环的外部，那么结果是什么？{% endhint %}
 
 ​本节目标是学习直方图计算的优化算法，而这也是许多应用程序中另外一个小但重要的核心。关键是因为对于我们的程序，工具可以理解的东西通常是有限制的。在某些情况下，我们必须注意如何写代码，而在其他情况下，实际上我们必须提供给工具更多关于代码或代码执行环境的信息。特别的，内存访问形式的性能通常会严重影响HLS生成正确且高效的硬件。在Vivado@HLS中，可以使用 **dependence** 指令表示这些性能。有些时候这些优化或许与直觉相反，比如在8.10中添加的 **if/else** 结构。一些情况下优化或许要求一些创造性，就像分布式计算在图8.12和8.13的应用。
 
