@@ -21,6 +21,14 @@ $$
 $$
 \begin{aligned}
 ou{t_n} = ou{t_{n - 1}} + i{n_n} \\
+\end{aligned}
+$$
+$$
+\begin{aligned}
+ou{t_0} &= i{n_0} \\
+ou{t_1} &= i{n_0} + i{n_1} \\
+ou{t_2} &= i{n_0} + i{n_1} + i{n_2} \\
+ou{t_3} &= i{n_0} + i{n_1} + i{n_2} + i{n_3} \\
 &\cdots
 \end{aligned}
 $$
