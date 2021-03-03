@@ -752,7 +752,7 @@ void cordic(THETA TYPE theta, COS_SIN_TYPE &s, COS_SIN_TYPE &c)
     c = current_cos;
 }
 ```
-    Figure 3.6 定点数CORDIC代码实现给定角度sin和cos值
+Figure 3.6 定点数CORDIC代码实现给定角度sin和cos值
 
 ​   最后，CORDIC运算得到一个近似值。随着迭代次数的增加，近似值的误差通常会减小。这对应于我们在cordic函数中执行**for**循环的次数，该循环次数由NUM_ITERATION进行设置。即使我们执行了大量迭代，我们仍然可能得到一个近似值。这样做的一个原因是我们可以接近，但从来没有得到完全匹配的目标角度。然而，我们可以通过选择执行更大或更小的迭代角度来调整精度。上述算法中需要更改的地方都可以通过修改NUM_ITERATIONS的值来实现。NUM_ITERATIONS数值依赖于使用这个CORDIC算法应用程序所需精度。
 
