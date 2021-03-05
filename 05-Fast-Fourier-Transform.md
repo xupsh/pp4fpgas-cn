@@ -70,7 +70,7 @@ $$
 
 图5.1为这个计算提供了两种不同的表示方法。a）部分是2点DFT的数据流图。这是我们熟悉的本书的一种习惯的表达方法。b）部分展示了用于相同计算的蝶形结构。这是数字信号处理中使用的典型结构，特别是用于表示FFT中的计算。
 
-蝴蝶结构是一种更紧凑的表示形式，可用于表示大型数据流图。当两条线合在一起时，这表示一个加法操作。箭头线上的任何标签都表示该标签乘以该线上的值。该图中有两个标签:底部水平线上的'-'标志表示该值应该被否定。此后加上由相交的两条线表示的加法与减法相同。第二个标签是 $$W^0_2$$。虽然这是乘法是不必要的（因为 $$W^0_2$$ = 1，这意味着它乘以值'1'），但是把它表示出来是因为它在多样本点的FFT计算中很常见。
+蝴蝶结构是一种更紧凑的表示形式，可用于表示大型数据流图。当两条线合在一起时，这表示一个加法操作。箭头线上的任何标签都表示该标签乘以该线上的值。该图中有两个标签:底部水平线上的'-'标志表示该值应该被否定。此后加上由相交的两条线表示的加法与减法相同。第二个标签是 $$W^0_2$$。虽然这个乘法是不必要的（因为 $$W^0_2$$ = 1，这意味着它乘以值'1'），但是把它表示出来是因为它在多样本点的FFT计算中很常见。
 
 现在让我们考虑一个稍微大一点的DFT——4点DFT，有4个输入、4个输出以及一$$4 * 4$$的S矩阵如式5.5所示：
 
@@ -155,7 +155,7 @@ G[3] & = & g[0] \cdot e^{\frac{-j 2 \pi \cdot 3 \cdot 0}{4}} + g[1] \cdot e^{\fr
 \end{array}\quad(5.10)
 $$
 
-我们尚未发现我们的简化和上一个周期有何联系，它由 $$e^{\frac{-j 18 \pi}{4}}$$开始，因为他们相差了$$2\pi$$个旋转周期所以可以简化或者说是等于$$e^{\frac{-j 10 \pi}{4}}$$。旋转$$2\pi$$等于1即$$e^{\frac{-j 8 \pi}{4}}=1$$。最后，再旋转$$\pi$$ 个角度就相当于-1，就变成了$$e^{\frac{-j 6 \pi}{4}}$$。从另一个角度来看这个$$e^{\frac{-j 6 \pi}{4}}.e^{\frac{-j 18 \pi}{4}}$$，其中 $$e^{\frac{-j 4 \pi}{4}}=1$$。我们没有将式5.10彻底简化是为了在以下等式中证明对称性。通过重新排序，我们可以将这四个方程视为：
+我们尚未发现我们的简化和上一个周期有何联系，它由 $$e^{\frac{-j 18 \pi}{4}}$$开始，因为他们相差了$$2\pi$$个旋转周期所以可以简化或者说是等价于$$e^{\frac{-j 10 \pi}{4}} \cdot e^{\frac{-j 8 \pi}{4}}$$,第二项等于1即$$e^{\frac{-j 8 \pi}{4}}=1$$。最后，再旋转$$\pi$$ 个角度就相当于-1，就变成了$$e^{\frac{-j 6 \pi}{4}}$$。从另一个角度来看这个$$e^{\frac{-j 6 \pi}{4}}.e^{\frac{-j 18 \pi}{4}}$$，其中 $$e^{\frac{-j 4 \pi}{4}}=1$$。我们没有将式5.10彻底简化是为了在以下等式中证明对称性。通过重新排序，我们可以将这四个方程视为：
 
 $$
 \begin{array} {lll}
@@ -239,7 +239,7 @@ $$
 G[k + N/2] = \displaystyle\sum\limits_{n=0}^{N-1} g[n] \cdot e^{\frac{-j 2 \pi (k + N/2) n}{N}} \text{ for } k = 0, \ldots, N/2 - 1\quad(5.18)
 $$
 
-这类似于具有不同指数的公式5.13，即我们用公式5.13代替k，其中k+N/2。用我们之前执行的相同变换集，我们可以将它直接移动到等式5.16，但用k+N/2替换k，可得：
+这类似于公式5.13，只是下标不同。即我们用k+N/2替换公式5.13中的k。用我们之前完全相同的变换，我们可以将它直接类比到等式5.16，但用k+N/2替换k，可得：
 
 $$
 G[k + N/2] = \displaystyle\sum\limits_{n=0}^{N/2-1} g[2n] \cdot e^{\frac{-j 2 \pi (k + N/2) n}{N/2}} + e^{\frac{-j 2 \pi (k + N/2)}{N}} \cdot \displaystyle\sum\limits_{n=0}^{N/2-1} g[2n+1] \cdot e^{\frac{-j 2 \pi (k + N/2) n}{N/2}} \quad(5.19)
@@ -251,7 +251,7 @@ $$
 e^{\frac{-j 2 \pi (k + N/2) n}{N/2}} = e^{\frac{-j 2 \pi k n}{N/2}} \cdot e^{\frac{-j 2 \pi (N/2) n}{N/2}} = e^{\frac{-j 2 \pi k n}{N/2}} \cdot e^{-j 2 \pi n} = e^{\frac{-j 2 \pi k n}{N/2}} \cdot 1\quad(5.20)
 $$
 
-第一次简化使用了幂规则来分割指数。第二次简化取消了在第二指数中的N/2项。最后的简化使用n是非负整数的事实，因此$$e^{-j2\pi n}$$将始终是2π的倍数的旋转。这意味着该项始终等于1。
+第一次简化使用了幂运算规则来分割指数。第二次简化取消了在第二指数中的N/2项。最后的简化使用n是非负整数的事实，因此$$e^{-j2\pi n}$$将始终是2π的倍数的旋转。这意味着该项始终等于1。
 
 现在让我们来处理第二个复指数：
 
@@ -259,7 +259,7 @@ $$
 e^{\frac{-j 2 \pi (k + N/2)}{N}} = e^{\frac{-j 2 \pi k }{N}} \cdot e^{\frac{-j 2 \pi N/2 }{N}} = e^{\frac{-j 2 \pi k }{N}} \cdot e^{-j  \pi} = - e^{\frac{-j 2 \pi k }{N}}\quad(5.21)
 $$
 
-第一次简化使用幂规则分割指数。第二次对第二个指数进行了一些简化。我们通过等式$${e^{-j\pi n}=-1}$$得到了最终形式。
+第一次简化使用幂运算规则分割指数。第二次对第二个指数进行了一些简化。我们通过等式$${e^{-j\pi n}=-1}$$得到了最终形式。
 
 ![图5.3：从两个N/2点FFT构建N点FFT。在偶数输入上执行上N/2点FFT; 较低的N/2点FFT使用奇数输入。](images/NptFFT.jpg)
 
@@ -269,7 +269,7 @@ $$
 G[k + N/2] = \displaystyle\sum\limits_{n=0}^{N/2-1} g[2n] \cdot e^{\frac{-j 2 \pi k n}{N/2}} - e^{\frac{-j 2 \pi k}{N}} \cdot \displaystyle\sum\limits_{n=0}^{N/2-1} g[2n+1] \cdot e^{\frac{-j 2 \pi k n}{N/2}} \quad(5.22)
 $$
 
-注意到它和式5.16很相似，我们把它带入式5.16可以得到：
+注意到它和式5.16很相似，我们把它带入式5.17可以得到：
 
 $$
 G[k + N/2] = A_k - W_N^k B_k\quad(5.23)
@@ -317,13 +317,13 @@ $$
 
 当顺序执行时，FFT中的$$\mathcal{O}(n \log n)$$ 运算需要$$\mathcal{O}(n \log n)$$个时间步长。通常，并行实现将并行执行FFT的某些部分。并行化FFT的一种常用方法是将计算组织为 log n 个阶段，如图5.8所示。每个阶段的操作都取决于前一阶段的操作，自然导致跨任务的流水线操作。这种架构允许以log n个FFT与由每个阶段的体系结构确定的任务间隔，来进行同时计算。我们将使用第5.4节中的dataflow指令讨论任务流水线。
 
-FFT中的每个阶段也包含显著的并行性，因为每个蝶形计算独立于同一阶段中的其他蝶形计算。每个时钟周期执行n/2蝶形计算，任务间隔为1，可以允许以1的任务间隔计算整个阶段。当与数据流架构结合使用时，FFT算法中的所有并行性都可以被利用。尽管可以构造这样的架构，但是除了非常小的信号之外几乎从不使用它，因为必须在每个时钟周期提供整个新的SIZE样本块以保持流水的充分利用。例如，以250 MHz运行的复杂32位浮点值的1024点FFT将需要1024点*（8字节/点）* 250 * $${10^9}$$Hz = 1太字节/秒的数据到FPGA中。实际上，设计人员必须保证计算架构与系统中所需的数据速率相匹配。
+FFT中的每个阶段也包含显著的并行性，因为每个蝶形计算独立于同一阶段中的其他蝶形计算。每个时钟周期执行n/2蝶形计算，任务间隔为1，可以允许以1的任务间隔计算整个阶段。当与数据流架构结合使用时，FFT算法中的所有并行性都可以被利用。尽管可以构造这样的架构，但是除了非常小的信号之外几乎从不使用它，因为必须在每个时钟周期提供整个新的SIZE样本块以保持流水的充分利用。例如，以250 MHz运行的复杂32位浮点值的1024点FFT将需要1024点\*（8字节/点）\* 250 \* $${10^9}$$Hz = 1太字节/秒的数据到FPGA中。实际上，设计人员必须保证计算架构与系统中所需的数据速率相匹配。
 
 {% hint style='info' %}
 假设时钟频率为250MHz，每个时钟周期接收一个采样，大约需要执行多少蝶形计算才能使用1024点FFT处理每个采样？16384点FFT怎么样？
 {% endhint %}
 
-在本节的其余部分中，我们提供了使用函数原型void fft（DTYPE X R [SIZE]，DTYPE X I [SIZE]）优化FFT的代码，其中DTYPE是用于表示输入数据的用户可定制数据类型。这可以是int，float或固定点类型。例如，＃define DTYPE int将DTYPE定义为int。请注意，我们选择在两个单独的数组中实现复数的实部和虚部。X_R数组保存实数输入值，X_I数组保存虚数值。X_R[i]和X_I [i]将第i个复数保存在单独的实部和虚部中。
+在本节的其余部分中，我们描述了函数原型void fft（DTYPE X_R [SIZE]，DTYPE X_I [SIZE]）的优化，其中DTYPE是用于表示输入数据的用户可定制数据类型。这可以是int，float或固定点类型。例如，＃define DTYPE int将DTYPE定义为int。请注意，我们选择在两个单独的数组中实现复数的实部和虚部。X_R数组保存实数输入值，X_I数组保存虚数值。X_R[i]和X_I [i]将第i个复数保存在单独的实部和虚部中。
 
 {% hint style='tip' %}
 我们在本节中描述了FFT实现中的一个变化，就是FFT对象由实数成了复数。虽然这似乎是一个重大变化，但核心思想保持不变。唯一的区别是数据有两个值（对应于复数的实部和虚部），运算操作（加，乘等）更加复杂一些。
@@ -341,7 +341,7 @@ FFT中的每个阶段也包含显著的并行性，因为每个蝶形计算独�
 
 dft_loop中的第一行确定了蝴蝶运算的偏移量。蝴蝶操作的“宽度”会根据阶段而变化。如图5.4所示，阶段1对相邻元素执行蝶式运算，阶段2对索引相差2的元素执行蝶式运算，阶段3对索引相差四的元素执行蝶式运算。计算这个差值并存储在**i_lower**变量中。我们可以发现存储在变量**numBF**中的这个差值在每个阶段都是不同的。
 
-dft_loop中的剩余操作通过旋转因子和加法或减法操作l来执行乘法。变量temp_R和temp_I在乘以旋转因子*W*之后保持数据的实部和虚部。变量c和s是*W*的实部和虚部，使用sin()和cos()计算内置功能。我们也可以使用CORDIC，例如第3章中开发的CORDIC，来更好地控制
+dft_loop中的剩余操作通过旋转因子和加法或减法操作来执行乘法。变量temp_R和temp_I在乘以旋转因子*W*之后保持数据的实部和虚部。变量c和s是*W*的实部和虚部，使用sin()和cos()计算内置功能。我们也可以使用CORDIC，例如第3章中开发的CORDIC，来更好地控制
 实现。最后，使用蝶式计算的结果更新X_R[]和X_I[]数组的元素。
 
 dft_loop和butterfly_loop各自根据阶段执行不同的次数。然而，在一个阶段中执行dft_loop的总次数是恒定的。butterfly_loop中的for循环的迭代次数取决于该阶段中唯一*W*旋转因子的数量。再次参考图5.4，我们可以看到阶段1仅使用一个旋转因子，在这种情况下为 $$W_8^0$$。阶段2使用两个独特的旋转因子，阶段3使用四个不同的$$W$$值。因此，butterfly_loop在阶段1中仅具有一次迭代，阶段2中具有2次迭代，并且在阶段3中具有四次迭代。类似地，dft_loop的迭代次数改变。它在阶段1中对于8点FFT迭代四次，在阶段2中迭代两次，在阶段3中仅迭代一次。然而在每个阶段中，dft_loop体总共执行的次数相同，对于一个8点DFT每个阶段执行总计四个蝶形运算。
@@ -407,7 +407,7 @@ Vivado HLS对每个合成函数执行重要的静态分析，包括计算每个�
 
 图5.6显示了位反转功能的一种可能实现方法。它将代码分为两个函数部分。第一个是bit_reverse（位反转）功能，对给定数组中的数据进行重新排序，以便每个数据位于数组中的不同索引处。该函数调用另一个函数reverse_bit，它接受一个输入整数并返回该输入的位反转值。
 
-让我们从reverse_bit函数的简要概述开始。该函数逐位通过输入变量并将其转换为rev变量。for循环体由几个按位操作组成，它们对输入的位进行重新排序。虽然这些操作不是非常复杂，但是这个代码的意图是将for循环完全展开，Vivado HLS可以识别输入的位，并简单地连接到输出。这样的话，reverse_bits函数功能的实现应该根本不需要逻辑资源，而只需要连线。这是通过展开循环而大大简化了必须执行的操作数量的情况。在不展开循环的情况下，必须按顺序执行各个“或”操作。虽然这个循环可以流水线化，但'或'操作仍将在FPGA中使用纯逻辑实现，并且执行循环将具有由被反转的位数确定的延迟时间（在这种情况下为\gls{fft}_BITS）。
+让我们从reverse_bit函数的简要概述开始。该函数逐位通过输入变量并将其转换为rev变量。for循环体由几个位运算操作组成，它们对输入的位进行重新排序。虽然这些操作不是非常复杂，但是这个代码的意图是将for循环完全展开，Vivado HLS可以识别输入的位，并简单地连接到输出。这样的话，reverse_bits函数功能的实现应该根本不需要逻辑资源，而只需要连线。这是一例通过展开循环而大大简化了运算量的情况。在不展开循环的情况下，必须按顺序执行各个“或”操作。虽然这个循环可以流水线化，但'或'操作仍将在FPGA中使用纯逻辑实现，并且执行这个循环将会有由被反转的位数确定的延迟时间（在这种情况下为\gls{fft}_BITS）。
 
 ```c
 #define FFT_BITS 10			// Number of bits of FFT, i.e., log(1024)
@@ -448,31 +448,6 @@ void bit_reverse(DTYPE X_R[SIZE], DTYPE X_I[SIZE]) {
 ```
 图5.6：FFT实现的第一阶段重新排序输入数据。 这是通过将输入数组中索引i处的值与对应于i的位反转索引处的值进行交换来完成的。函数reverse_bits给出与输入参数对应的位反转值，并且交换对应反转位中的数组中的值。
 
-```c
-void bit_reverse(DTYPE X_R[SIZE], DTYPE X_I[SIZE],
-        DTYPE OUT_R[SIZE], DTYPE OUT_I[SIZE]);
-void fft_stage_one(DTYPE X_R[SIZE], DTYPE X_I[SIZE],
-        DTYPE OUT_R[SIZE], DTYPE OUT_I[SIZE]);
-void fft_stages_two(DTYPE X_R[SIZE], DTYPE X_I[SIZE],
-        DTYPE OUT_R[SIZE], DTYPE OUT_I[SIZE]);
-void fft_stage_three(DTYPE X_R[SIZE], DTYPE X_I[SIZE],
-        DTYPE OUT_R[SIZE], DTYPE OUT_I[SIZE]);
-
-void fft(DTYPE X_R[SIZE], DTYPE X_I[SIZE], DTYPE OUT_R[SIZE], DTYPE OUT_I[SIZE])
-{
-  #pragma HLS dataflow
-  DTYPE Stage1_R[SIZE], Stage1_I[SIZE];
-  DTYPE Stage2_R[SIZE], Stage2_I[SIZE];
-  DTYPE Stage3_R[SIZE], Stage3_I[SIZE];
-
-  bit_reverse(X_R, X_I, Stage1_R, Stage1_I);
-  fft_stage_one(Stage1_R, Stage1_I, Stage2_R, Stage2_I);
-  fft_stages_two(Stage2_R, Stage2_I, Stage3_R, Stage3_R);
-  fft_stage_three(Stage3_R, Stage3_I, OUT_R, OUT_I);
-}
-```
-图5.7：代码将8点FFT分为4个阶段，每个阶段都是一个单独的功能。bit_reverse是第一阶段，8点FFT还有三个阶段。
-
 {% hint style='info' %}
 当没有应用指令时，反向位功能的延迟是多少？ 循环流水线时的延迟是多少？ 整个函数流水线时的延迟是多少？
 {% endhint %}
@@ -484,7 +459,52 @@ void fft(DTYPE X_R[SIZE], DTYPE X_I[SIZE], DTYPE OUT_R[SIZE], DTYPE OUT_I[SIZE])
 
 ## 5.4 任务流水化
 
-将FFT算法划分为多个阶段使Vivado HLS能够生成一种让算法的不同阶段在不同的数据集上运行的实现方法。这种优化方法使用dataflow指令启用此优化，称为任务流水 这是一种常见的适用于各种硬件优化的方法。
+将FFT算法划分为多个阶段使Vivado HLS能够生成一种让算法的不同阶段在不同的数据集上运行的实现方法。这种优化方法使用dataflow指令，称为任务流水 ，是十分常见的，适用于各种硬件优化的方法。
+
+```C++
+void fft_stage(int stage, DTYPE X_R[SIZE], DTYPE X_I[SIZE],
+			DTYPE Out_R[SIZE], DTYPE Out_I[SIZE]){
+	int DFTpts = 1 << stage; // DFT = 2^stage = points in sub DFT
+	int numBF = DFTpts / 2; // Butterfly WIDTHS in sub−DFT
+	int step = SIZE >> stage;
+	DTYPE k = 0;
+	DTYPE e = −6.283185307178 / DFTpts;
+	DTYPE a = 0.0;
+	// Perform butterflies for j−th stage
+butterfly loop:
+	for (int j = 0; j < numBF; j++){
+		DTYPE c = cos(a);
+		DTYPE s = sin(a);
+		a = a + e;
+		// Compute butterflies that use same W**k
+	dft loop:
+		for (int i = j; i < SIZE; i += DFTpts){
+			int i_lower = i + numBF; // index of lower point in butterfly
+			DTYPE temp_R = X_R[i_lower] * c − X_I[i_lower] * s;
+			DTYPE temp_I = X_I[i_lower] * c + X_R[i_lower] * s;
+			Out_R[i_lower] = X_R[i] − temp_R;
+			Out_I[i_lower] = X_I[i] − temp_I;
+			Out_R[i] = X_R[i] + temp_R;
+			Out_I[i] = X_I[i] + temp_I;
+		}
+		k += step;
+	}
+}
+
+void fft_streaming(DTYPE X_R[SIZE], DTYPE X_I[SIZE], DTYPE OUT_R[SIZE], DTYPE OUT_I[SIZE])
+{
+  #pragma HLS dataflow
+  DTYPE Stage1_R[SIZE], Stage1_I[SIZE];
+  DTYPE Stage2_R[SIZE], Stage2_I[SIZE];
+  DTYPE Stage3_R[SIZE], Stage3_I[SIZE];
+
+  bit_reverse(X_R, X_I, Stage1_R, Stage1_I);
+  fft_stage(1,Stage1_R, Stage1_I, Stage2_R, Stage2_I);
+  fft_stage(2,Stage2_R, Stage2_I, Stage3_R, Stage3_I);
+  fft_stage(3,Stage3_R, Stage3_I, OUT_R, OUT_I);
+}
+```
+图5.7：代码将8点FFT分为4个阶段，每个阶段都是一个单独的功能。bit_reverse是第一阶段，8点FFT还有三个阶段。
 
 我们可以自然地将FFT算法划分为$$log_2(N+1)$$ 级，其中N是FFT的点数。第一级交换输入数组中的每个元素，其中元素位于数组中的位反转地址。在该位反转阶段之后，我们执行蝶形运算的$$log_2N$$ 阶段。这些蝶形级中的每一个具有相同的计算复杂度。图5.7描述了如何将8点FFT分成四个独立的任务。针对每个阶段的任务代码具有单独的功能分别是：位反转、第一阶段、第二阶段和第三阶段。每个阶段有两个输入数组和两个输出数组：一个用于实部，另一个用于复数的虚部。假设DTYPE在别处已经定义好，例如作为int，float或定点数据类型。
 
@@ -492,7 +512,26 @@ void fft(DTYPE X_R[SIZE], DTYPE X_I[SIZE], DTYPE OUT_R[SIZE], DTYPE OUT_I[SIZE])
 
 重构FFT代码允许我们执行任务流水线操作。图5.8给出了一个例子。在这个操作中，我们允许第二个任务在第一个任务仅完成第一个函数bit_reverse之后就启动，而不是等待第一个任务完成代码中的所有四个四个函数再开始第二个任务。 第一个任务继续按顺序执行流水线中的每个阶段，然后按顺序执行剩余的任务。一旦流水线已满，所有四个子功能同时执行，但每个子功能都在不同的输入数据上运行。类似地，同时计算四个8点FFT，每个点在硬件的不同组件上执行。图5.8的中间部分显示垂直四级中的每一级代表一个8点FFT。水平方向待变时间的增加。因此，一旦我们开始了第四个8点FFT，我们就有四个FFT同时运行。
 
-**dataflow** 指令可以从函数和循环中构造出单独的流水线阶段（通常称为进程）。虽然图5.7中的代码仅使用函数，但我们可以使用四个循环而不是四个函数来实现类似的结果。实际上，我们可以通过直接使用#pragma HLS unroll指令在原始代码中展开外部stage_loop来得到这个结果。
+```C++
+void fft_streaming(DTYPE X_R[SIZE], DTYPE X_I[SIZE], DTYPE OUT_R[SIZE], DTYPE OUT_I[SIZE])
+{
+	#pragma HLS dataflow
+	DTYPE Stage_R[M][SIZE], Stage_I[M][SIZE];
+	#pragma HLS array partition variable=Stage_R dim=1 complete
+	#pragma HLS array partition variable=Stage_I dim=1 complete
+
+	bit_reverse(X_R, X_I, Stage_R[0], Stage_I[0]);
+stage loop:
+	for (int stage = 1; stage < M; stage++){ // Do M−1 stages of butterflies
+		#pragma HLS unroll
+		fft_stage(stage, Stage_R[stage−1], Stage_I[stage−1], Stage_R[stage], Stage_I[stage]);
+	}
+	fft_stage(M, Stage_R[M−1], Stage_I[M−1], OUT_R, OUT_I);
+}
+```
+图5.9：一段使用循环的随机大小的FFT代码。在循环被展开后，展开循环中的每个函数调用成为一个dataflow的进程。
+
+**dataflow** 指令可以从函数和循环中构造出单独的流水线阶段（通常称为进程）。虽然图5.7中的代码仅使用函数，但我们可以使用四个循环而不是四个函数来实现类似的结果。实际上，我们可以通过直接使用#pragma HLS unroll指令在原始代码中展开外部stage_loop来得到这个结果。这样的一段代码有以下几个优点。第一点，它跟原本算法的结构更接近，减少了需要改动的代码。第二点，代码不会是冗长的，更易编写。第三点，再次对代码进行参数化设置，以支持具有不同size值相同代码。图5.9显示了这样一段代码。
 
 **dataflow** 指令和**pipeline**指令都生成能够流水线执行的电路。关键的区别在于任务流水的粒度不一样。**pipeline** 指令构造了一个在循环级别上有效的流水线化的体系结构，由指令中的II所决定。运算符是静态调度的，如果II大于1，则可以在同一运算符上共享运算。**dataflow** 指令构造了一种体系结构，该体系结构可以有效地进行流水线操作，以获取（可能未知的）时钟周期数的操作，例如在数据块上运行循环的行为。这些粗粒度操作不是静态调度的，是通过流水线中的数据握手来动态地控制的。在FFT的情况下，每个阶段是对数据块（整个阵列）的操作，其需要大量的周期。在每个阶段中，循环都对块中的数据执行单独的操作。因此，在这种情况下，通常在顶层使用**dataflow**指令来形成粗粒度管道，并与每个循环中的**dataflow** 指令相结合，以形成对每个单独数据元素上进行细粒度流水操作。
 
@@ -502,7 +541,7 @@ void fft(DTYPE X_R[SIZE], DTYPE X_I[SIZE], DTYPE OUT_R[SIZE], DTYPE OUT_I[SIZE])
 
 有效地使用**dataflow**函数仍然需要优化每个单独进程的行为。流水线中的每个单独流程仍然可以使用我们之前看到的技术进行优化，例如代码重组，流水线操作和展开。例如，我们已经在5.3节讨论了bit_reverse函数的一些优化。通常，在考虑整体性能目标的同时优化各个任务非常重要。很多时候，最好从小功能开始，并了解如何隔离优化它们。作为设计人员，通常可以更容易理解一小段代码中发生的事情，并希望快速确定最佳优化方案。在优化每个单独的功能之后，我们就可以指定小功能的特定实现方式以优化的更大功能模块，你可以向上移动层次结构，最终到达顶部。
 
-但是，必我们也须在总体目标范围内考虑局部优化。特别是对于数据流的一些设计，整个流水线的实现间隔永远不会小于每个单独过程的间隔。再看图5.7，假设位反转的间隔为8个周期，第一个阶段需要12个周期，第二个阶段需要12个周期，而第三个阶段需要14个周期。使用**dataflow**时，总的任务间隔为14，由所有任务或是函数的最大值决定。这意味着你应该小心平衡不同流程之间的优化，目标是创建一个平衡的流水线通道，其中每个流程的间隔大致相同。在该示例中，改善bit_reverse函数的间隔不能改善fft功能的整体间隔。实际上，如果可以用更少的资源实现整个FFT功能，增加bit_reverse函数的延迟可能是有益的。
+但是，我们也必须在总体目标范围内考虑局部优化。特别是对于数据流的一些设计，整个流水线的实现间隔永远不会小于每个单独过程的间隔。再看图5.7，假设位反转的间隔为8个周期，第一个阶段需要12个周期，第二个阶段需要12个周期，而第三个阶段需要14个周期。使用**dataflow**时，总的任务间隔为14，由所有任务或是函数的最大值决定。这意味着你应该小心平衡不同流程之间的优化，目标是创建一个平衡的流水线通道，其中每个流程的间隔大致相同。在该示例中，改善bit_reverse函数的间隔不能改善fft功能的整体间隔。实际上，如果可以用更少的资源实现整个FFT功能，增加bit_reverse函数的延迟可能是有益的。
 
 ## 5.5 结论
 
