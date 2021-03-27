@@ -38,6 +38,13 @@ The newest version of this book can be found at <http://hlsbook.ucsd.edu>. The a
 
 ## CONTRIBUTERS
 
+## 2021年 第二版校对
+@ 郑溪桐
+@ 胡云浩
+@ 张启星
+
+## 2018年 第一版译者
+
 > 统筹 [胡成龙@sonnyhcl](https://github.com/sonnyhcl)
 
 章节                                     | 译者
