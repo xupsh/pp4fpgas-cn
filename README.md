@@ -40,7 +40,7 @@ The newest version of this book can be found at <http://hlsbook.ucsd.edu>. The a
 
 ## 2021年 第二版校对
 @ 郑溪桐
-@ 胡云浩
+@ 胡云皓
 @ 张启星
 
 ## 2018年 第一版译者
