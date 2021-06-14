@@ -1,0 +1,628 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>FPGA并行编程 · FPGA并行编程</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="xupsh">
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-yahei/yahei.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchor-navigation-ex-toc/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="00-Preface.html" />
+    
+    
+    <link rel="prev" href="PREFACE.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"xupsh","repo":"pp4fpgas-cn","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">序</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="PREFACE.html">
+            
+                <a href="PREFACE.html">
+            
+                    
+                    译序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">README</li>
+        
+        
+    
+        <li class="chapter active" data-level="2.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    FPGA并行编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">正文</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="00-Preface.html">
+            
+                <a href="00-Preface.html">
+            
+                    
+                    第零章 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="01-Introduction.html">
+            
+                <a href="01-Introduction.html">
+            
+                    
+                    第一章 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="02-Finite-Impulse-Response-Filters.html">
+            
+                <a href="02-Finite-Impulse-Response-Filters.html">
+            
+                    
+                    第二章 FIR滤波器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="03-CORDIC.html">
+            
+                <a href="03-CORDIC.html">
+            
+                    
+                    第三章 CORDIC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="04-Discrete-Fourier-Transform.html">
+            
+                <a href="04-Discrete-Fourier-Transform.html">
+            
+                    
+                    第四章 离散傅立叶变换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="05-Fast-Fourier-Transform.html">
+            
+                <a href="05-Fast-Fourier-Transform.html">
+            
+                    
+                    第五章 快速傅里叶变换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="06-Sparse-Matrix-Vector-Multiplication.html">
+            
+                <a href="06-Sparse-Matrix-Vector-Multiplication.html">
+            
+                    
+                    第六章 稀疏矩阵向量乘法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="07-Matrix-Multiplication.html">
+            
+                <a href="07-Matrix-Multiplication.html">
+            
+                    
+                    第七章 矩阵乘法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="08-Prefix-Sum-and-Histogram.html">
+            
+                <a href="08-Prefix-Sum-and-Histogram.html">
+            
+                    
+                    第八章 前缀和与直方图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="09-Video-Systems.html">
+            
+                <a href="09-Video-Systems.html">
+            
+                    
+                    第九章 视频系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="10-Sorting-Algorithms.html">
+            
+                <a href="10-Sorting-Algorithms.html">
+            
+                    
+                    第十章 排序算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="11-Huffman-Encoding.html">
+            
+                <a href="11-Huffman-Encoding.html">
+            
+                    
+                    第十一章 霍夫曼排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">附录</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="SKIPGLOSSARY.html">
+            
+                <a href="SKIPGLOSSARY.html">
+            
+                    
+                    词汇表汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="BIBLIOGRAPHY.html">
+            
+                <a href="BIBLIOGRAPHY.html">
+            
+                    
+                    参考文献
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >FPGA并行编程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#fpga&#x5E76;&#x884C;&#x7F16;&#x7A0B;"><b></b>FPGA&#x5E76;&#x884C;&#x7F16;&#x7A0B;</a></li><ul><li><span class="title-icon "></span><a href="#&#x672C;&#x4E66;&#x7535;&#x5B50;&#x7248;pdf"><b></b>&#x672C;&#x4E66;&#x7535;&#x5B50;&#x7248;pdf</a></li><li><span class="title-icon "></span><a href="#&#x672C;&#x4E66;&#x4E2D;&#x6587;&#x7FFB;&#x8BD1;&#x548C;&#x66F4;&#x65B0;&#x53EF;&#x5728;&#x4EE5;&#x4E0B;&#x7F51;&#x5740;&#x6D4F;&#x89C8;"><b></b>&#x672C;&#x4E66;&#x4E2D;&#x6587;&#x7FFB;&#x8BD1;&#x548C;&#x66F4;&#x65B0;&#x53EF;&#x5728;&#x4EE5;&#x4E0B;&#x7F51;&#x5740;&#x6D4F;&#x89C8;</a></li><li><span class="title-icon "></span><a href="#&#x672C;&#x6587;&#x6848;&#x4F8B;&#x53EF;&#x4EE5;&#x5728;&#x4EE5;&#x4E0B;&#x7F51;&#x5740;&#x4E0B;&#x8F7D;"><b></b>&#x672C;&#x6587;&#x6848;&#x4F8B;&#x53EF;&#x4EE5;&#x5728;&#x4EE5;&#x4E0B;&#x7F51;&#x5740;&#x4E0B;&#x8F7D;</a></li><li><span class="title-icon "></span><a href="#&#x95EE;&#x9898;&#x53CD;&#x9988;"><b></b>&#x95EE;&#x9898;&#x53CD;&#x9988;</a></li><li><span class="title-icon "></span><a href="#license"><b></b>LICENSE</a></li><li><span class="title-icon "></span><a href="#contributers"><b></b>CONTRIBUTERS</a></li><li><span class="title-icon "></span><a href="#2021&#x5E74;-&#x7B2C;&#x4E8C;&#x7248;&#x6821;&#x5BF9;"><b></b>2021&#x5E74; &#x7B2C;&#x4E8C;&#x7248;&#x6821;&#x5BF9;</a></li><li><span class="title-icon "></span><a href="#2018&#x5E74;-&#x7B2C;&#x4E00;&#x7248;&#x8BD1;&#x8005;"><b></b>2018&#x5E74; &#x7B2C;&#x4E00;&#x7248;&#x8BD1;&#x8005;</a></li></ul></ul></div><a href="#fpga&#x5E76;&#x884C;&#x7F16;&#x7A0B;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="fpga&#x5E76;&#x884C;&#x7F16;&#x7A0B;"><a name="fpga&#x5E76;&#x884C;&#x7F16;&#x7A0B;" class="anchor-navigation-ex-anchor" href="#fpga&#x5E76;&#x884C;&#x7F16;&#x7A0B;"><i class="fa fa-link" aria-hidden="true"></i></a>FPGA&#x5E76;&#x884C;&#x7F16;&#x7A0B;</h1>
+<blockquote>
+<p>-- &#x4EE5;HLS&#x5B9E;&#x73B0;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x4E3A;&#x4F8B;</p>
+</blockquote>
+<p>&#x56FD;&#x5185;&#x9C9C;&#x6709;&#x4ECB;&#x7ECD;HLS&#x7684;&#x4E66;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x901A;&#x8FC7;&#x7FFB;&#x8BD1;<code>Parallel Programming for FPGAs</code>&#x8FD9;&#x672C;&#x4E66;&#xFF0C;&#x8BA9;&#x66F4;&#x591A;&#x7684;&#x4EBA;&#x6765;&#x4E86;&#x89E3;HLS&#x548C;FPGA&#x5F00;&#x53D1;&#x3002;</p>
+<h2 id="&#x672C;&#x4E66;&#x7535;&#x5B50;&#x7248;pdf"><a name="&#x672C;&#x4E66;&#x7535;&#x5B50;&#x7248;pdf" class="anchor-navigation-ex-anchor" href="#&#x672C;&#x4E66;&#x7535;&#x5B50;&#x7248;pdf"><i class="fa fa-link" aria-hidden="true"></i></a>&#x672C;&#x4E66;&#x7535;&#x5B50;&#x7248;pdf</h2>
+<blockquote>
+<p>&#x6B22;&#x8FCE;&#x5173;&#x6CE8;&#x516C;&#x4F17;&#x53F7;<code>PYNQ&#x4E2D;&#x6587;&#x793E;&#x533A;</code>&#x83B7;&#x53D6;&#x6700;&#x65B0;&#x7248;&#x7535;&#x5B50;pdf
+&#x56DE;&#x590D; <code>pp4fpgas</code> &#x5373;&#x53EF;&#x83B7;&#x5F97;</p>
+</blockquote>
+<figure id="fig2.1.1"><img src="images/qrcode2.jpg" alt="PYNQ&#x5F00;&#x6E90;&#x793E;&#x533A;"><figcaption>PYNQ&#x5F00;&#x6E90;&#x793E;&#x533A;</figcaption></figure>
+<h2 id="&#x672C;&#x4E66;&#x4E2D;&#x6587;&#x7FFB;&#x8BD1;&#x548C;&#x66F4;&#x65B0;&#x53EF;&#x5728;&#x4EE5;&#x4E0B;&#x7F51;&#x5740;&#x6D4F;&#x89C8;"><a name="&#x672C;&#x4E66;&#x4E2D;&#x6587;&#x7FFB;&#x8BD1;&#x548C;&#x66F4;&#x65B0;&#x53EF;&#x5728;&#x4EE5;&#x4E0B;&#x7F51;&#x5740;&#x6D4F;&#x89C8;" class="anchor-navigation-ex-anchor" href="#&#x672C;&#x4E66;&#x4E2D;&#x6587;&#x7FFB;&#x8BD1;&#x548C;&#x66F4;&#x65B0;&#x53EF;&#x5728;&#x4EE5;&#x4E0B;&#x7F51;&#x5740;&#x6D4F;&#x89C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x672C;&#x4E66;&#x4E2D;&#x6587;&#x7FFB;&#x8BD1;&#x548C;&#x66F4;&#x65B0;&#x53EF;&#x5728;&#x4EE5;&#x4E0B;&#x7F51;&#x5740;&#x6D4F;&#x89C8;</h2>
+<ul>
+<li><p>[&#x63A8;&#x8350;] Gitbook Page: <a href="https://xupsh.gitbook.io/pp4fpgas-cn/" target="_blank">https://xupsh.gitbook.io/pp4fpgas-cn/</a></p>
+</li>
+<li><p>[&#x5907;&#x7528;] Github Page: <a href="https://xupsh.github.io/pp4fpgas-cn/" target="_blank">https://xupsh.github.io/pp4fpgas-cn/</a></p>
+</li>
+</ul>
+<h2 id="&#x672C;&#x6587;&#x6848;&#x4F8B;&#x53EF;&#x4EE5;&#x5728;&#x4EE5;&#x4E0B;&#x7F51;&#x5740;&#x4E0B;&#x8F7D;"><a name="&#x672C;&#x6587;&#x6848;&#x4F8B;&#x53EF;&#x4EE5;&#x5728;&#x4EE5;&#x4E0B;&#x7F51;&#x5740;&#x4E0B;&#x8F7D;" class="anchor-navigation-ex-anchor" href="#&#x672C;&#x6587;&#x6848;&#x4F8B;&#x53EF;&#x4EE5;&#x5728;&#x4EE5;&#x4E0B;&#x7F51;&#x5740;&#x4E0B;&#x8F7D;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x672C;&#x6587;&#x6848;&#x4F8B;&#x53EF;&#x4EE5;&#x5728;&#x4EE5;&#x4E0B;&#x7F51;&#x5740;&#x4E0B;&#x8F7D;</h2>
+<ul>
+<li>HLS&#x5DE5;&#x7A0B;&#x6E90;&#x4EE3;&#x7801;: <a href="https://github.com/xupsh/pp4fpgas-cn-hls" target="_blank">https://github.com/xupsh/pp4fpgas-cn-hls</a></li>
+</ul>
+<h2 id="&#x95EE;&#x9898;&#x53CD;&#x9988;"><a name="&#x95EE;&#x9898;&#x53CD;&#x9988;" class="anchor-navigation-ex-anchor" href="#&#x95EE;&#x9898;&#x53CD;&#x9988;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x95EE;&#x9898;&#x53CD;&#x9988;</h2>
+<ul>
+<li><p>&#x5982;&#x6709;&#x95EE;&#x9898;&#x8BF7;&#x5728;&#x8FD9;&#x91CC;&#x1F447;&#x6307;&#x6B63;</p>
+<ul>
+<li>&#x63D0;&#x51FA;ISSUE: <a href="https://github.com/xupsh/pp4fpgas-cn/issues/new" target="_blank">https://github.com/xupsh/pp4fpgas-cn/issues/new</a></li>
+<li>&#x5728;Gitbook Page:<a href="https://xupsh.gitbook.io/pp4fpgas-cn" target="_blank">https://xupsh.gitbook.io/pp4fpgas-cn</a>&#x7535;&#x5B50;&#x4E66;&#x9605;&#x8BFB;&#x9875;&#x9762;&#x4E0B;&#x65B9;&#x7559;&#x8A00;</li>
+</ul>
+</li>
+<li><p>&#x6B64;&#x4E66;&#x7FFB;&#x8BD1;&#x7A3F;&#x76EE;&#x524D;&#x4E3A;&#x521D;&#x7A3F;&#xFF0C;&#x6B22;&#x8FCE;&#x5404;&#x4F4D;&#x63D0;&#x5B9D;&#x8D35;&#x610F;&#x89C1;&#x3001;&#x53CD;&#x9988;&#x610F;&#x89C1;&#xFF0C;&#x6388;&#x8BFE;&#x652F;&#x6301;&#xFF0C;&#x5B9E;&#x9A8C;&#x5E73;&#x53F0;&#x8BD5;&#x7528;&#x8BF7;&#x8054;&#x7CFB;<a href="mailto:joshual@xilinx.com" target="_blank">joshual@xilinx.com</a>&#x6216;<a href="mailto:xup_china@xilinx.com" target="_blank">xup_china@xilinx.com</a></p>
+</li>
+</ul>
+<h2 id="license"><a name="license" class="anchor-navigation-ex-anchor" href="#license"><i class="fa fa-link" aria-hidden="true"></i></a>LICENSE</h2>
+<p>This work is licensed under the Creative Commons Attribution 4.0 International License. To view a copy of this license, visit <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">http://creativecommons.org/licenses/by/4.0/</a>.</p>
+<p>The newest version of this book can be found at <a href="http://hlsbook.ucsd.edu" target="_blank">http://hlsbook.ucsd.edu</a>. The authors welcome your feedback and suggestions.</p>
+<h2 id="contributers"><a name="contributers" class="anchor-navigation-ex-anchor" href="#contributers"><i class="fa fa-link" aria-hidden="true"></i></a>CONTRIBUTERS</h2>
+<h2 id="2021&#x5E74;-&#x7B2C;&#x4E8C;&#x7248;&#x6821;&#x5BF9;"><a name="2021&#x5E74;-&#x7B2C;&#x4E8C;&#x7248;&#x6821;&#x5BF9;" class="anchor-navigation-ex-anchor" href="#2021&#x5E74;-&#x7B2C;&#x4E8C;&#x7248;&#x6821;&#x5BF9;"><i class="fa fa-link" aria-hidden="true"></i></a>2021&#x5E74; &#x7B2C;&#x4E8C;&#x7248;&#x6821;&#x5BF9;</h2>
+<p>@ &#x90D1;&#x6EAA;&#x6850;
+@ &#x80E1;&#x4E91;&#x7693;
+@ &#x5F20;&#x542F;&#x661F;</p>
+<h2 id="2018&#x5E74;-&#x7B2C;&#x4E00;&#x7248;&#x8BD1;&#x8005;"><a name="2018&#x5E74;-&#x7B2C;&#x4E00;&#x7248;&#x8BD1;&#x8005;" class="anchor-navigation-ex-anchor" href="#2018&#x5E74;-&#x7B2C;&#x4E00;&#x7248;&#x8BD1;&#x8005;"><i class="fa fa-link" aria-hidden="true"></i></a>2018&#x5E74; &#x7B2C;&#x4E00;&#x7248;&#x8BD1;&#x8005;</h2>
+<blockquote>
+<p>&#x7EDF;&#x7B79; <a href="https://github.com/sonnyhcl" target="_blank">&#x80E1;&#x6210;&#x9F99;@sonnyhcl</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>&#x7AE0;&#x8282;</th>
+<th>&#x8BD1;&#x8005;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>README</td>
+<td><a href="https://github.com/sonnyhcl" target="_blank">&#x80E1;&#x6210;&#x9F99;@sonnyhcl</a></td>
+</tr>
+<tr>
+<td>00 Preface</td>
+<td><a href="https://github.com/Zaoldyeckk" target="_blank">&#x674E;&#x5F66;&#x6654;@Zaoldyeckk</a></td>
+</tr>
+<tr>
+<td>01 Introduction</td>
+<td><a href="https://github.com/Zaoldyeckk" target="_blank">&#x674E;&#x5F66;&#x6654;@Zaoldyeckk</a></td>
+</tr>
+<tr>
+<td>02 FIR Filters</td>
+<td><a href="https://github.com/onlypinocchio" target="_blank">&#x66F9;&#x8D8A;@onlypinocchio</a></td>
+</tr>
+<tr>
+<td>03 CORDIC</td>
+<td><a href="https://github.com/onlypinocchio" target="_blank">&#x66F9;&#x8D8A;@onlypinocchio</a></td>
+</tr>
+<tr>
+<td>04 Discrete Fourier Transform</td>
+<td><a href="https://github.com/vickyiii" target="_blank">&#x9648;&#x96EF;@vickyiii</a></td>
+</tr>
+<tr>
+<td>05 Fast Fourier Transform</td>
+<td><a href="https://github.com/vickyiii" target="_blank">&#x9648;&#x96EF;@vickyiii</a></td>
+</tr>
+<tr>
+<td>06 Sparse Matrix Vector Multiplication</td>
+<td><a href="https://www.github.com/wuyanbei24" target="_blank">&#x5434;&#x5F66;&#x5317;@wuyanbei24</a></td>
+</tr>
+<tr>
+<td>07 Matrix Multiplication</td>
+<td><a href="https://github.com/wuyanbei24" target="_blank">&#x5434;&#x5F66;&#x5317;@wuyanbei24</a></td>
+</tr>
+<tr>
+<td>08 Prefix Sum and Histogram</td>
+<td><a href="https://github.com/jianxin251" target="_blank">&#x80E1;&#x535A;@jianxin251</a></td>
+</tr>
+<tr>
+<td>09 Video System</td>
+<td><a href="https://github.com/jianxin251" target="_blank">&#x80E1;&#x535A;@jianxin251</a></td>
+</tr>
+<tr>
+<td>10 Sorting Algorithms</td>
+<td><a href="https://github.com/WangZhibin" target="_blank">&#x738B;&#x829D;&#x658C;@WangZhibin</a></td>
+</tr>
+<tr>
+<td>11 Huffman Encoding</td>
+<td><a href="https://github.com/rowen800" target="_blank">&#x6768;&#x52C7;@rowen800</a></td>
+</tr>
+<tr>
+<td>&#x8BCD;&#x6C47;&#x8868;</td>
+<td><a href="https://github.com/Zaoldyeckk" target="_blank">&#x674E;&#x5F66;&#x6654;@Zaoldyeckk</a></td>
+</tr>
+<tr>
+<td>&#x53C2;&#x8003;&#x6587;&#x732E;</td>
+<td><a href="https://github.com/Zaoldyeckk" target="_blank">&#x674E;&#x5F66;&#x6654;@Zaoldyeckk</a></td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="PREFACE.html" class="navigation navigation-prev " aria-label="Previous page: 译序">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="00-Preface.html" class="navigation navigation-next " aria-label="Next page: 第零章 前言">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"FPGA并行编程","level":"2.1","depth":1,"next":{"title":"第零章 前言","level":"3.1","depth":1,"path":"00-Preface.md","ref":"00-Preface.md","articles":[]},"previous":{"title":"译序","level":"1.1","depth":1,"path":"PREFACE.md","ref":"PREFACE.md","articles":[]},"dir":"ltr"},"config":{"plugins":["yahei","code","katex","splitter","github-buttons","disqus","-lunr","-search","search-plus","-sharing","sharing-plus","expandable-chapters-small","image-captions","anchor-navigation-ex-toc","hints","custom-favicon"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"pp4fpga-cn"},"yahei":{},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-triangle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"anchor-navigation-ex-toc":{"associatedWithSummary":false,"float":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"mode":"float","multipleH1":false,"pageTop":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"printLog":false,"showLevel":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"theme":"white","family":"msyh","size":2},"highlight":{},"favicon":"favicon.ico","github-buttons":{"buttons":[{"user":"xupsh","repo":"pp4fpgas-cn","type":"star","size":"small","count":true}]},"custom-favicon":{},"expandable-chapters-small":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{},"image-captions":{"caption":"_CAPTION_","variable_name":"_pictures"}},"theme":"default","author":"xupsh","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":14,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"index.html#fig2.1.1","level":"2.1","list_caption":"Figure: PYNQ开源社区","alt":"PYNQ开源社区","nro":1,"url":"images/qrcode2.jpg","index":1,"caption_template":"_CAPTION_","label":"PYNQ开源社区","attributes":{},"skip":false,"key":"2.1.1"},{"backlink":"01-Introduction.html#fig3.2.1","level":"3.2","list_caption":"Figure: 图1.1：a)部分是一个两位输入查找表，写作2-LUT。每一个configuration bit，即备置比特，可以根据查找表的功能变化而变化，这样的特性让它具有了可编写的特性。b)部分是AND门的编写方式，out一列的数值从上到下依次对应了配置比特0-3的数值。c)部分是一个由查找表和触发器组成的简单的slice。这个查找表拥有九个配置比特，其中八个决定查找表的功能，剩下一个决定直接使用查找表的输出或使用触发器中储存的输出。slice的性质见下文。","alt":"图1.1：a)部分是一个两位输入查找表，写作2-LUT。每一个configuration bit，即备置比特，可以根据查找表的功能变化而变化，这样的特性让它具有了可编写的特性。b)部分是AND门的编写方式，out一列的数值从上到下依次对应了配置比特0-3的数值。c)部分是一个由查找表和触发器组成的简单的slice。这个查找表拥有九个配置比特，其中八个决定查找表的功能，剩下一个决定直接使用查找表的输出或使用触发器中储存的输出。slice的性质见下文。","nro":2,"url":"/images/lut.jpg","index":1,"caption_template":"_CAPTION_","label":"图1.1：a)部分是一个两位输入查找表，写作2-LUT。每一个configuration bit，即备置比特，可以根据查找表的功能变化而变化，这样的特性让它具有了可编写的特性。b)部分是AND门的编写方式，out一列的数值从上到下依次对应了配置比特0-3的数值。c)部分是一个由查找表和触发器组成的简单的slice。这个查找表拥有九个配置比特，其中八个决定查找表的功能，剩下一个决定直接使用查找表的输出或使用触发器中储存的输出。slice的性质见下文。","attributes":{},"skip":false,"key":"3.2.1"},{"backlink":"01-Introduction.html#fig3.2.2","level":"3.2","list_caption":"Figure: 图1.2:由查找表和触发器组成的slice，通常slice比图上结构更加复杂一点，slice之间通过连线通道（routing channel）和开关盒（switchbox）相连，这两个用于连接的设备提供了一个同样可编写的互联和自定义的数据传输方向。开关盒是一个包含很多开关（传输晶体管制成）的部分，提供了编写传输路径的能力","alt":"图1.2:由查找表和触发器组成的slice，通常slice比图上结构更加复杂一点，slice之间通过连线通道（routing channel）和开关盒（switchbox）相连，这两个用于连接的设备提供了一个同样可编写的互联和自定义的数据传输方向。开关盒是一个包含很多开关（传输晶体管制成）的部分，提供了编写传输路径的能力","nro":3,"url":"images/slice_channel.jpg","index":2,"caption_template":"_CAPTION_","label":"图1.2:由查找表和触发器组成的slice，通常slice比图上结构更加复杂一点，slice之间通过连线通道（routing channel）和开关盒（switchbox）相连，这两个用于连接的设备提供了一个同样可编写的互联和自定义的数据传输方向。开关盒是一个包含很多开关（传输晶体管制成）的部分，提供了编写传输路径的能力","attributes":{},"skip":false,"key":"3.2.2"},{"backlink":"01-Introduction.html#fig3.2.3","level":"3.2","list_caption":"Figure: 图1.3:2D的FPGA岛状结构。每个slice内的逻辑与内存通过连接通道和开关盒相连。IO模块有一个对外接口，可以通往内存，处理器，传感器等等。一些FPGA上IO直接与芯片引脚相连，一些FPGA则用起连接逻辑架构和片上的一些资源。","alt":"图1.3:2D的FPGA岛状结构。每个slice内的逻辑与内存通过连接通道和开关盒相连。IO模块有一个对外接口，可以通往内存，处理器，传感器等等。一些FPGA上IO直接与芯片引脚相连，一些FPGA则用起连接逻辑架构和片上的一些资源。","nro":4,"url":"images/fpga.jpg","index":3,"caption_template":"_CAPTION_","label":"图1.3:2D的FPGA岛状结构。每个slice内的逻辑与内存通过连接通道和开关盒相连。IO模块有一个对外接口，可以通往内存，处理器，传感器等等。一些FPGA上IO直接与芯片引脚相连，一些FPGA则用起连接逻辑架构和片上的一些资源。","attributes":{},"skip":false,"key":"3.2.3"},{"backlink":"01-Introduction.html#fig3.2.4","level":"3.2","list_caption":"Figure: 图1.4:现代FPGA变得更加异构化，一些FPGA除了可编程部分之外，加入了很多预配好的结构比如寄存器堆，自定义数据路径，高速互联等等。现如今FPGA通常配有一个或多个处理器，比如ARM或x86核，两者协同控制系统。","alt":"图1.4:现代FPGA变得更加异构化，一些FPGA除了可编程部分之外，加入了很多预配好的结构比如寄存器堆，自定义数据路径，高速互联等等。现如今FPGA通常配有一个或多个处理器，比如ARM或x86核，两者协同控制系统。","nro":5,"url":"images/heterogenous_fpga.jpg","index":4,"caption_template":"_CAPTION_","label":"图1.4:现代FPGA变得更加异构化，一些FPGA除了可编程部分之外，加入了很多预配好的结构比如寄存器堆，自定义数据路径，高速互联等等。现如今FPGA通常配有一个或多个处理器，比如ARM或x86核，两者协同控制系统。","attributes":{},"skip":false,"key":"3.2.4"},{"backlink":"01-Introduction.html#fig3.2.5","level":"3.2","list_caption":"Figure: 图1.6:设想中的嵌入式FPGA设计结构图，包括接口核心（蓝色框），标准核（绿色框），和应用加速核（紫色框）。注意应用加速核也可能自带流接口，内存对应接口。","alt":"图1.6:设想中的嵌入式FPGA设计结构图，包括接口核心（蓝色框），标准核（绿色框），和应用加速核（紫色框）。注意应用加速核也可能自带流接口，内存对应接口。","nro":6,"url":"images/embedded_design_template.jpg","index":5,"caption_template":"_CAPTION_","label":"图1.6:设想中的嵌入式FPGA设计结构图，包括接口核心（蓝色框），标准核（绿色框），和应用加速核（紫色框）。注意应用加速核也可能自带流接口，内存对应接口。","attributes":{},"skip":false,"key":"3.2.5"},{"backlink":"01-Introduction.html#fig3.2.6","level":"3.2","list_caption":"Figure: 图1.7:两种不同设计的任务间隔和任务延迟，上方的弧线指示的是任务间隔，下方的弧线指示的是任务延迟。左右两个设计的区别在于，左边是流水线（pipeline），右边使用了更顺序化的设计。","alt":"图1.7:两种不同设计的任务间隔和任务延迟，上方的弧线指示的是任务间隔，下方的弧线指示的是任务延迟。左右两个设计的区别在于，左边是流水线（pipeline），右边使用了更顺序化的设计。","nro":7,"url":"images/intervalduration.jpg","index":6,"caption_template":"_CAPTION_","label":"图1.7:两种不同设计的任务间隔和任务延迟，上方的弧线指示的是任务间隔，下方的弧线指示的是任务延迟。左右两个设计的区别在于，左边是流水线（pipeline），右边使用了更顺序化的设计。","attributes":{},"skip":false,"key":"3.2.6"},{"backlink":"01-Introduction.html#fig3.2.7","level":"3.2","list_caption":"Figure: （代码样例）图1.8:四抽头FIR滤波器的代码","alt":"（代码样例）图1.8:四抽头FIR滤波器的代码","nro":8,"url":"images/placeholder.png","index":7,"caption_template":"_CAPTION_","label":"（代码样例）图1.8:四抽头FIR滤波器的代码","attributes":{},"skip":false,"key":"3.2.7"},{"backlink":"01-Introduction.html#fig3.2.8","level":"3.2","list_caption":"Figure: （代码样例）图1.9:RISC风格下图1.8中的代码的汇编版。在赛灵思Microblaze处理器下施行。这段代码由microblazeel-xilinx-linux-gnu-gcc -01 -mno -xl -soft -mul S fir.c 指令产生","alt":"（代码样例）图1.9:RISC风格下图1.8中的代码的汇编版。在赛灵思Microblaze处理器下施行。这段代码由microblazeel-xilinx-linux-gnu-gcc -01 -mno -xl -soft -mul S fir.c 指令产生","nro":9,"url":"images/filter_asm_behavior.jpg","index":8,"caption_template":"_CAPTION_","label":"（代码样例）图1.9:RISC风格下图1.8中的代码的汇编版。在赛灵思Microblaze处理器下施行。这段代码由microblazeel-xilinx-linux-gnu-gcc -01 -mno -xl -soft -mul S fir.c 指令产生","attributes":{},"skip":false,"key":"3.2.8"},{"backlink":"01-Introduction.html#fig3.2.9","level":"3.2","list_caption":"Figure: 图1.10:每周期一拍设计。可以由图1.8中的代码产出","alt":"图1.10:每周期一拍设计。可以由图1.8中的代码产出","nro":10,"url":"images/filter_one_sample_behavior.jpg","index":9,"caption_template":"_CAPTION_","label":"图1.10:每周期一拍设计。可以由图1.8中的代码产出","attributes":{},"skip":false,"key":"3.2.9"},{"backlink":"01-Introduction.html#fig3.2.10","level":"3.2","list_caption":"Figure: 图1.11:每周期一样本设计。可以由图1.8中的代码加入函数流水指令产出","alt":"图1.11:每周期一样本设计。可以由图1.8中的代码加入函数流水指令产出","nro":11,"url":"images/filter_one_tap_behavior.jpg","index":10,"caption_template":"_CAPTION_","label":"图1.11:每周期一样本设计。可以由图1.8中的代码加入函数流水指令产出","attributes":{},"skip":false,"key":"3.2.10"},{"backlink":"01-Introduction.html#fig3.2.11","level":"3.2","list_caption":"Figure: （代码样例）图1.12：另一种FIR滤波器代码","alt":"（代码样例）图1.12：另一种FIR滤波器代码","nro":12,"url":"images/placeholder.png","index":11,"caption_template":"_CAPTION_","label":"（代码样例）图1.12：另一种FIR滤波器代码","attributes":{},"skip":false,"key":"3.2.11"},{"backlink":"01-Introduction.html#fig3.2.12","level":"3.2","list_caption":"Figure: 表1.1:一个优化策略和章节的对照表","alt":"表1.1:一个优化策略和章节的对照表","nro":13,"url":"images/placeholder.png","index":12,"caption_template":"_CAPTION_","label":"表1.1:一个优化策略和章节的对照表","attributes":{},"skip":false,"key":"3.2.12"},{"backlink":"02-Finite-Impulse-Response-Filters.html#fig3.3.1","level":"3.3","list_caption":"Figure: mac","alt":"mac","nro":14,"url":"/images/mac.jpg","index":1,"caption_template":"_CAPTION_","label":"mac","attributes":{},"skip":false,"key":"3.3.1"},{"backlink":"02-Finite-Impulse-Response-Filters.html#fig3.3.2","level":"3.3","list_caption":"Figure: 图2.6:在fir11函数中以展开因子4手动将MAC循环展开。","alt":"图2.6:在fir11函数中以展开因子4手动将MAC循环展开。","nro":15,"url":"images/placeholder.png","index":2,"caption_template":"_CAPTION_","label":"图2.6:在fir11函数中以展开因子4手动将MAC循环展开。","attributes":{},"skip":false,"key":"3.3.2"},{"backlink":"02-Finite-Impulse-Response-Filters.html#fig3.3.3","level":"3.3","list_caption":"Figure: pipeline_mac","alt":"pipeline_mac","nro":16,"url":"/images/pipeline_mac.jpg","index":3,"caption_template":"_CAPTION_","label":"pipeline_mac","attributes":{},"skip":false,"key":"3.3.3"},{"backlink":"02-Finite-Impulse-Response-Filters.html#fig3.3.4","level":"3.3","list_caption":"Figure: 图2.7: a)表示MAC for循环时序图。b)表示三个迭代运算用流水形式优化的MAC for循环。","alt":"图2.7: a)表示MAC for循环时序图。b)表示三个迭代运算用流水形式优化的MAC for循环。","nro":17,"url":"images/placeholder.png","index":4,"caption_template":"_CAPTION_","label":"图2.7: a)表示MAC for循环时序图。b)表示三个迭代运算用流水形式优化的MAC for循环。","attributes":{},"skip":false,"key":"3.3.4"},{"backlink":"02-Finite-Impulse-Response-Filters.html#fig3.3.5","level":"3.3","list_caption":"Figure: pipeline_tdl","alt":"pipeline_tdl","nro":18,"url":"/images/pipeline_tdl.jpg","index":5,"caption_template":"_CAPTION_","label":"pipeline_tdl","attributes":{},"skip":false,"key":"3.3.5"},{"backlink":"02-Finite-Impulse-Response-Filters.html#fig3.3.6","level":"3.3","list_caption":"Figure: 图2.8:a)TDL for循环两次迭代流程表。b)II=1，TDL for循环三次迭代流程表。","alt":"图2.8:a)TDL for循环两次迭代流程表。b)II=1，TDL for循环三次迭代流程表。","nro":19,"url":"images/placeholder.png","index":6,"caption_template":"_CAPTION_","label":"图2.8:a)TDL for循环两次迭代流程表。b)II=1，TDL for循环三次迭代流程表。","attributes":{},"skip":false,"key":"3.3.6"},{"backlink":"02-Finite-Impulse-Response-Filters.html#fig3.3.7","level":"3.3","list_caption":"Figure: complex_fir","alt":"complex_fir","nro":20,"url":"/images/complex_fir.jpg","index":7,"caption_template":"_CAPTION_","label":"complex_fir","attributes":{},"skip":false,"key":"3.3.7"},{"backlink":"03-CORDIC.html#fig3.4.1","level":"3.4","list_caption":"Figure: 图3.1：使用CORDIC方法计算sinφ和cosφ。在这里，CORDIC算法从X轴正半轴开始，对应的角度为0度，然后执行四次或顺时针或逆时针的旋转，每次旋转的角度越来越小，最终得到目标角度φ。一旦旋转完成，得到的角度就与理论的角度十分接近了。如果我们假设向量的长度为1，那么最终向量在x,y的分量就分别对应cosφ和sinφ。我们改善CORDIC算法的关键在于提升以上过程的计算效率。","alt":"图3.1：使用CORDIC方法计算sinφ和cosφ。在这里，CORDIC算法从X轴正半轴开始，对应的角度为0度，然后执行四次或顺时针或逆时针的旋转，每次旋转的角度越来越小，最终得到目标角度φ。一旦旋转完成，得到的角度就与理论的角度十分接近了。如果我们假设向量的长度为1，那么最终向量在x,y的分量就分别对应cosφ和sinφ。我们改善CORDIC算法的关键在于提升以上过程的计算效率。","nro":21,"url":"images/cordic_overview.jpg","index":1,"caption_template":"_CAPTION_","label":"图3.1：使用CORDIC方法计算sinφ和cosφ。在这里，CORDIC算法从X轴正半轴开始，对应的角度为0度，然后执行四次或顺时针或逆时针的旋转，每次旋转的角度越来越小，最终得到目标角度φ。一旦旋转完成，得到的角度就与理论的角度十分接近了。如果我们假设向量的长度为1，那么最终向量在x,y的分量就分别对应cosφ和sinφ。我们改善CORDIC算法的关键在于提升以上过程的计算效率。","attributes":{},"skip":false,"key":"3.4.1"},{"backlink":"03-CORDIC.html#fig3.4.2","level":"3.4","list_caption":"Figure: 图3.2用CORDIC算法计算 cos60 和 sin60 。使用递增数i(0，1，2，3，4)来表示执行五次旋转，最终旋转结果为61.078度 。这个矢量对应的x和y值可以近似为指定角度的余弦和正弦值。","alt":"图3.2用CORDIC算法计算 cos60 和 sin60 。使用递增数i(0，1，2，3，4)来表示执行五次旋转，最终旋转结果为61.078度 。这个矢量对应的x和y值可以近似为指定角度的余弦和正弦值。","nro":22,"url":"images/sin_cos_cordic.jpg","index":2,"caption_template":"_CAPTION_","label":"图3.2用CORDIC算法计算 cos60 和 sin60 。使用递增数i(0，1，2，3，4)来表示执行五次旋转，最终旋转结果为61.078度 。这个矢量对应的x和y值可以近似为指定角度的余弦和正弦值。","attributes":{},"skip":false,"key":"3.4.2"},{"backlink":"03-CORDIC.html#fig3.4.3","level":"3.4","list_caption":"Figure: 图3.4:图中显示了一个二维平面和一个同时用笛卡尔形式(x,y)和极坐标形式(r,θ)表示的矢量,通过该矢量说明这两个坐标系之间的关系。","alt":"图3.4:图中显示了一个二维平面和一个同时用笛卡尔形式(x,y)和极坐标形式(r,θ)表示的矢量,通过该矢量说明这两个坐标系之间的关系。","nro":23,"url":"images/rotation.jpg","index":3,"caption_template":"_CAPTION_","label":"图3.4:图中显示了一个二维平面和一个同时用笛卡尔形式(x,y)和极坐标形式(r,θ)表示的矢量,通过该矢量说明这两个坐标系之间的关系。","attributes":{},"skip":false,"key":"3.4.3"},{"backlink":"03-CORDIC.html#fig3.4.4","level":"3.4","list_caption":"Figure: 图3.5：笛卡尔坐标系转换为极坐标系的第一步是执行一个正或负90度的旋转，这次旋转的目的是为了使初始矢量到象限I或IV。一旦矢量到了这两个象限，后续的旋转将使矢量到达最终角度0◦。此时，初始矢量的径向值是最终旋转矢量的x值，初始矢量的角度是CORDIC所做旋转角度累加和。a)和b)展示了一个初始y值为正的例子，这意味着矢量位于象限I或II中。旋转-90度将它们旋转到相应象限中。c)和d)给出了类似的情况，当初始矢量y值为负值时，我们希望旋转+90度使矢量转到第I或第IV象限。 ","alt":"图3.5：笛卡尔坐标系转换为极坐标系的第一步是执行一个正或负90度的旋转，这次旋转的目的是为了使初始矢量到象限I或IV。一旦矢量到了这两个象限，后续的旋转将使矢量到达最终角度0◦。此时，初始矢量的径向值是最终旋转矢量的x值，初始矢量的角度是CORDIC所做旋转角度累加和。a)和b)展示了一个初始y值为正的例子，这意味着矢量位于象限I或II中。旋转-90度将它们旋转到相应象限中。c)和d)给出了类似的情况，当初始矢量y值为负值时，我们希望旋转+90度使矢量转到第I或第IV象限。 ","nro":24,"url":"images/cordic_magnitude_angle.jpg","index":4,"caption_template":"_CAPTION_","label":"图3.5：笛卡尔坐标系转换为极坐标系的第一步是执行一个正或负90度的旋转，这次旋转的目的是为了使初始矢量到象限I或IV。一旦矢量到了这两个象限，后续的旋转将使矢量到达最终角度0◦。此时，初始矢量的径向值是最终旋转矢量的x值，初始矢量的角度是CORDIC所做旋转角度累加和。a)和b)展示了一个初始y值为正的例子，这意味着矢量位于象限I或II中。旋转-90度将它们旋转到相应象限中。c)和d)给出了类似的情况，当初始矢量y值为负值时，我们希望旋转+90度使矢量转到第I或第IV象限。 ","attributes":{},"skip":false,"key":"3.4.4"},{"backlink":"04-Discrete-Fourier-Transform.html#fig3.5.1","level":"3.5","list_caption":"Figure: 图4.1：余弦，正弦和复指数之间的关系。a）部分显示了两个复矢量 $e^{jx}$ 与 $e^{-jx}$ 的和。 这个求和的结果恰好落在实值轴上，其值为2cos(x)。b）部分显示了一个类似的总和，只是这次对矢量$e^{jx}$ 与 $-e^{-jx}$ 求和。 这个总和落在虚轴上，其值为2sin(x).","alt":"图4.1：余弦，正弦和复指数之间的关系。a）部分显示了两个复矢量 $$e^{jx}$$ 与 $$e^{-jx}$$ 的和。 这个求和的结果恰好落在实值轴上，其值为2cos(x)。b）部分显示了一个类似的总和，只是这次对矢量$$e^{jx}$$ 与 $$-e^{-jx}$$ 求和。 这个总和落在虚轴上，其值为2sin(x).","nro":25,"url":"images/sin_cos_exp.jpg","index":1,"caption_template":"_CAPTION_","label":"图4.1：余弦，正弦和复指数之间的关系。a）部分显示了两个复矢量 $$e^{jx}$$ 与 $$e^{-jx}$$ 的和。 这个求和的结果恰好落在实值轴上，其值为2cos(x)。b）部分显示了一个类似的总和，只是这次对矢量$$e^{jx}$$ 与 $$-e^{-jx}$$ 求和。 这个总和落在虚轴上，其值为2sin(x).","attributes":{},"skip":false,"key":"3.5.1"},{"backlink":"04-Discrete-Fourier-Transform.html#fig3.5.2","level":"3.5","list_caption":"Figure: 图4.2：一个有N个样本点的离散实值时域函数g可以用一个具有N/2+1个样本点的频域函数表示。每个频域采样都有一个余弦值和一个正弦幅值。这两个幅度值可以共同表示为一个复数，余弦幅度表示实部，正弦幅度表示虚部。","alt":"图4.2：一个有N个样本点的离散实值时域函数g可以用一个具有N/2+1个样本点的频域函数表示。每个频域采样都有一个余弦值和一个正弦幅值。这两个幅度值可以共同表示为一个复数，余弦幅度表示实部，正弦幅度表示虚部。","nro":26,"url":"images/basic-DFT.jpg","index":2,"caption_template":"_CAPTION_","label":"图4.2：一个有N个样本点的离散实值时域函数g可以用一个具有N/2+1个样本点的频域函数表示。每个频域采样都有一个余弦值和一个正弦幅值。这两个幅度值可以共同表示为一个复数，余弦幅度表示实部，正弦幅度表示虚部。","attributes":{},"skip":false,"key":"3.5.2"},{"backlink":"04-Discrete-Fourier-Transform.html#fig3.5.3","level":"3.5","list_caption":"Figure: 图4.3 矩阵S中元素的复数向量图.","alt":"图4.3 矩阵S中元素的复数向量图.","nro":27,"url":"images/dft-visualization.jpg","index":3,"caption_template":"_CAPTION_","label":"图4.3 矩阵S中元素的复数向量图.","attributes":{},"skip":false,"key":"3.5.3"},{"backlink":"04-Discrete-Fourier-Transform.html#fig3.5.4","level":"3.5","list_caption":"Figure: 图4.5 一种图4.4矩阵向量乘法代码可能的实现方式。","alt":"图4.5 一种图4.4矩阵向量乘法代码可能的实现方式。","nro":28,"url":"images/dft_behavior_loop_sequential.jpg","index":4,"caption_template":"_CAPTION_","label":"图4.5 一种图4.4矩阵向量乘法代码可能的实现方式。","attributes":{},"skip":false,"key":"3.5.4"},{"backlink":"04-Discrete-Fourier-Transform.html#fig3.5.5","level":"3.5","list_caption":"Figure: 图4.7：图4.6的内循环展开代码对应的数据流图。","alt":"图4.7：图4.6的内循环展开代码对应的数据流图。","nro":29,"url":"images/matrix_vector_unroll_inner.jpg","index":5,"caption_template":"_CAPTION_","label":"图4.7：图4.6的内循环展开代码对应的数据流图。","attributes":{},"skip":false,"key":"3.5.5"},{"backlink":"04-Discrete-Fourier-Transform.html#fig3.5.6","level":"3.5","list_caption":"Figure: 图4.8：由图4.6的内部循环展开代码实现的两种不同的顺序模式操作图。","alt":"图4.8：由图4.6的内部循环展开代码实现的两种不同的顺序模式操作图。","nro":30,"url":"images/dft_behavior1.jpg","index":6,"caption_template":"_CAPTION_","label":"图4.8：由图4.6的内部循环展开代码实现的两种不同的顺序模式操作图。","attributes":{},"skip":false,"key":"3.5.6"},{"backlink":"04-Discrete-Fourier-Transform.html#fig3.5.7","level":"3.5","list_caption":"Figure: 图4.9：由图4.6的内部循环展开代码实现的两种不同的流水线模式操作图。","alt":"图4.9：由图4.6的内部循环展开代码实现的两种不同的流水线模式操作图。","nro":31,"url":"images/dft_behavior2.jpg","index":7,"caption_template":"_CAPTION_","label":"图4.9：由图4.6的内部循环展开代码实现的两种不同的流水线模式操作图。","attributes":{},"skip":false,"key":"3.5.7"},{"backlink":"04-Discrete-Fourier-Transform.html#fig3.5.8","level":"3.5","list_caption":"Figure: 图4.10：由图4.6的内部循环展开代码实现的两种不同的流水线乘法器操作。","alt":"图4.10：由图4.6的内部循环展开代码实现的两种不同的流水线乘法器操作。","nro":32,"url":"images/dft_behavior3.jpg","index":8,"caption_template":"_CAPTION_","label":"图4.10：由图4.6的内部循环展开代码实现的两种不同的流水线乘法器操作。","attributes":{},"skip":false,"key":"3.5.8"},{"backlink":"04-Discrete-Fourier-Transform.html#fig3.5.9","level":"3.5","list_caption":"Figure: 图4.12 具有特定的阵列分区和流水线选择的矩阵-矢量乘法体系结构。右图的流水线寄存器已经被删除.","alt":"图4.12 具有特定的阵列分区和流水线选择的矩阵-矢量乘法体系结构。右图的流水线寄存器已经被删除.","nro":33,"url":"images/matrix_vector_optimized.jpg","index":9,"caption_template":"_CAPTION_","label":"图4.12 具有特定的阵列分区和流水线选择的矩阵-矢量乘法体系结构。右图的流水线寄存器已经被删除.","attributes":{},"skip":false,"key":"3.5.9"},{"backlink":"04-Discrete-Fourier-Transform.html#fig3.5.10","level":"3.5","list_caption":"Figure: 图4.13 II = 3时具有特定的阵列分区选择的矩阵向量乘法体系结构。如左图所示，阵列已被分割得超过需要以至于使用了多路复用器。如右图所示，数组用factor=3分区，这样减少了多路复用器的使用，但j循环索引成为地址计算的一部分。","alt":"图4.13 II = 3时具有特定的阵列分区选择的矩阵向量乘法体系结构。如左图所示，阵列已被分割得超过需要以至于使用了多路复用器。如右图所示，数组用factor=3分区，这样减少了多路复用器的使用，但j循环索引成为地址计算的一部分。","nro":34,"url":"images/matrix_vector_poor_scaling.jpg","index":10,"caption_template":"_CAPTION_","label":"图4.13 II = 3时具有特定的阵列分区选择的矩阵向量乘法体系结构。如左图所示，阵列已被分割得超过需要以至于使用了多路复用器。如右图所示，数组用factor=3分区，这样减少了多路复用器的使用，但j循环索引成为地址计算的一部分。","attributes":{},"skip":false,"key":"3.5.10"},{"backlink":"04-Discrete-Fourier-Transform.html#fig3.5.11","level":"3.5","list_caption":"Figure: 图4.16：DFT的高层体系结构图，如图4.15所示。 这不是该体系结构的综合视图，例如，它缺少与更新循环计数器i和j的相关内容。该图想向读者提供关于如何合成这种体系结构的近似概念。这里我们假定浮点运算符需要4个时钟周期。.","alt":"图4.16：DFT的高层体系结构图，如图4.15所示。 这不是该体系结构的综合视图，例如，它缺少与更新循环计数器i和j的相关内容。该图想向读者提供关于如何合成这种体系结构的近似概念。这里我们假定浮点运算符需要4个时钟周期。.","nro":35,"url":"images/dft_sequential_arch.jpg","index":11,"caption_template":"_CAPTION_","label":"图4.16：DFT的高层体系结构图，如图4.15所示。 这不是该体系结构的综合视图，例如，它缺少与更新循环计数器i和j的相关内容。该图想向读者提供关于如何合成这种体系结构的近似概念。这里我们假定浮点运算符需要4个时钟周期。.","attributes":{},"skip":false,"key":"3.5.11"},{"backlink":"04-Discrete-Fourier-Transform.html#fig3.5.12","level":"3.5","list_caption":"Figure: 图4.17：图4.16中的行为的流水线版本。在这个设计案例下，由于每个浮点的添加需要4个时钟周期才能完成，并且在下一个循环开始之前需要上一个循环的结果加入计算（以红色显示相关性），所以设置循环的启动间隔为4个间隔。所有迭代的依赖关系汇总在右图中。.","alt":"图4.17：图4.16中的行为的流水线版本。在这个设计案例下，由于每个浮点的添加需要4个时钟周期才能完成，并且在下一个循环开始之前需要上一个循环的结果加入计算（以红色显示相关性），所以设置循环的启动间隔为4个间隔。所有迭代的依赖关系汇总在右图中。.","nro":36,"url":"images/dft_pipelined_behavior.jpg","index":12,"caption_template":"_CAPTION_","label":"图4.17：图4.16中的行为的流水线版本。在这个设计案例下，由于每个浮点的添加需要4个时钟周期才能完成，并且在下一个循环开始之前需要上一个循环的结果加入计算（以红色显示相关性），所以设置循环的启动间隔为4个间隔。所有迭代的依赖关系汇总在右图中。.","attributes":{},"skip":false,"key":"3.5.12"},{"backlink":"05-Fast-Fourier-Transform.html#fig3.6.1","level":"3.6","list_caption":"Figure: 图5.1 a）部分是2点DFT/FFT的数据流图。 b）部分显示了该运算的蝴蝶结构。它是数字信号处理领域中计算FFT的常见表示方法。","alt":"图5.1 a）部分是2点DFT/FFT的数据流图。 b）部分显示了该运算的蝴蝶结构。它是数字信号处理领域中计算FFT的常见表示方法。","nro":37,"url":"images/2pointFFT.jpg","index":1,"caption_template":"_CAPTION_","label":"图5.1 a）部分是2点DFT/FFT的数据流图。 b）部分显示了该运算的蝴蝶结构。它是数字信号处理领域中计算FFT的常见表示方法。","attributes":{},"skip":false,"key":"3.6.1"},{"backlink":"05-Fast-Fourier-Transform.html#fig3.6.2","level":"3.6","list_caption":"Figure: 四点FFT分为两个阶段。 阶段1使用两个2点FFT {一个2点FFT用于偶数输入值，另一个2点FFT用于奇数输入值。 阶段2执行剩余的操作以完成FFT计算，如公式5.12所述。","alt":"四点FFT分为两个阶段。 阶段1使用两个2点FFT {一个2点FFT用于偶数输入值，另一个2点FFT用于奇数输入值。 阶段2执行剩余的操作以完成FFT计算，如公式5.12所述。","nro":38,"url":"images/4ptFFT.jpg","index":2,"caption_template":"_CAPTION_","label":"四点FFT分为两个阶段。 阶段1使用两个2点FFT {一个2点FFT用于偶数输入值，另一个2点FFT用于奇数输入值。 阶段2执行剩余的操作以完成FFT计算，如公式5.12所述。","attributes":{},"skip":false,"key":"3.6.2"},{"backlink":"05-Fast-Fourier-Transform.html#fig3.6.3","level":"3.6","list_caption":"Figure: 图5.3：从两个N/2点FFT构建N点FFT。在偶数输入上执行上N/2点FFT; 较低的N/2点FFT使用奇数输入。","alt":"图5.3：从两个N/2点FFT构建N点FFT。在偶数输入上执行上N/2点FFT; 较低的N/2点FFT使用奇数输入。","nro":39,"url":"images/NptFFT.jpg","index":3,"caption_template":"_CAPTION_","label":"图5.3：从两个N/2点FFT构建N点FFT。在偶数输入上执行上N/2点FFT; 较低的N/2点FFT使用奇数输入。","attributes":{},"skip":false,"key":"3.6.3"},{"backlink":"05-Fast-Fourier-Transform.html#fig3.6.4","level":"3.6","list_caption":"Figure: 图5.4：递归构建的8点FFT。有两个4点FFT，每个FFT使用两个2点FFT。 必须将输入重新排序为偶数和奇数元素两次。 这导致基于索引的比特反转进行重新排序。","alt":"图5.4：递归构建的8点FFT。有两个4点FFT，每个FFT使用两个2点FFT。 必须将输入重新排序为偶数和奇数元素两次。 这导致基于索引的比特反转进行重新排序。","nro":40,"url":"images/8ptFFT.jpg","index":4,"caption_template":"_CAPTION_","label":"图5.4：递归构建的8点FFT。有两个4点FFT，每个FFT使用两个2点FFT。 必须将输入重新排序为偶数和奇数元素两次。 这导致基于索引的比特反转进行重新排序。","attributes":{},"skip":false,"key":"3.6.4"},{"backlink":"05-Fast-Fourier-Transform.html#fig3.6.5","level":"3.6","list_caption":"Figure: 图5.8：该将FFT分成了不同的阶段允许跨越每个阶段的任务流水线。该图演示了同时执行4个具有三个FFT级（即，8点FFT）的示例。","alt":"图5.8：该将FFT分成了不同的阶段允许跨越每个阶段的任务流水线。该图演示了同时执行4个具有三个FFT级（即，8点FFT）的示例。","nro":41,"url":"images/fft_dataflow_behavior.jpg","index":5,"caption_template":"_CAPTION_","label":"图5.8：该将FFT分成了不同的阶段允许跨越每个阶段的任务流水线。该图演示了同时执行4个具有三个FFT级（即，8点FFT）的示例。","attributes":{},"skip":false,"key":"3.6.5"},{"backlink":"06-Sparse-Matrix-Vector-Multiplication.html#fig3.7.1","level":"3.7","list_caption":"Figure: 图 6.1: M是一个4x4矩阵，用两种方式表示：同\"密集\"矩阵一样存在二维数组之中；作为稀疏矩阵，以行压缩存储的形式保存，行压缩存储是一种由3个数组组成的数据结构。","alt":"图 6.1: M是一个4x4矩阵，用两种方式表示：同\"密集\"矩阵一样存在二维数组之中；作为稀疏矩阵，以行压缩存储的形式保存，行压缩存储是一种由3个数组组成的数据结构。","nro":42,"url":"images/crs.jpg","index":1,"caption_template":"_CAPTION_","label":"图 6.1: M是一个4x4矩阵，用两种方式表示：同\"密集\"矩阵一样存在二维数组之中；作为稀疏矩阵，以行压缩存储的形式保存，行压缩存储是一种由3个数组组成的数据结构。","attributes":{},"skip":false,"key":"3.7.1"},{"backlink":"06-Sparse-Matrix-Vector-Multiplication.html#fig3.7.2","level":"3.7","list_caption":"Figure: 图6.2: 主体代码演示了系数矩阵向量乘（SpMV）y=M*x的计算。采用CRS的方式，通过rowPtr、columnIndex 和 value 保存矩阵M。第一个for循环通过迭代访问每一行，第二个for循环访问每一列，实现矩阵M中非0元素和向量中对应的元素相乘并保存值在向量y中。","alt":"图6.2: 主体代码演示了系数矩阵向量乘（SpMV）y=M*x的计算。采用CRS的方式，通过rowPtr、columnIndex 和 value 保存矩阵M。第一个for循环通过迭代访问每一行，第二个for循环访问每一列，实现矩阵M中非0元素和向量中对应的元素相乘并保存值在向量y中。","nro":43,"url":"images/placeholder.png","index":2,"caption_template":"_CAPTION_","label":"图6.2: 主体代码演示了系数矩阵向量乘（SpMV）y=M*x的计算。采用CRS的方式，通过rowPtr、columnIndex 和 value 保存矩阵M。第一个for循环通过迭代访问每一行，第二个for循环访问每一列，实现矩阵M中非0元素和向量中对应的元素相乘并保存值在向量y中。","attributes":{},"skip":false,"key":"3.7.2"},{"backlink":"06-Sparse-Matrix-Vector-Multiplication.html#fig3.7.3","level":"3.7","list_caption":"Figure: 图6.3： spmv函数和激励的头文件","alt":"图6.3： spmv函数和激励的头文件","nro":44,"url":"images/placeholder.png","index":3,"caption_template":"_CAPTION_","label":"图6.3： spmv函数和激励的头文件","attributes":{},"skip":false,"key":"3.7.3"},{"backlink":"06-Sparse-Matrix-Vector-Multiplication.html#fig3.7.4","level":"3.7","list_caption":"Figure: 图6.4 ： 一个简单spmv函数的简单测试平台。测试平台生成了一个用例，并且计算矩阵的向量乘法通过稀疏矩阵乘法（spmv）和非系数矩阵乘法(matrixvector)。","alt":"图6.4 ： 一个简单spmv函数的简单测试平台。测试平台生成了一个用例，并且计算矩阵的向量乘法通过稀疏矩阵乘法（spmv）和非系数矩阵乘法(matrixvector)。","nro":45,"url":"images/placeholder.png","index":4,"caption_template":"_CAPTION_","label":"图6.4 ： 一个简单spmv函数的简单测试平台。测试平台生成了一个用例，并且计算矩阵的向量乘法通过稀疏矩阵乘法（spmv）和非系数矩阵乘法(matrixvector)。","attributes":{},"skip":false,"key":"3.7.4"},{"backlink":"06-Sparse-Matrix-Vector-Multiplication.html#fig3.7.5","level":"3.7","list_caption":"Figure: 图6.5  spmv函数内部循环流水执行过程和结构","alt":"图6.5  spmv函数内部循环流水执行过程和结构","nro":46,"url":"images/spmv_behavior.jpg","index":5,"caption_template":"_CAPTION_","label":"图6.5  spmv函数内部循环流水执行过程和结构","attributes":{},"skip":false,"key":"3.7.5"},{"backlink":"06-Sparse-Matrix-Vector-Multiplication.html#fig3.7.6","level":"3.7","list_caption":"Figure: 图6.6  局部展开图6.2中**smpv**函数","alt":"图6.6  局部展开图6.2中**smpv**函数","nro":47,"url":"images/placeholder.png","index":6,"caption_template":"_CAPTION_","label":"图6.6  局部展开图6.2中**smpv**函数","attributes":{},"skip":false,"key":"3.7.6"},{"backlink":"06-Sparse-Matrix-Vector-Multiplication.html#fig3.7.7","level":"3.7","list_caption":"Figure: 图6.7 针对累加的两种不同方式的局部展开。左边的版本有3个加法器进行递归操作，相反右边的版本只有1个加法器进行递归累加","alt":"图6.7 针对累加的两种不同方式的局部展开。左边的版本有3个加法器进行递归操作，相反右边的版本只有1个加法器进行递归累加","nro":48,"url":"images/spmv_partial_unroll.jpg","index":7,"caption_template":"_CAPTION_","label":"图6.7 针对累加的两种不同方式的局部展开。左边的版本有3个加法器进行递归操作，相反右边的版本只有1个加法器进行递归累加","attributes":{},"skip":false,"key":"3.7.7"},{"backlink":"06-Sparse-Matrix-Vector-Multiplication.html#fig3.7.8","level":"3.7","list_caption":"Figure: 图6.8 图6.6中 spmv函数基于部分展开和内部流水线处理后执行过程","alt":"图6.8 图6.6中 spmv函数基于部分展开和内部流水线处理后执行过程","nro":49,"url":"images/spmv_unrolled_behavior.jpg","index":8,"caption_template":"_CAPTION_","label":"图6.8 图6.6中 spmv函数基于部分展开和内部流水线处理后执行过程","attributes":{},"skip":false,"key":"3.7.8"},{"backlink":"07-Matrix-Multiplication.html#fig3.8.1","level":"3.8","list_caption":"Figure: 图7.1 一个通用的3层for循环实现了矩阵乘法。","alt":"图7.1 一个通用的3层for循环实现了矩阵乘法。","nro":50,"url":"images/placeholder.png","index":1,"caption_template":"_CAPTION_","label":"图7.1 一个通用的3层for循环实现了矩阵乘法。","attributes":{},"skip":false,"key":"3.8.1"},{"backlink":"07-Matrix-Multiplication.html#fig3.8.2","level":"3.8","list_caption":"Figure: 图 7.2:三种实现二维矩阵的方式。左边采用原始的方式，保存N*M个元素。中间数组使用了array_partition directive进行了变形，结果是使用了M个存储单元，每个保存N个元素。右边的，使用array_shape directive进行了变形，结果保存在一个存储单元，带有N个入口，每个入口保存原始矩阵的M个元素","alt":"图 7.2:三种实现二维矩阵的方式。左边采用原始的方式，保存N*M个元素。中间数组使用了array_partition directive进行了变形，结果是使用了M个存储单元，每个保存N个元素。右边的，使用array_shape directive进行了变形，结果保存在一个存储单元，带有N个入口，每个入口保存原始矩阵的M个元素","nro":51,"url":"images/matmul_array_reshape.jpg","index":2,"caption_template":"_CAPTION_","label":"图 7.2:三种实现二维矩阵的方式。左边采用原始的方式，保存N*M个元素。中间数组使用了array_partition directive进行了变形，结果是使用了M个存储单元，每个保存N个元素。右边的，使用array_shape directive进行了变形，结果保存在一个存储单元，带有N个入口，每个入口保存原始矩阵的M个元素","attributes":{},"skip":false,"key":"3.8.2"},{"backlink":"07-Matrix-Multiplication.html#fig3.8.3","level":"3.8","list_caption":"Figure: 图 7.3:  一种可能的分块方式是将矩阵分解为2个4x4的矩阵。整个AB 乘被分为4个矩阵乘法，分别是对A进行2x4个块，对B进行4x2个块","alt":"图 7.3:  一种可能的分块方式是将矩阵分解为2个4x4的矩阵。整个AB 乘被分为4个矩阵乘法，分别是对A进行2x4个块，对B进行4x2个块","nro":52,"url":"images/blockmm.jpg","index":3,"caption_template":"_CAPTION_","label":"图 7.3:  一种可能的分块方式是将矩阵分解为2个4x4的矩阵。整个AB 乘被分为4个矩阵乘法，分别是对A进行2x4个块，对B进行4x2个块","attributes":{},"skip":false,"key":"3.8.3"},{"backlink":"07-Matrix-Multiplication.html#fig3.8.4","level":"3.8","list_caption":"Figure: 图7.4：分块矩阵乘法的头文件。文件定义了函数内部使用的数据结构，最关键的是，函数blockmatmul的接口。","alt":"图7.4：分块矩阵乘法的头文件。文件定义了函数内部使用的数据结构，最关键的是，函数blockmatmul的接口。","nro":53,"url":"images/placeholder.png","index":4,"caption_template":"_CAPTION_","label":"图7.4：分块矩阵乘法的头文件。文件定义了函数内部使用的数据结构，最关键的是，函数blockmatmul的接口。","attributes":{},"skip":false,"key":"3.8.4"},{"backlink":"07-Matrix-Multiplication.html#fig3.8.5","level":"3.8","list_caption":"Figure: 图7.5： 函数blockmatmul从矩阵A输入一系列大小为BLOCK_SIZE的行，从矩阵 B 输入一系列大小为BLOCK_SIZE 的列，创建一个BLOCK_SIZWxBLOCK_SIZE 分布结果，作为矩阵AB 的一部分。代码的第一部分（标记为loadA ）保存 A 的行到局部存储，第二部分是嵌套的partialsum for循环执行部分结果的计算，最后的一部分（标记为 writeoutput ）将之前计算返回的分布结果放到合适格式中。","alt":"图7.5： 函数blockmatmul从矩阵A输入一系列大小为BLOCK_SIZE的行，从矩阵 B 输入一系列大小为BLOCK_SIZE 的列，创建一个BLOCK_SIZWxBLOCK_SIZE 分布结果，作为矩阵AB 的一部分。代码的第一部分（标记为loadA ）保存 A 的行到局部存储，第二部分是嵌套的partialsum for循环执行部分结果的计算，最后的一部分（标记为 writeoutput ）将之前计算返回的分布结果放到合适格式中。","nro":54,"url":"images/placeholder.png","index":5,"caption_template":"_CAPTION_","label":"图7.5： 函数blockmatmul从矩阵A输入一系列大小为BLOCK_SIZE的行，从矩阵 B 输入一系列大小为BLOCK_SIZE 的列，创建一个BLOCK_SIZWxBLOCK_SIZE 分布结果，作为矩阵AB 的一部分。代码的第一部分（标记为loadA ）保存 A 的行到局部存储，第二部分是嵌套的partialsum for循环执行部分结果的计算，最后的一部分（标记为 writeoutput ）将之前计算返回的分布结果放到合适格式中。","attributes":{},"skip":false,"key":"3.8.5"},{"backlink":"07-Matrix-Multiplication.html#fig3.8.6","level":"3.8","list_caption":"Figure: 图7.6： 分块矩阵乘法测试平台的第一部分。函数被分为两个部分， 因为太长不能在单页上一次显示。测试平台剩下的部分在图7.7中。其中有一个“软件”版本的矩阵乘法、变量的声明和初始化。","alt":"图7.6： 分块矩阵乘法测试平台的第一部分。函数被分为两个部分， 因为太长不能在单页上一次显示。测试平台剩下的部分在图7.7中。其中有一个“软件”版本的矩阵乘法、变量的声明和初始化。","nro":55,"url":"images/placeholder.png","index":6,"caption_template":"_CAPTION_","label":"图7.6： 分块矩阵乘法测试平台的第一部分。函数被分为两个部分， 因为太长不能在单页上一次显示。测试平台剩下的部分在图7.7中。其中有一个“软件”版本的矩阵乘法、变量的声明和初始化。","attributes":{},"skip":false,"key":"3.8.6"},{"backlink":"07-Matrix-Multiplication.html#fig3.8.7","level":"3.8","list_caption":"Figure: 图7.7：分块矩阵乘法的第二部分。第一部分在图7.6中。这部分演示如何将流类型数据送入函数blockmatmul，代码测试这个函数结果和更简单的三重for循环得出的结果是否匹配。","alt":"图7.7：分块矩阵乘法的第二部分。第一部分在图7.6中。这部分演示如何将流类型数据送入函数blockmatmul，代码测试这个函数结果和更简单的三重for循环得出的结果是否匹配。","nro":56,"url":"images/placeholder.png","index":7,"caption_template":"_CAPTION_","label":"图7.7：分块矩阵乘法的第二部分。第一部分在图7.6中。这部分演示如何将流类型数据送入函数blockmatmul，代码测试这个函数结果和更简单的三重for循环得出的结果是否匹配。","attributes":{},"skip":false,"key":"3.8.7"},{"backlink":"08-Prefix-Sum-and-Histogram.html#fig3.9.1","level":"3.9","list_caption":"Figure: 图8.1 前缀和实现代码及行为描述","alt":"图8.1 前缀和实现代码及行为描述","nro":57,"url":"images/8_1.png","index":1,"caption_template":"_CAPTION_","label":"图8.1 前缀和实现代码及行为描述","attributes":{},"skip":false,"key":"3.9.1"},{"backlink":"08-Prefix-Sum-and-Histogram.html#fig3.9.2","level":"3.9","list_caption":"Figure: 图8.2 优化后的前缀和代码及行为描述","alt":"图8.2 优化后的前缀和代码及行为描述","nro":58,"url":"images/8_2.png","index":2,"caption_template":"_CAPTION_","label":"图8.2 优化后的前缀和代码及行为描述","attributes":{},"skip":false,"key":"3.9.2"},{"backlink":"08-Prefix-Sum-and-Histogram.html#fig3.9.3","level":"3.9","list_caption":"Figure: 图8.3 使用unroll,pipeline和array_partition指令优化的前缀和代码","alt":"图8.3 使用unroll,pipeline和array_partition指令优化的前缀和代码","nro":59,"url":"images/8_3.png","index":3,"caption_template":"_CAPTION_","label":"图8.3 使用unroll,pipeline和array_partition指令优化的前缀和代码","attributes":{},"skip":false,"key":"3.9.3"},{"backlink":"08-Prefix-Sum-and-Histogram.html#fig3.9.4","level":"3.9","list_caption":"Figure: 图8.4 a)部分展示了与图8.1中代码相对应的体系结构。对out[]数组的依赖限制了循环II =1设计的实现。如图8.2中代码所示，使用局部变量计算循环能够减少循环中的延迟并实现II = 1的设计","alt":"图8.4 a)部分展示了与图8.1中代码相对应的体系结构。对out[]数组的依赖限制了循环II =1设计的实现。如图8.2中代码所示，使用局部变量计算循环能够减少循环中的延迟并实现II = 1的设计","nro":60,"url":"images/architectures_prefixsum.jpg","index":4,"caption_template":"_CAPTION_","label":"图8.4 a)部分展示了与图8.1中代码相对应的体系结构。对out[]数组的依赖限制了循环II =1设计的实现。如图8.2中代码所示，使用局部变量计算循环能够减少循环中的延迟并实现II = 1的设计","attributes":{},"skip":false,"key":"3.9.4"},{"backlink":"08-Prefix-Sum-and-Histogram.html#fig3.9.5","level":"3.9","list_caption":"Figure: 图8.5 一个直方图实例","alt":"图8.5 一个直方图实例","nro":61,"url":"images/histogram_introd.jpg","index":5,"caption_template":"_CAPTION_","label":"图8.5 一个直方图实例","attributes":{},"skip":false,"key":"3.9.5"},{"backlink":"08-Prefix-Sum-and-Histogram.html#fig3.9.6","level":"3.9","list_caption":"Figure: 图8.6：计算直方图的原始代码。 for循环遍历输入数组并递增hist数组的相应元素。","alt":"图8.6：计算直方图的原始代码。 for循环遍历输入数组并递增hist数组的相应元素。","nro":62,"url":"images/placeholder.png","index":6,"caption_template":"_CAPTION_","label":"图8.6：计算直方图的原始代码。 for循环遍历输入数组并递增hist数组的相应元素。","attributes":{},"skip":false,"key":"3.9.6"},{"backlink":"08-Prefix-Sum-and-Histogram.html#fig3.9.7","level":"3.9","list_caption":"Figure: 图8.7：图中对应的是图8.6中的代码产生的体系结构。 数组中的val数据用于索引hist数组。val会增加并存储回相同的位置。","alt":"图8.7：图中对应的是图8.6中的代码产生的体系结构。 数组中的val数据用于索引hist数组。val会增加并存储回相同的位置。","nro":63,"url":"images/architectures_histogram.jpg","index":7,"caption_template":"_CAPTION_","label":"图8.7：图中对应的是图8.6中的代码产生的体系结构。 数组中的val数据用于索引hist数组。val会增加并存储回相同的位置。","attributes":{},"skip":false,"key":"3.9.7"},{"backlink":"08-Prefix-Sum-and-Histogram.html#fig3.9.8","level":"3.9","list_caption":"Figure: 图8.8：计算直方图的替代函数。 通过向Vivado @HLS添加指令约束输入，就可以在不显著更改代码的情况下实现II = 1的设计。","alt":"图8.8：计算直方图的替代函数。 通过向Vivado @HLS添加指令约束输入，就可以在不显著更改代码的情况下实现II = 1的设计。","nro":64,"url":"images/placeholder.png","index":8,"caption_template":"_CAPTION_","label":"图8.8：计算直方图的替代函数。 通过向Vivado @HLS添加指令约束输入，就可以在不显著更改代码的情况下实现II = 1的设计。","attributes":{},"skip":false,"key":"3.9.8"},{"backlink":"08-Prefix-Sum-and-Histogram.html#fig3.9.9","level":"3.9","list_caption":"Figure: 图8.9：当hist数组完全分区时，由图8.6中的代码产生的体系结构。","alt":"图8.9：当hist数组完全分区时，由图8.6中的代码产生的体系结构。","nro":65,"url":"images/architectures_histogram.jpg","index":9,"caption_template":"_CAPTION_","label":"图8.9：当hist数组完全分区时，由图8.6中的代码产生的体系结构。","attributes":{},"skip":false,"key":"3.9.9"},{"backlink":"08-Prefix-Sum-and-Histogram.html#fig3.9.10","level":"3.9","list_caption":"Figure: 图8.10：从for循环中删除写入依赖后的读取。 这需要一个if /else结构，看起来似乎会增加设计的不必要的复杂性。尽管数据路径更复杂，但它允许更有效的流水线操作。","alt":"图8.10：从for循环中删除写入依赖后的读取。 这需要一个if /else结构，看起来似乎会增加设计的不必要的复杂性。尽管数据路径更复杂，但它允许更有效的流水线操作。","nro":66,"url":"images/placeholder.png","index":10,"caption_template":"_CAPTION_","label":"图8.10：从for循环中删除写入依赖后的读取。 这需要一个if /else结构，看起来似乎会增加设计的不必要的复杂性。尽管数据路径更复杂，但它允许更有效的流水线操作。","attributes":{},"skip":false,"key":"3.9.10"},{"backlink":"08-Prefix-Sum-and-Histogram.html#fig3.9.11","level":"3.9","list_caption":"Figure: 图8.11：图中所示是与图8.10中的代码对应的数据路径的描述。 这里包含对应于if和else子句两个独立的部分。 该图显示了计算的重要部分，并省略了一些细节。","alt":"图8.11：图中所示是与图8.10中的代码对应的数据路径的描述。 这里包含对应于if和else子句两个独立的部分。 该图显示了计算的重要部分，并省略了一些细节。","nro":67,"url":"images/architectures_histogram_restructured.jpg","index":11,"caption_template":"_CAPTION_","label":"图8.11：图中所示是与图8.10中的代码对应的数据路径的描述。 这里包含对应于if和else子句两个独立的部分。 该图显示了计算的重要部分，并省略了一些细节。","attributes":{},"skip":false,"key":"3.9.11"},{"backlink":"08-Prefix-Sum-and-Histogram.html#fig3.9.12","level":"3.9","list_caption":"Figure: 图8.12：使用map-reduce模式实现的直方图计算。 a）部分中的处理单元（PE）与图8.11所示的结构相同。 in数组是分块后的，每个分块由一个单独的PE处理。合并块组合各个直方图以创建最终直方图。","alt":"图8.12：使用map-reduce模式实现的直方图计算。 a）部分中的处理单元（PE）与图8.11所示的结构相同。 in数组是分块后的，每个分块由一个单独的PE处理。合并块组合各个直方图以创建最终直方图。","nro":68,"url":"images/architectures_histogram_parallel.jpg","index":12,"caption_template":"_CAPTION_","label":"图8.12：使用map-reduce模式实现的直方图计算。 a）部分中的处理单元（PE）与图8.11所示的结构相同。 in数组是分块后的，每个分块由一个单独的PE处理。合并块组合各个直方图以创建最终直方图。","attributes":{},"skip":false,"key":"3.9.12"},{"backlink":"08-Prefix-Sum-and-Histogram.html#fig3.9.13","level":"3.9","list_caption":"Figure: 图8.13：图示是使用任务级并行和流水线操作的直方图的另一种实现。直方图操作分为两个子任务，这两个子任务在两个histogram_map函数中执行。使用histogram_reduce函数将这些结果合并到最终的直方图结果中。顶层的histogram函数是将这三个函数连接在一起。","alt":"图8.13：图示是使用任务级并行和流水线操作的直方图的另一种实现。直方图操作分为两个子任务，这两个子任务在两个histogram_map函数中执行。使用histogram_reduce函数将这些结果合并到最终的直方图结果中。顶层的histogram函数是将这三个函数连接在一起。","nro":69,"url":"images/placeholder.png","index":13,"caption_template":"_CAPTION_","label":"图8.13：图示是使用任务级并行和流水线操作的直方图的另一种实现。直方图操作分为两个子任务，这两个子任务在两个histogram_map函数中执行。使用histogram_reduce函数将这些结果合并到最终的直方图结果中。顶层的histogram函数是将这三个函数连接在一起。","attributes":{},"skip":false,"key":"3.9.13"},{"backlink":"09-Video-Systems.html#fig3.10.1","level":"3.10","list_caption":"Figure: 图 9.1: 视频帧的扫描处理顺序","alt":"图 9.1: 视频帧的扫描处理顺序","nro":70,"url":"images/videoScanlineOrder.jpg","index":1,"caption_template":"_CAPTION_","label":"图 9.1: 视频帧的扫描处理顺序","attributes":{},"skip":false,"key":"3.10.1"},{"backlink":"09-Video-Systems.html#fig3.10.2","level":"3.10","list_caption":"Figure: 图9.2：1080P@60Hz高清视频信号中的典型的同步信号","alt":"图9.2：1080P@60Hz高清视频信号中的典型的同步信号","nro":71,"url":"images/video_syncs.jpg","index":2,"caption_template":"_CAPTION_","label":"图9.2：1080P@60Hz高清视频信号中的典型的同步信号","attributes":{},"skip":false,"key":"3.10.2"},{"backlink":"09-Video-Systems.html#fig3.10.3","level":"3.10","list_caption":"Figure: 图9.3 简单视频滤波器的实现代码","alt":"图9.3 简单视频滤波器的实现代码","nro":72,"url":"images/placeholder.png","index":3,"caption_template":"_CAPTION_","label":"图9.3 简单视频滤波器的实现代码","attributes":{},"skip":false,"key":"3.10.3"},{"backlink":"09-Video-Systems.html#fig3.10.4","level":"3.10","list_caption":"Figure: 图9.4  将视频处理设计与BRAM接口集成","alt":"图9.4  将视频处理设计与BRAM接口集成","nro":73,"url":"images/video_BRAM_interface.jpg","index":4,"caption_template":"_CAPTION_","label":"图9.4  将视频处理设计与BRAM接口集成","attributes":{},"skip":false,"key":"3.10.4"},{"backlink":"09-Video-Systems.html#fig3.10.5","level":"3.10","list_caption":"Figure: 图9.5 将视频处理设计与外部存储接口集成","alt":"图9.5 将视频处理设计与外部存储接口集成","nro":74,"url":"images/video_DDR_interface.jpg","index":5,"caption_template":"_CAPTION_","label":"图9.5 将视频处理设计与外部存储接口集成","attributes":{},"skip":false,"key":"3.10.5"},{"backlink":"09-Video-Systems.html#fig3.10.6","level":"3.10","list_caption":"Figure: 图9.6:通过DMA将视频处理设计模块与外部存储器接口集成","alt":"图9.6:通过DMA将视频处理设计模块与外部存储器接口集成","nro":75,"url":"images/video_DDR_DMA_interface.jpg","index":6,"caption_template":"_CAPTION_","label":"图9.6:通过DMA将视频处理设计模块与外部存储器接口集成","attributes":{},"skip":false,"key":"3.10.6"},{"backlink":"09-Video-Systems.html#fig3.10.7","level":"3.10","list_caption":"Figure: 图9.7: HLS中流接口的代码实现方式","alt":"图9.7: HLS中流接口的代码实现方式","nro":76,"url":"images/placeholder.png","index":7,"caption_template":"_CAPTION_","label":"图9.7: HLS中流接口的代码实现方式","attributes":{},"skip":false,"key":"3.10.7"},{"backlink":"09-Video-Systems.html#fig3.10.8","level":"3.10","list_caption":"Figure: 图9.8：将视频处理设计与流接口集成","alt":"图9.8：将视频处理设计与流接口集成","nro":77,"url":"images/video_streaming_interface.jpg","index":8,"caption_template":"_CAPTION_","label":"图9.8：将视频处理设计与流接口集成","attributes":{},"skip":false,"key":"3.10.8"},{"backlink":"09-Video-Systems.html#fig3.10.9","level":"3.10","list_caption":"Figure: 图9.9: 没有使用线性缓冲区的2D滤波代码","alt":"图9.9: 没有使用线性缓冲区的2D滤波代码","nro":78,"url":"images/placeholder.png","index":9,"caption_template":"_CAPTION_","label":"图9.9: 没有使用线性缓冲区的2D滤波代码","attributes":{},"skip":false,"key":"3.10.9"},{"backlink":"09-Video-Systems.html#fig3.10.10","level":"3.10","list_caption":"Figure: 图 9.10: 使用线性缓冲区实现2D滤波器的代码","alt":"图 9.10: 使用线性缓冲区实现2D滤波器的代码","nro":79,"url":"images/placeholder.png","index":10,"caption_template":"_CAPTION_","label":"图 9.10: 使用线性缓冲区实现2D滤波器的代码","attributes":{},"skip":false,"key":"3.10.10"},{"backlink":"09-Video-Systems.html#fig3.10.11","level":"3.10","list_caption":"Figure: 图9.11:图中所示为图9.10中的代码实现的存储器。 存储器在特定的循环周期时将从线性缓冲区中读取出数据存储在窗口缓冲区的最右端区域。黑色的像素存储在行缓冲区中，红色的像素存储在窗口缓冲区中。","alt":"图9.11:图中所示为图9.10中的代码实现的存储器。 存储器在特定的循环周期时将从线性缓冲区中读取出数据存储在窗口缓冲区的最右端区域。黑色的像素存储在行缓冲区中，红色的像素存储在窗口缓冲区中。","nro":80,"url":"images/video_buffers.jpg","index":11,"caption_template":"_CAPTION_","label":"图9.11:图中所示为图9.10中的代码实现的存储器。 存储器在特定的循环周期时将从线性缓冲区中读取出数据存储在窗口缓冲区的最右端区域。黑色的像素存储在行缓冲区中，红色的像素存储在窗口缓冲区中。","attributes":{},"skip":false,"key":"3.10.11"},{"backlink":"09-Video-Systems.html#fig3.10.12","level":"3.10","list_caption":"Figure: 图 9.12: 使用线性缓冲区并且循环迭代范围扩展为1时实现2D的滤波器代码","alt":"图 9.12: 使用线性缓冲区并且循环迭代范围扩展为1时实现2D的滤波器代码","nro":81,"url":"images/placeholder.png","index":12,"caption_template":"_CAPTION_","label":"图 9.12: 使用线性缓冲区并且循环迭代范围扩展为1时实现2D的滤波器代码","attributes":{},"skip":false,"key":"3.10.12"},{"backlink":"09-Video-Systems.html#fig3.10.13","level":"3.10","list_caption":"Figure: 图9.13:不同滤波器滤波后的效果图。图b是图9.9中代码生成效果图，图c是由图9.10中代码生成效果图，图d是由图9.12中代码生成效果图与图像b相同","alt":"图9.13:不同滤波器滤波后的效果图。图b是图9.9中代码生成效果图，图c是由图9.10中代码生成效果图，图d是由图9.12中代码生成效果图与图像b相同","nro":82,"url":"images/filter2d_results_withshifting.jpg","index":13,"caption_template":"_CAPTION_","label":"图9.13:不同滤波器滤波后的效果图。图b是图9.9中代码生成效果图，图c是由图9.10中代码生成效果图，图d是由图9.12中代码生成效果图与图像b相同","attributes":{},"skip":false,"key":"3.10.13"},{"backlink":"09-Video-Systems.html#fig3.10.14","level":"3.10","list_caption":"Figure: 图9.14：使用线性缓冲区方法代码执行时序。上方执行顺序为图9.10中代码执行时序。下方执行时序为图9.12中代码执行时序。红色框标记的像素在两种实现中以相同的周期输出，在上方执行时序中表示第二行第二个像素，在下方时序中表示第一行第一个像素","alt":"图9.14：使用线性缓冲区方法代码执行时序。上方执行顺序为图9.10中代码执行时序。下方执行时序为图9.12中代码执行时序。红色框标记的像素在两种实现中以相同的周期输出，在上方执行时序中表示第二行第二个像素，在下方时序中表示第一行第一个像素","nro":83,"url":"images/video_timelines.jpg","index":14,"caption_template":"_CAPTION_","label":"图9.14：使用线性缓冲区方法代码执行时序。上方执行顺序为图9.10中代码执行时序。下方执行时序为图9.12中代码执行时序。红色框标记的像素在两种实现中以相同的周期输出，在上方执行时序中表示第二行第二个像素，在下方时序中表示第一行第一个像素","attributes":{},"skip":false,"key":"3.10.14"},{"backlink":"09-Video-Systems.html#fig3.10.15","level":"3.10","list_caption":"Figure: 图9.15：不同边界条件处理方法效果图","alt":"图9.15：不同边界条件处理方法效果图","nro":84,"url":"images/filter2d_results_boundary_conditions.jpg","index":15,"caption_template":"_CAPTION_","label":"图9.15：不同边界条件处理方法效果图","attributes":{},"skip":false,"key":"3.10.15"},{"backlink":"09-Video-Systems.html#fig3.10.16","level":"3.10","list_caption":"Figure: 图9.16: 使用线性缓冲区核常量边界来实现处理边界条件的代码，若用这种方法处理消耗硬件资源成本很大","alt":"图9.16: 使用线性缓冲区核常量边界来实现处理边界条件的代码，若用这种方法处理消耗硬件资源成本很大","nro":85,"url":"images/placeholder.png","index":16,"caption_template":"_CAPTION_","label":"图9.16: 使用线性缓冲区核常量边界来实现处理边界条件的代码，若用这种方法处理消耗硬件资源成本很大","attributes":{},"skip":false,"key":"3.10.16"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.1","level":"3.11","list_caption":"Figure: 图10.1 插入排序算法在数组上操作。初始数组显示在上面，在算法的每个步骤中，都要比较下划线元素并将其桉按顺序排序在左边；在每个阶段，阴影部分按顺序排列。","alt":"图10.1 插入排序算法在数组上操作。初始数组显示在上面，在算法的每个步骤中，都要比较下划线元素并将其桉按顺序排序在左边；在每个阶段，阴影部分按顺序排列。","nro":86,"url":"images/10.1.png","index":1,"caption_template":"_CAPTION_","label":"图10.1 插入排序算法在数组上操作。初始数组显示在上面，在算法的每个步骤中，都要比较下划线元素并将其桉按顺序排序在左边；在每个阶段，阴影部分按顺序排列。","attributes":{},"skip":false,"key":"3.11.1"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.2","level":"3.11","list_caption":"Figure: 图10.2 : 插入排序的参考代码。外部循环for用来遍历数组元素，内部循环while用来遍历已经排序的序列，将当前元素移动到对应位置。","alt":"图10.2 : 插入排序的参考代码。外部循环for用来遍历数组元素，内部循环while用来遍历已经排序的序列，将当前元素移动到对应位置。","nro":87,"url":"images/placeholder.png","index":2,"caption_template":"_CAPTION_","label":"图10.2 : 插入排序的参考代码。外部循环for用来遍历数组元素，内部循环while用来遍历已经排序的序列，将当前元素移动到对应位置。","attributes":{},"skip":false,"key":"3.11.2"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.3","level":"3.11","list_caption":"Figure: 图10.3 ： 根据表10.1中的优化选项1重构插入排序","alt":"图10.3 ： 根据表10.1中的优化选项1重构插入排序","nro":88,"url":"images/placeholder.png","index":3,"caption_template":"_CAPTION_","label":"图10.3 ： 根据表10.1中的优化选项1重构插入排序","attributes":{},"skip":false,"key":"3.11.3"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.4","level":"3.11","list_caption":"Figure: 图10.4：重构表10.1中优化选型3的插入排序代码","alt":"图10.4：重构表10.1中优化选型3的插入排序代码","nro":89,"url":"images/placeholder.png","index":4,"caption_template":"_CAPTION_","label":"图10.4：重构表10.1中优化选型3的插入排序代码","attributes":{},"skip":false,"key":"3.11.4"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.5","level":"3.11","list_caption":"Figure: 图10.5：插入单元的体系结构。每个单元只存放一个本地值，在每次执行中，获取输入值，将其与本地值进行比较，并把较小的值写入输出端口。排序N个元素需要N个单元。","alt":"图10.5：插入单元的体系结构。每个单元只存放一个本地值，在每次执行中，获取输入值，将其与本地值进行比较，并把较小的值写入输出端口。排序N个元素需要N个单元。","nro":90,"url":"images/insertion_cell.jpg","index":5,"caption_template":"_CAPTION_","label":"图10.5：插入单元的体系结构。每个单元只存放一个本地值，在每次执行中，获取输入值，将其与本地值进行比较，并把较小的值写入输出端口。排序N个元素需要N个单元。","attributes":{},"skip":false,"key":"3.11.5"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.6","level":"3.11","list_caption":"Figure: 图10.6：一个插入单元cell0对应的Vivado HLS C代码，其他单元格除了需要具体不同的函数名（比如cell1、cell2等）之外，其他的功能代码都时相同的。代码与图10.5中架构图所展示的功能相同，输入和输出变量采用了HLS的数据流接口，此接口提供了一种抽象层次更高更方便的方法去生成和仿真FIFO。","alt":"图10.6：一个插入单元cell0对应的Vivado HLS C代码，其他单元格除了需要具体不同的函数名（比如cell1、cell2等）之外，其他的功能代码都时相同的。代码与图10.5中架构图所展示的功能相同，输入和输出变量采用了HLS的数据流接口，此接口提供了一种抽象层次更高更方便的方法去生成和仿真FIFO。","nro":91,"url":"images/placeholder.png","index":6,"caption_template":"_CAPTION_","label":"图10.6：一个插入单元cell0对应的Vivado HLS C代码，其他单元格除了需要具体不同的函数名（比如cell1、cell2等）之外，其他的功能代码都时相同的。代码与图10.5中架构图所展示的功能相同，输入和输出变量采用了HLS的数据流接口，此接口提供了一种抽象层次更高更方便的方法去生成和仿真FIFO。","attributes":{},"skip":false,"key":"3.11.6"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.7","level":"3.11","list_caption":"Figure: 图10.7：插入单元对8个元素进行排序，函数的输入是HLS的数据流接口，输出是通过变量out按顺序的输出元素，输出顺序从最小的元素开始，以最大的元素结束。","alt":"图10.7：插入单元对8个元素进行排序，函数的输入是HLS的数据流接口，输出是通过变量out按顺序的输出元素，输出顺序从最小的元素开始，以最大的元素结束。","nro":92,"url":"images/placeholder.png","index":7,"caption_template":"_CAPTION_","label":"图10.7：插入单元对8个元素进行排序，函数的输入是HLS的数据流接口，输出是通过变量out按顺序的输出元素，输出顺序从最小的元素开始，以最大的元素结束。","attributes":{},"skip":false,"key":"3.11.7"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.8","level":"3.11","list_caption":"Figure: 图10.8：insertion_cell_sort函数的测试平台","alt":"图10.8：insertion_cell_sort函数的测试平台","nro":93,"url":"images/placeholder.png","index":8,"caption_template":"_CAPTION_","label":"图10.8：insertion_cell_sort函数的测试平台","attributes":{},"skip":false,"key":"3.11.8"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.9","level":"3.11","list_caption":"Figure: 图10.9：归并排序的操作示例。在顶部，每一个元素的初始状态是长度为1的排序子数组；操作示例中每一步操作，都是围绕将两个已经有序的子数组合并成一个大的有序数组，组成最终的有序序列。","alt":"图10.9：归并排序的操作示例。在顶部，每一个元素的初始状态是长度为1的排序子数组；操作示例中每一步操作，都是围绕将两个已经有序的子数组合并成一个大的有序数组，组成最终的有序序列。","nro":94,"url":"images/10.9.jpg","index":9,"caption_template":"_CAPTION_","label":"图10.9：归并排序的操作示例。在顶部，每一个元素的初始状态是长度为1的排序子数组；操作示例中每一步操作，都是围绕将两个已经有序的子数组合并成一个大的有序数组，组成最终的有序序列。","attributes":{},"skip":false,"key":"3.11.9"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.10","level":"3.11","list_caption":"Figure: 图10.10：合并两个有序数组的操作示例。顶部是初始状态，算法的每一步都需要考虑下划线的元素，并将其中的一个元素排序在输出有序数组中。","alt":"图10.10：合并两个有序数组的操作示例。顶部是初始状态，算法的每一步都需要考虑下划线的元素，并将其中的一个元素排序在输出有序数组中。","nro":95,"url":"images/10.10.jpg","index":10,"caption_template":"_CAPTION_","label":"图10.10：合并两个有序数组的操作示例。顶部是初始状态，算法的每一步都需要考虑下划线的元素，并将其中的一个元素排序在输出有序数组中。","attributes":{},"skip":false,"key":"3.11.10"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.11","level":"3.11","list_caption":"Figure: 图10.11：非递归方式的归并排序实现。merge_sort函数每一步都将两个已经有序的子数组合并成一个大的有序数组 ，直到整个数组有序","alt":"图10.11：非递归方式的归并排序实现。merge_sort函数每一步都将两个已经有序的子数组合并成一个大的有序数组 ，直到整个数组有序","nro":96,"url":"images/placeholder.png","index":11,"caption_template":"_CAPTION_","label":"图10.11：非递归方式的归并排序实现。merge_sort函数每一步都将两个已经有序的子数组合并成一个大的有序数组 ，直到整个数组有序","attributes":{},"skip":false,"key":"3.11.11"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.12","level":"3.11","list_caption":"Figure: 图10.12：重构merge函数的代码实现：在Vivado HLS中循环的启动间隔可以达到1","alt":"图10.12：重构merge函数的代码实现：在Vivado HLS中循环的启动间隔可以达到1","nro":97,"url":"images/placeholder.png","index":12,"caption_template":"_CAPTION_","label":"图10.12：重构merge函数的代码实现：在Vivado HLS中循环的启动间隔可以达到1","attributes":{},"skip":false,"key":"3.11.12"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.13","level":"3.11","list_caption":"Figure: 图10.13： 图10.12中重构代码的行为结构","alt":"图10.13： 图10.12中重构代码的行为结构","nro":98,"url":"images/10.13.jpg","index":13,"caption_template":"_CAPTION_","label":"图10.13： 图10.12中重构代码的行为结构","attributes":{},"skip":false,"key":"3.11.13"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.14","level":"3.11","list_caption":"Figure: 图10.14：重构merge函数的代码实现：在Vivado HLS中循环的启动间隔可以达到1，而且流水线的气泡很少","alt":"图10.14：重构merge函数的代码实现：在Vivado HLS中循环的启动间隔可以达到1，而且流水线的气泡很少","nro":99,"url":"images/placeholder.png","index":14,"caption_template":"_CAPTION_","label":"图10.14：重构merge函数的代码实现：在Vivado HLS中循环的启动间隔可以达到1，而且流水线的气泡很少","attributes":{},"skip":false,"key":"3.11.14"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.15","level":"3.11","list_caption":"Figure: 图10.15：归并排序中任务级流水线的体系结构，可以容纳16个元素的排序","alt":"图10.15：归并排序中任务级流水线的体系结构，可以容纳16个元素的排序","nro":100,"url":"images/10.15.jpg","index":15,"caption_template":"_CAPTION_","label":"图10.15：归并排序中任务级流水线的体系结构，可以容纳16个元素的排序","attributes":{},"skip":false,"key":"3.11.15"},{"backlink":"10-Sorting-Algorithms.html#fig3.11.16","level":"3.11","list_caption":"Figure: 图10.16：重构归并排序的代码实现：利用了Vivado HLS的dataflow和pipeline的指令优化","alt":"图10.16：重构归并排序的代码实现：利用了Vivado HLS的dataflow和pipeline的指令优化","nro":101,"url":"images/placeholder.png","index":16,"caption_template":"_CAPTION_","label":"图10.16：重构归并排序的代码实现：利用了Vivado HLS的dataflow和pipeline的指令优化","attributes":{},"skip":false,"key":"3.11.16"},{"backlink":"11-Huffman-Encoding.html#fig3.12.1","level":"3.12","list_caption":"Figure: 图11.1：Canonical霍夫曼编码过程。 符号被过滤、排序，并且被用来建造霍夫曼树，而不是将整个树传递给解码器（就像“基本的” 霍夫曼编码所完成的那样），这样编码使得只有树的符号长度是解码器所需要的。 请注意，最终Canonical树与初始树在流程开始创建时是不同的。","alt":"图11.1：Canonical霍夫曼编码过程。 符号被过滤、排序，并且被用来建造霍夫曼树，而不是将整个树传递给解码器（就像“基本的” 霍夫曼编码所完成的那样），这样编码使得只有树的符号长度是解码器所需要的。 请注意，最终Canonical树与初始树在流程开始创建时是不同的。","nro":102,"url":"images/canonical_huffman_flow.jpg","index":1,"caption_template":"_CAPTION_","label":"图11.1：Canonical霍夫曼编码过程。 符号被过滤、排序，并且被用来建造霍夫曼树，而不是将整个树传递给解码器（就像“基本的” 霍夫曼编码所完成的那样），这样编码使得只有树的符号长度是解码器所需要的。 请注意，最终Canonical树与初始树在流程开始创建时是不同的。","attributes":{},"skip":false,"key":"3.12.1"},{"backlink":"11-Huffman-Encoding.html#fig3.12.2","level":"3.12","list_caption":"Figure: 图11.2: 显示了整个“top” Huffman_encoding函数，它设置了数组和其他在各个子函数之间传递的变量，并实例化了这些函数。","alt":"图11.2: 显示了整个“top” Huffman_encoding函数，它设置了数组和其他在各个子函数之间传递的变量，并实例化了这些函数。","nro":103,"url":"images/placeholder.png","index":2,"caption_template":"_CAPTION_","label":"图11.2: 显示了整个“top” Huffman_encoding函数，它设置了数组和其他在各个子函数之间传递的变量，并实例化了这些函数。","attributes":{},"skip":false,"key":"3.12.2"},{"backlink":"11-Huffman-Encoding.html#fig3.12.3","level":"3.12","list_caption":"Figure: 图11.4：Canonical霍夫曼编码的硬件实现框图。灰色块表示由不同子函数生成和消耗的重要输入和输出数据。白色块对应于函数（计算核心）。注意，数组初始位长度出现了两次（图中initial bit length模块），以使图形更加清晰。","alt":"图11.4：Canonical霍夫曼编码的硬件实现框图。灰色块表示由不同子函数生成和消耗的重要输入和输出数据。白色块对应于函数（计算核心）。注意，数组初始位长度出现了两次（图中initial bit length模块），以使图形更加清晰。","nro":104,"url":"images/che_dataflow.jpg","index":3,"caption_template":"_CAPTION_","label":"图11.4：Canonical霍夫曼编码的硬件实现框图。灰色块表示由不同子函数生成和消耗的重要输入和输出数据。白色块对应于函数（计算核心）。注意，数组初始位长度出现了两次（图中initial bit length模块），以使图形更加清晰。","attributes":{},"skip":false,"key":"3.12.3"},{"backlink":"11-Huffman-Encoding.html#fig3.12.4","level":"3.12","list_caption":"Figure: 图11.5：filter函数在输入数组in中迭代，并将具有非零频率字段的任何符号条目添加到输出数组out。此外，它记录非零频率元素的数量并将其传递到输出参数n。","alt":"图11.5：filter函数在输入数组in中迭代，并将具有非零频率字段的任何符号条目添加到输出数组out。此外，它记录非零频率元素的数量并将其传递到输出参数n。","nro":105,"url":"images/placeholder.png","index":4,"caption_template":"_CAPTION_","label":"图11.5：filter函数在输入数组in中迭代，并将具有非零频率字段的任何符号条目添加到输出数组out。此外，它记录非零频率元素的数量并将其传递到输出参数n。","attributes":{},"skip":false,"key":"3.12.4"},{"backlink":"11-Huffman-Encoding.html#fig3.12.5","level":"3.12","list_caption":"Figure: 图11.6：sort函数根据输入符号的频率值对其进行基数排序。","alt":"图11.6：sort函数根据输入符号的频率值对其进行基数排序。","nro":106,"url":"images/placeholder.png","index":5,"caption_template":"_CAPTION_","label":"图11.6：sort函数根据输入符号的频率值对其进行基数排序。","attributes":{},"skip":false,"key":"3.12.5"},{"backlink":"11-Huffman-Encoding.html#fig3.12.6","level":"3.12","list_caption":"Figure: 图11.8：霍夫曼树的创建完整的代码。 该代码将已排序的符号数组in作为输入，该数组中的元素数量为n，并输出left, right和 parent三个数组的霍夫曼树。","alt":"图11.8：霍夫曼树的创建完整的代码。 该代码将已排序的符号数组in作为输入，该数组中的元素数量为n，并输出left, right和 parent三个数组的霍夫曼树。","nro":107,"url":"images/placeholder.png","index":6,"caption_template":"_CAPTION_","label":"图11.8：霍夫曼树的创建完整的代码。 该代码将已排序的符号数组in作为输入，该数组中的元素数量为n，并输出left, right和 parent三个数组的霍夫曼树。","attributes":{},"skip":false,"key":"3.12.6"},{"backlink":"11-Huffman-Encoding.html#fig3.12.7","level":"3.12","list_caption":"Figure: 图11.9：用于确定每个比特长度上符号数量的完整代码。","alt":"图11.9：用于确定每个比特长度上符号数量的完整代码。","nro":108,"url":"images/placeholder.png","index":7,"caption_template":"_CAPTION_","label":"图11.9：用于确定每个比特长度上符号数量的完整代码。","attributes":{},"skip":false,"key":"3.12.7"},{"backlink":"11-Huffman-Encoding.html#fig3.12.8","level":"3.12","list_caption":"Figure: 图11.10：重新组织霍夫曼树的完整代码，以便任何节点的深度低于参数MAX_CODEWORD_LENGTH指定的目标值。","alt":"图11.10：重新组织霍夫曼树的完整代码，以便任何节点的深度低于参数MAX_CODEWORD_LENGTH指定的目标值。","nro":109,"url":"images/placeholder.png","index":8,"caption_template":"_CAPTION_","label":"图11.10：重新组织霍夫曼树的完整代码，以便任何节点的深度低于参数MAX_CODEWORD_LENGTH指定的目标值。","attributes":{},"skip":false,"key":"3.12.8"},{"backlink":"11-Huffman-Encoding.html#fig3.12.9","level":"3.12","list_caption":"Figure: 图11.11：完整的canonizing霍夫曼树代码，它定义了每个符号的位数","alt":"图11.11：完整的canonizing霍夫曼树代码，它定义了每个符号的位数","nro":110,"url":"images/placeholder.png","index":9,"caption_template":"_CAPTION_","label":"图11.11：完整的canonizing霍夫曼树代码，它定义了每个符号的位数","attributes":{},"skip":false,"key":"3.12.9"},{"backlink":"11-Huffman-Encoding.html#fig3.12.10","level":"3.12","list_caption":"Figure: 图11.12：图11.11中process_symbols循环的替代循环结构。","alt":"图11.12：图11.11中process_symbols循环的替代循环结构。","nro":111,"url":"images/placeholder.png","index":10,"caption_template":"_CAPTION_","label":"图11.12：图11.11中process_symbols循环的替代循环结构。","attributes":{},"skip":false,"key":"3.12.10"},{"backlink":"11-Huffman-Encoding.html#fig3.12.11","level":"3.12","list_caption":"Figure: 图11.13:为每个符号生成canonical霍夫曼码字的完整代码。可以在知道每个符号的比特数的情况下计算码字（存储在输入数组symbol_bits[]中）。另外，我们有另一个输入数组codeword_length_histogram[]，其在每个条目中存储具有该位长度的码字的符号数，输出是存储在encoding[]数组中的每个符号的代码字。","alt":"图11.13:为每个符号生成canonical霍夫曼码字的完整代码。可以在知道每个符号的比特数的情况下计算码字（存储在输入数组symbol_bits[]中）。另外，我们有另一个输入数组codeword_length_histogram[]，其在每个条目中存储具有该位长度的码字的符号数，输出是存储在encoding[]数组中的每个符号的代码字。","nro":112,"url":"images/placeholder.png","index":11,"caption_template":"_CAPTION_","label":"图11.13:为每个符号生成canonical霍夫曼码字的完整代码。可以在知道每个符号的比特数的情况下计算码字（存储在输入数组symbol_bits[]中）。另外，我们有另一个输入数组codeword_length_histogram[]，其在每个条目中存储具有该位长度的码字的符号数，输出是存储在encoding[]数组中的每个符号的代码字。","attributes":{},"skip":false,"key":"3.12.11"},{"backlink":"11-Huffman-Encoding.html#fig3.12.12","level":"3.12","list_caption":"Figure: 图11.14：完整的canonical霍夫曼编码测试平台代码。该代码使用输入文件中的数据初始化in数组，并将它传递给顶层的huffman_encoding函数，然后它将结果码字存储到一个文件中，并将其与另一个黄金参考文件进行比较，最后打印出比较结果，并返回适当的值","alt":"图11.14：完整的canonical霍夫曼编码测试平台代码。该代码使用输入文件中的数据初始化in数组，并将它传递给顶层的huffman_encoding函数，然后它将结果码字存储到一个文件中，并将其与另一个黄金参考文件进行比较，最后打印出比较结果，并返回适当的值","nro":113,"url":"images/placeholder.png","index":12,"caption_template":"_CAPTION_","label":"图11.14：完整的canonical霍夫曼编码测试平台代码。该代码使用输入文件中的数据初始化in数组，并将它传递给顶层的huffman_encoding函数，然后它将结果码字存储到一个文件中，并将其与另一个黄金参考文件进行比较，最后打印出比较结果，并返回适当的值","attributes":{},"skip":false,"key":"3.12.12"}]},"title":"FPGA并行编程","language":"zh-hans","gitbook":"3.2.3","description":"pp4fpga"},"file":{"path":"README.md","mtime":"2021-06-14T17:29:23.521Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-14T17:30:45.973Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
