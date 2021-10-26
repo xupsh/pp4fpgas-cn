@@ -716,7 +716,7 @@ ap_ufixed<18,12> p = a*b;
 // cordic_phase[0] =˜ 0.785 
 // cordic_phase[1] =˜ 0.463
 
-void cordic(THETA TYPE theta, COS_SIN_TYPE &s, COS_SIN_TYPE &c) 
+void cordic(THETA_TYPE theta, COS_SIN_TYPE &s, COS_SIN_TYPE &c) 
 { 
     // Set the initial vector that we will rotate 
     // current cos = I; current sin = Q 
@@ -725,7 +725,7 @@ void cordic(THETA TYPE theta, COS_SIN_TYPE &s, COS_SIN_TYPE &c)
     
     // This loop iteratively rotates the initial vector to ﬁnd the 
     // sine and cosine values corresponding to the input theta angle 
-    for (int j = 0; j < NUM ITERATIONS; j++) { 
+    for (int j = 0; j < NUM_ITERATIONS; j++) { 
         // Multiply previous iteration by 2ˆ(−j). This is equivalent to 
         // a right shift by j on a ﬁxed−point number. 
         COS_SIN_TYPE cos_shift = current_cos >> j; 
