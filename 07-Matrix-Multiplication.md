@@ -79,7 +79,6 @@ $$
 \qquad(7.4)
 $$
 
-
 ```c
 void matrixmul(int A[N][M], int B[M][P], int AB[N][P]) {
   #pragma HLS ARRAY_RESHAPE variable=A complete dim=2
@@ -97,7 +96,6 @@ void matrixmul(int A[N][M], int B[M][P], int AB[N][P]) {
     }
   }
 }
-
 ```
 
 ![图7.1 一个通用的3层for循环实现了矩阵乘法。](images/placeholder.png)
@@ -138,7 +136,7 @@ void matrixmul(int A[N][M], int B[M][P], int AB[N][P]) {
 去掉**array_reshape** directive。这对性能有什么影响？这对资源使用率有什么影响？通过改变**array_reshape** 的参数，对这些数组有没有影响？这种情况下，和只使用**array_reshape** 有什么区别？
 {% endhint %}
 
-##  7.3 块矩阵乘法
+## 7.3 块矩阵乘法
 
 **块矩阵** 是被分割出来子矩阵。直观的理解是，可以通过在水平方向和垂直方向画线对矩阵元素进行分割。得到的块作为原始矩阵的子矩阵。反过来，我们可以认为原始矩阵是块矩阵的集合。这就自然的派生出许多算法在线性代数运算中，例如矩阵的乘法，通过把大型的矩阵切分成许多小的矩阵，然后基于块进行运算。
 
@@ -190,8 +188,8 @@ typedef struct { DTYPE out[BLOCK_SIZE][BLOCK_SIZE]; } blockmat;
 void blockmatmul(hls::stream<blockvec> &Arows, hls::stream<blockvec> &Bcols,
 								 blockmat & ABpartial, DTYPE iteration);
 #endif
-
 ```
+
 ![图7.4：分块矩阵乘法的头文件。文件定义了函数内部使用的数据结构，最关键的是，函数blockmatmul的接口。](images/placeholder.png)
 
 {% hint style='info' %}
@@ -253,12 +251,13 @@ void blockmatmul(hls::stream<blockvec> &Arows, hls::stream<blockvec> &Bcols,
   }
 }
 ```
+
 ![图7.5： 函数blockmatmul从矩阵A输入一系列大小为BLOCK_SIZE的行，从矩阵 B 输入一系列大小为BLOCK_SIZE 的列，创建一个BLOCK_SIZWxBLOCK_SIZE 分布结果，作为矩阵AB 的一部分。代码的第一部分（标记为loadA ）保存 A 的行到局部存储，第二部分是嵌套的partialsum for循环执行部分结果的计算，最后的一部分（标记为 writeoutput ）将之前计算返回的分布结果放到合适格式中。](images/placeholder.png)
 
 需要对**stream**类进行一些解释说明才能完全掌握这段代码，并且使用它。**stream** 类型变量**Arows**由许多**blockvec**类型的元素构成。**blockvec** 是一个**BLOCK_SIZE**x**BLOCK_SIZE**的矩阵。每个**Arows**中的元素都是一个数组，用于保存矩阵**A**中**BLOCK_SIZE**行的数据。所以在每次调用**blockmatmul**函数时，**Arow** 流会有**SIZE**个元素，每个用于保存**BLOCK_SIZE**行。语句**tempA = Arows.read()** 从**Arows** 流中取一个元素。然后，将这些对应的元素赋值给局部矩阵**A** 中对应的位置。
 
 {% hint style='info' %}
-**stream** 类对操作符 << 进行了重载，它等价于函数**read()** 。所以，语句** tempA = Arows.read()** 和 ** tempA << Arows** 执行时等价的。
+**stream** 类对操作符 << 进行了重载，它等价于函数**read()** 。所以，语句 **tempA = Arows.read()** 和 **tempA << Arows** 执行时等价的。
 {% endhint %}
 剩余部分的计算式是部分求和。大部分都是在函数**blockmatmul** 中进行。
 
@@ -312,7 +311,7 @@ $$
 外部的两层**for**循环每一步都以块的形式实现输入矩阵。你可以发现每次迭代都是以**BLOCK_SIZE**作为步进。接下来的两个**for**循环把矩阵**A**的行写到**strm_matrix1_element**，把矩阵**B**的列写到**strm_martix2_element**中。在执行上述步骤时都是一个元素一个元素进行的，通过使用变量**k**访问单个的值从行（列）然后将它们写入到一维数组中。注意，**strm_matrix1_element** 和**strm_martix2_element**都是**blockvec**数据类型，即长度为**BLOCK_SIZE**的一维数组。它们用于保存行或列的**BLOCK_SIZE**个元素。内层循环迭代**BLOCK_SIZE**次。流类型变量**strm_matrix1**和**strm_matrix2**被写入**SIZE**次。换句话说，就是对整行（列）进行缓存，缓存中每个元素保存**BLOCK_SIZE**个值。
 
 {% hint style='info' %}
-类**stream**通过重载**>>** 操作符，它等价于函数 **write（data)** 。这和对 **read()** 函数重载，使其等价于操作符**<<** 。因此，表达式 **strm_matrix1.write(strm_matrix1_element)** 和 **strm_matrix1_element >> strm_matrix1** 执行是相同的。
+类**stream**通过重载**>>** 操作符，它等价于函数 **write(data)** 。这和对 **read()** 函数重载，使其等价于操作符**<<** 。因此，表达式 **strm_matrix1.write(strm_matrix1_element)** 和 **strm_matrix1_element >> strm_matrix1** 执行是相同的。
 {% endhint %}
 
 ```c
@@ -354,6 +353,7 @@ int main() {
 }
  //the remainder of this testbench is displayed in the next figure
 ```
+
 ![图7.6： 分块矩阵乘法测试平台的第一部分。函数被分为两个部分， 因为太长不能在单页上一次显示。测试平台剩下的部分在图7.7中。其中有一个“软件”版本的矩阵乘法、变量的声明和初始化。](images/placeholder.png)
 
 ```c
@@ -393,8 +393,8 @@ int main() {
 
   return 0;
 }
-
 ```
+
 ![图7.7：分块矩阵乘法的第二部分。第一部分在图7.6中。这部分演示如何将流类型数据送入函数blockmatmul，代码测试这个函数结果和更简单的三重for循环得出的结果是否匹配。](images/placeholder.png)
 
 这段代码最后一部分从高亮的**if**语句开始。这和矩阵**A**的值相关。本质上，这里是为了我们不用经常向**strm_matrix1**中写入相同的值。矩阵**A**的值可以对应多次**blockmatmul**函数的调用。图7.3是关于这的讨论。这里的**if**语句高亮是为了强调，不能在这里一次次写入相同值。因为函数**blockmatmul**只在有必要的时候读这些数据。所以当我们连续写数据，代码执行不正常，因为流写入的数据是多于读出的数据。
@@ -419,6 +419,6 @@ int main() {
 比较分块矩阵乘法和矩阵乘法之间的性能。当增大矩阵的大小，性能如何变化？分块大小是否在性能中起到了重要作用？选择两种有相同资源占用率的架构，这两种架构之间性能差异有多大？
 {% endhint %}
 
-## 7.4 总结 ##
+## 7.4 总结
 
 矩阵乘法提供了一种不同的方式来实现矩阵乘法。函数通过流的方式输入矩阵的部分，然后计算矩阵的部分结果。函数通过多次计算，完成对整个矩阵乘法的计算。

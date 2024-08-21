@@ -28,7 +28,6 @@ $$
 
 ​这段代码的编写方式是将每个输出数值都写入输出寄存器out[]中，然后在下一次迭代中再次从寄存器中读出上一次输出的数值。由于读取寄存器的延迟是1个时钟周期，因此从寄存器中读取的数据只有在下一个时钟周期才能被处理。结果是，这样的代码设计只能实现II (Initiation interval)=2 的循环设计。在这种情况下，有一种简单的改良此代码的方法：我们可以使用一个单独的局部变量来进行累加操作，而不是像以前一样从数组中读回前一次累加的数值。在CPU处理器代码设计中，避免使用额外的外部存储器来替代寄存器作为数据访问的方式更有优势，同样在HLS设计中这样的数据访问方式更重要，因为其他的处理操作很少能成为系统的性能瓶颈。该操作方式代码如图8.2所示。
 
-
 ![图8.1 前缀和实现代码及行为描述](images/8_1.png)
 
 ![图8.2 优化后的前缀和代码及行为描述](images/8_2.png)
@@ -73,7 +72,6 @@ void histogram(int in[INPUT_SIZE], int hist[VALUE_SIZE]) {
 
 ## 8.3 直方图优化和错误依赖
 
-
 ​让我们更深入的观察上面的处理过程。在循环的第一次迭代中，我们读取位置x0处的hist数组值并将其写回到相同的位置x0处hist数组中。由于读操作需要一个时钟延迟，所以写入数组操作必须在下一个时钟周期发生。然后在下一次迭代循环中，我们读取另一个hist数组中另一个位置x1中数组。x0和x1都取决于输入值，并可以取任何值。因此我们考虑到综合成电路时最坏的情况，如果x0 = x1,则在前一个写入完成前，位置x1处的读取无法开始。因此，我们必须在读写之间进行切换。
 
 ​事实证明，只要x0和x1是独立的，我们就必须在读写之间进行切换。如果它们实际上不是独立的呢？例如，我们可能知道数据源实际不会连续产生两个完全相同的数据。那我们现在该怎么做呢？如果我们可以将x0和x1是不同的地址额外信息提供给HLS工具，那么它就能够同时在位置x1处读取，而在位置x0处写入数据了。在Vivado@HLS中，可以通过设置**dependence**指令来完成。
@@ -82,7 +80,7 @@ void histogram(int in[INPUT_SIZE], int hist[VALUE_SIZE]) {
 
 ```c
 #include <assert.h>
-#include ”histogram.h”
+#include "histogram.h"
 // Precondition: hist[] is initialized with zeros.
 // Precondition: for all x, in[x] != in[x+1]
 void histogram(int in[INPUT SIZE], int hist[VALUE SIZE]) {
@@ -116,7 +114,7 @@ void histogram(int in[INPUT SIZE], int hist[VALUE SIZE]) {
 {% hint style='tip' %}对于图8.10中的代码，你可能会问为什么像Vivado@HLS这样的工具无法确定性能。事实上，虽然在这样的一些简单情况下，更好的代码分析可以将if条件属性传播到每个分支，但我们必须接受存在一些代码段，其中内存访问的性能是不可判定的。在这种情况下最高的性能只能通过添加用户信息的静态进程来实现。最近的一些研究工作通过引入一些研究来寻求改进设计中的动态控制逻辑[[60](./BIBLIOGRAPHY.md#60), [40](./BIBLIOGRAPHY.md#40),[19](./BIBLIOGRAPHY.md#19)]。 {% endhint %}
 
 ```c
-#include ”histogram.h”
+#include "histogram.h"
     void histogram(int in[INPUT_SIZE], int hist[VALUE_SIZE]) {
     int acc = 0;
     int i, val;
@@ -134,7 +132,7 @@ void histogram(int in[INPUT SIZE], int hist[VALUE SIZE]) {
 		old = val;
 	}
 	hist[old] = acc;
-}		
+}
 ```
 
 ![图8.10：从for循环中删除写入依赖后的读取。 这需要一个if /else结构，看起来似乎会增加设计的不必要的复杂性。尽管数据路径更复杂，但它允许更有效的流水线操作。](images/placeholder.png)
@@ -149,7 +147,7 @@ void histogram(int in[INPUT SIZE], int hist[VALUE SIZE]) {
 
 ​不过，并不是没有指望了。因为我们可以通过将直方图计算分解为两个阶段来达到更多的并行性。在第一阶段，我们将输入数据分成若干独立的分块。每个分块的直方图可以使用我们之前的直方图解决方案独立计算。第二阶段，将各个直方图组合起来生成完整数据集的直方图。这种分块（或映射）和合并（或还原）过程与MapReduce框架[[20](./BIBLIOGRAPHY.md#20)]采用的过程非常相似，并且是并行计算的常见模式。Map-reduce模式适用于包含交换和关联操作的循环，例如这种情况下的加法。完整方案如图8.12所示。
 
-​图8.13中式实现这种架构的代码。直方图函数实现了Map-reduce模式的’map’部分，并且会多次实例化。该代码与图8.10中的代码非常相似。主要的区别在于我们添加了额外的代码来初始化hist数组。**Histogram_map** 函数输入数组是hist数组中一个分区数据。**Histogram_reduce** 函数实现了模式中的“还原”部分。它将分区数据的直方图作为输入，并通过将每个直方图的计数相加，将它们组合成完整的直方图。在我们的图8.13的代码示例中，我们只有两个处理对象，因此将两个输入数组hist1和hist2合并。这可以很容易的扩展以处理更多的元素。
+​图8.13中式实现这种架构的代码。直方图函数实现了Map-reduce模式的’map’部分，并且会多次实例化。该代码与图8.10中的代码非常相似。主要的区别在于我们添加了额外的代码来初始化hist数组。**histogram_map** 函数输入数组是hist数组中一个分区数据。**histogram_reduce** 函数实现了模式中的“还原”部分。它将分区数据的直方图作为输入，并通过将每个直方图的计数相加，将它们组合成完整的直方图。在我们的图8.13的代码示例中，我们只有两个处理对象，因此将两个输入数组hist1和hist2合并。这可以很容易的扩展以处理更多的元素。
 
 ![图8.12：使用map-reduce模式实现的直方图计算。 a）部分中的处理单元（PE）与图8.11所示的结构相同。 in数组是分块后的，每个分块由一个单独的PE处理。合并块组合各个直方图以创建最终直方图。](images/architectures_histogram_parallel.jpg)
 
@@ -157,10 +155,10 @@ void histogram(int in[INPUT SIZE], int hist[VALUE SIZE]) {
 
 {% hint style='info' %}修改图8.13中的代码，使得其支持可参数化改变的**PE**数目（变量名记为**NUM_PE**）？提示：你需要根据数组分块数量**NUM_PE**以及循环将数组合并成一个数组。当你改变PE的数量时，吞吐量和任务间隔会发生什么变化？{% endhint %}
 
-​我们在**histogram**函数中使用**dataflow**指令来达到任务级流水线设计。在这种情况下有三个模块：两个**partial_histogram**函数实例和一个**histogram_reduce**函数实例。在一个任务中，因为两个**partial_histogram**处理的数据相互独立，所以可以同时执行。**Histogram_reduce** 函数处理过程必须在 **partial_histogram** 处理完成后才开始。因此，**dataflow** 指令本质上是创建了一个两阶段的任务管道。第一阶段执行**partial_histogram**函数，而第二阶段执行**histogram_reduce**函数。与任何数据流设计一样，整个histogram函数的间隔取决于两个阶段的最大启动间隔。第一个阶段的两个**partial_histogram**函数时相同的，并且具有相同的间隔（$$I{I_{histogram\_map}}$$）。**Histogram_reduce** 函数则是另一个间隔（$$I{I_{histogram\_reduce}}$$）。顶层 **histogram** 函数的启动间隔$$I{I_{histogram}}$$是max($$I{I_{histogram\_map}}$$ ,$$I{I_{histogram\_reduce}}$$ ).
+​我们在**histogram**函数中使用**dataflow**指令来达到任务级流水线设计。在这种情况下有三个模块：两个**partial_histogram**函数实例和一个**histogram_reduce**函数实例。在一个任务中，因为两个**partial_histogram**处理的数据相互独立，所以可以同时执行。**histogram_reduce** 函数处理过程必须在 **partial_histogram** 处理完成后才开始。因此，**dataflow** 指令本质上是创建了一个两阶段的任务管道。第一阶段执行**partial_histogram**函数，而第二阶段执行**histogram_reduce**函数。与任何数据流设计一样，整个histogram函数的间隔取决于两个阶段的最大启动间隔。第一个阶段的两个**partial_histogram**函数时相同的，并且具有相同的间隔（$$I{I_{histogram\_map}}$$）。**histogram_reduce** 函数则是另一个间隔（$$I{I_{histogram\_reduce}}$$）。顶层 **histogram** 函数的启动间隔$$I{I_{histogram}}$$是max($$I{I_{histogram\_map}}$$ ,$$I{I_{histogram\_reduce}}$$ ).
 
 ```c
-#include ”histogram parallel.h”
+#include "histogram_parallel.h"
 void histogram_map(int in[INPUT_SIZE/2], int hist[VALUE_SIZE]) {
 	#pragma HLS DEPENDENCE variable=hist intra RAW false
 	for(int i = 0; i < VALUE_SIZE; i++) {
